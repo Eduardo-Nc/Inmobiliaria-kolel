@@ -6,17 +6,16 @@ import Slider from './componentes/slider/Slider';
 const App = () =>{
   return(
     <Fragment>
-      
-      <NavBar/>
-      
-      <Slider />
-      
-      <Slider />
+      <div className="contenedor-principal-app"> 
+        <NavBar/>
+        
+        <Slider />
 
-      <Slider />
+        <Slider />
 
-      <Slider />
-
+        <Slider />
+        
+      </div>
     </Fragment>
   )
 }
