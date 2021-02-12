@@ -8,6 +8,7 @@
     position: fixed;
     top: 0;
     z-index: 100;
+
 }
 
     .contenedor-logo-navbar{
@@ -35,7 +36,7 @@
             border:none;
             outline: none;
             border-radius:3px;
-            background:rgb(91, 135, 255);
+            background:#7388ff;
             color:white;
         }
 
@@ -127,7 +128,7 @@
         top:70px;
         width: 250px;
         height:100%;
-        background:rgba(160, 160, 160, 0.911);
+        background:rgba(77, 77, 77, 0.911);
         z-index: 10;
         display:flex;
         flex-flow: column nowrap;
@@ -166,7 +167,7 @@
         border:none;
         outline: none;
         border-radius:6px;
-        background:rgb(91, 135, 255);
+        background:#7388ff;
         color:white;
         overflow: hidden;
     }

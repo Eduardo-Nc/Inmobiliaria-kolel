@@ -2,6 +2,8 @@ import React, {Fragment} from 'react';
 import './App.css';
 import NavBar from './componentes/navBar/NavBar';
 import Slider from './componentes/slider/Slider';
+import Footer from './componentes/footer/Footer';
+
 
 const App = () =>{
   return(
@@ -10,11 +12,9 @@ const App = () =>{
         <NavBar/>
         
         <Slider />
-
-        <Slider />
-
-        <Slider />
-        
+      
+    
+        <Footer />
       </div>
     </Fragment>
   )

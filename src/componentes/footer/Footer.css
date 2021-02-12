@@ -1,0 +1,39 @@
+.content-footer{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    background:#7388ff;
+    height: 60px;
+    
+}
+
+
+.content-footer a{
+    color:white;
+    font-size:17px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing:1px;
+    text-decoration: none;
+}
+
+.content-footer a:hover{
+    color:#fff5f5;
+}
+
+@media (max-width:700px){
+    .content-footer a{
+        font-size:15px;
+        
+    }
+}
+
+@media (max-width:500px){
+    .content-footer a{
+        font-size:13px;
+        
+    }
+}

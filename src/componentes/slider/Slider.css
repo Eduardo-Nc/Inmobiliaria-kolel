@@ -1,36 +1,18 @@
 .contenedor-slider{
     width: 100%;
     padding:0;
-    margin:0;
+    margin-top:70px;
    
 }
 
 .contenedor-slider-imagenes{
     overflow: hidden;
     width: 100%;
-   
 }
+
 
 .contenedor-slider img{
     height: 100%;
     width: 100%;
 }
 
-
-@media (max-width: 500px){
-    .contenedor-slider-imagenes{
-        margin-bottom: 25px;
-    }
-}
-
-@media (max-width: 370px){
-    .contenedor-slider-imagenes{
-        margin-bottom: 50px;
-    }
-}
-
-@media (max-width: 315px){
-    .contenedor-slider-imagenes{
-        margin-bottom: 70px;
-    }
-}
