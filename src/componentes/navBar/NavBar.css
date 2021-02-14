@@ -4,7 +4,7 @@
     display:flex;
     justify-content:space-between;
     align-items: center;
-    background:rgb(255, 247, 247);
+    background:rgb(255, 253, 247);
     position: fixed;
     top: 0;
     z-index: 100;
@@ -15,6 +15,10 @@
         width: auto;
         margin-left: 30px;
         overflow: hidden;
+    }
+    .contenedor-logo-navbar a{
+        color:black;
+        text-decoration:none;
     }
     .contenedor-logo-navbar:hover{
         cursor: pointer;
@@ -128,7 +132,7 @@
         top:70px;
         width: 250px;
         height:100%;
-        background:rgba(77, 77, 77, 0.911);
+        background:rgba(204, 118, 6, 0.884);
         z-index: 10;
         display:flex;
         flex-flow: column nowrap;

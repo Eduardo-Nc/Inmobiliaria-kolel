@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import './NavBar.css';
+import {Link} from 'react-router-dom';
+import operadora from '../../imagenes/iconos/operadora.svg';
 import bars from '../../imagenes/iconos/menu.png';
 import cerrar from '../../imagenes/iconos/cerrar.png';
 
@@ -29,7 +31,9 @@ const NavBar = () => {
 
                 <div className="contenedor-logo-navbar">
                     {/* <img src="" alt="Logo" title="Logo" /> */}
+                    <Link to="/">
                     <h2>Logo Inmobiliaria</h2>
+                    </Link>
                 </div>
 
                 <div className="contenedor-menu-navbar">
@@ -55,7 +59,7 @@ const NavBar = () => {
                     </div>
 
                     <div>
-                        <a href="tel:9971210804" title="Contáctanos" ><img src="https://www.flaticon.es/svg/vstatic/svg/228/228347.svg?token=exp=1613141638~hmac=cf023fdb0f47f13565394a261c480f61" /></a>
+                        <a href="tel:9971210804" title="Contáctanos" ><img alt="Operadora" src={operadora} /></a>
                     </div>
 
                 </div>
