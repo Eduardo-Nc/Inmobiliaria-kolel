@@ -6,13 +6,31 @@
     justify-content:space-around;
     align-items: center;
     background:#f7f7f9;
-    padding:35px;
+    padding-left:35px;
+    padding-right:35px;
+    padding-bottom:35px;
     overflow:hidden;
+    
 }   
+
+.contenedor-tarjeta-casa-titulo{
+    width: 100%;
+    display:flex;
+    justify-content:flex-start;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom:15px;
+}
+    .contenedor-tarjeta-casa-titulo h1{
+        font-size: 25px;
+        font-weight: normal;
+    }
+
     .contenedor-tarjeta-casa{
-        width: 23%;
+        width: 29%;
         overflow:hidden;
         background:white;
+        margin-bottom: 30px;
     }
 
     .contenedor-tarjeta-casa:hover{
@@ -29,13 +47,27 @@
         border-right:1px solid rgba(46, 46, 46, 0.37);
     }
 
+    .tarjeta-tipo-oferta{
+        position: absolute;
+        margin-top:10px;
+        margin-left:10px;
+    }
+        .tarjeta-tipo-oferta h3{
+            width: 110px;
+            padding:3px;
+            text-align: center;
+            border-radius: 2px;
+            color:white;
+            background:rgba(21, 102, 61, 0.719);
+            font-size:14px;
+        }
+
         .contenedor-tarjeta-casa-imagen img{
             width: 100%;
-            border-radius:4px;
         }
 
     .contenedor-tarjeta-casa-descripcion{
-        width: 90%;
+        width: 100%;
         display:flex;
         justify-content:center;
         align-items: center;
@@ -44,8 +76,9 @@
 
         .contenedor-tarjeta-casa-descripcion p{
             margin-top:10px;
-            font-size:16.5px;
+            font-size:17.5px;
             text-align:justify;
+            color:black;
         }
 
     .contenedor-tarjeta-casa-precio{
@@ -56,12 +89,42 @@
     }
 
         .contenedor-tarjeta-casa-precio h3{
-           margin-top:30px;
+           margin-top:20px;
            font-size:20px;
            color:rgb(176, 207, 0);
         }
 
 
+    .contenedor-tarjeta-boton{
+        width: 100%;
+        display:flex;
+        justify-content:center;
+        align-items: center;
+    }
+        .contenedor-tarjeta-boton button{
+            width: 350px;
+            margin-top:10px;
+            display:flex;
+            justify-content:center;
+            align-items: center;
+            background:#af2525;
+            color:white;
+            outline:none;
+            border:none;
+            padding:7px;
+            font-size: 18px;
+            border-radius: 4px;
+        }
+
+        .contenedor-tarjeta-boton button:hover{
+            cursor: pointer;
+            background:#c42b2b;
+        }
+
+        .contenedor-tarjeta-boton button img{
+            width: 19px;
+            margin-right: 5px;
+        }
 
 
 
@@ -75,17 +138,15 @@
 
         .contendor-detalles-casa{
             width:25%;
+            height:70px;
             display:flex;
             flex-flow:column nowrap;
             justify-content:center;
             align-items: center;
-            border-top:1px solid rgba(46, 46, 46, 0.37);
-            border-right:1px solid rgba(46, 46, 46, 0.37);
-            border-bottom:1px solid rgba(46, 46, 46, 0.37);
+            border:1px solid rgba(46, 46, 46, 0.37);
+      
         }
-            #icono-casa{
-                border-left:1px solid rgba(46, 46, 46, 0.37);
-            }
+           
 
             .contendor-detalles-casa-imagen {
                 width: 100%;
@@ -96,13 +157,13 @@
             }
 
             .contendor-detalles-casa-imagen img{
-                width: 50%;
+                width: 25px;
                 padding-top: 10px;
                 
             }
 
             .contendor-detalles-casa-tamano{
-                width: 100%;
+   
                 display: flex;
                 justify-content:center;
                 align-items: center;
@@ -114,6 +175,7 @@
                 font-size:14px;
                 text-align:center;
                 padding-bottom: 10px;
+                color: black;
             }
 
 @media (max-width:1170px){
@@ -128,14 +190,15 @@
 
     .contendor-detalles-casa{
         width:100%;
+        height:auto;
         display:flex;
         border:1px solid rgba(46, 46, 46, 0.37);
     }
 
     .contendor-detalles-casa-imagen img{
-        width: 15%;
+        width: 40px;
     }
-
+   
     .contendor-detalles-casa h4{
         font-size:22px;
     }
@@ -163,6 +226,12 @@
         flex-flow:row nowrap;
     }
 
+    .tarjeta-tipo-oferta h3{
+        width: 150px;
+        padding:4px;
+        font-size:18px;
+    }
+
     .contendor-detalles-casa{
         width:25%;
         display:flex;
@@ -173,8 +242,9 @@
         border-right:1px solid rgba(46, 46, 46, 0.37);
         border-bottom:1px solid rgba(46, 46, 46, 0.37);
     }
-        #icono-casa{
-            border-left:1px solid rgba(46, 46, 46, 0.37);
+      
+        #icono-casa img{
+            width:40.1%;
         }
 
         .contendor-detalles-casa-imagen img{
@@ -187,8 +257,9 @@
 }
 
 @media (max-width:400px){
-    .contendor-detalles-casa-imagen img{
-        width:38%;
+
+    .contenedor-tarjeta-casa-titulo h1{
+        font-size: 22px;
     }
 
     .contendor-detalles-casa h4{
@@ -199,16 +270,12 @@
         font-size:19px;
     }
 
-    
-
-}
-
-@media (max-width:335px){
-    .contendor-detalles-casa-imagen img{
-        width:35%;
+    .contendor-detalles-casa-tamano h4{
+        font-size: 13.3px;
     }
 
 }
+
 
 @media (max-width:322px){
     .contendor-detalles-casa h4{

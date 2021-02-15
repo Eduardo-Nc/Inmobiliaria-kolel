@@ -4,7 +4,7 @@
     display:flex;
     justify-content:space-between;
     align-items: center;
-    background:rgb(255, 253, 247);
+    background:#f7f7f9;
     position: fixed;
     top: 0;
     z-index: 100;
@@ -132,7 +132,7 @@
         top:70px;
         width: 250px;
         height:100%;
-        background:rgba(204, 118, 6, 0.884);
+        background:rgba(97, 82, 63, 0.897);
         z-index: 10;
         display:flex;
         flex-flow: column nowrap;

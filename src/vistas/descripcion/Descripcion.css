@@ -1,0 +1,41 @@
+.contenedor-descripcion-principal{
+    width:100%;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:center;
+    align-items: center;
+    margin-top:70px;
+}
+
+.contenedor-descripcion-titulo{
+    width:100%;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content:center;
+    align-items: center;
+}
+
+.contenedor-slider-contacto{
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-around;
+    align-items: center;
+}
+
+    .contenedor-descripcion-slider{
+        width: 65%;
+    }
+
+    .contenedor-descripcion-contacto{
+        width: 25%;
+        display:flex;
+        flex-flow: column nowrap;
+        justify-content:center;
+        align-items: center;
+
+    }
+
+.contenedor-descripcion-contacto form img{
+    width: 60px;
+}

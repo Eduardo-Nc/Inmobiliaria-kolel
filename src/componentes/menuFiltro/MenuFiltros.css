@@ -25,6 +25,7 @@
         height:40px;
         font-size:15px;
         border:none;
+        background:white;
         border-radius: 4px;
         text-align-last:center;
         outline:none;
@@ -65,7 +66,7 @@
 
 @media (max-width:730px){
     .contenedor-principal-menu-filtros{
-        height:300px;
+        height:350px;
         padding-top:0px;
         padding-bottom:0px;
     }
@@ -75,23 +76,22 @@
     }
 
     .contenedor-menu-filtros select{
-        width: 97%;
+        width: 84%;
         margin-bottom: 20px;
-        height:40px;
+        height:44px;
         font-size:18px;
-        background:white;
         border:1px solid rgba(97, 97, 97, 0.171);
     }
 
     .contenedor-menu-filtros-boton button{
-        width: 97%;
+        width: 84%;
         margin-top:-5px;
         padding:11px;
         font-size: 19px;
     }
 
     .contenedor-menu-filtros-selec{
-       width: 100%;
+       width: 86.5%;
        
     }
 

@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import App from './App';
+import Descripcion from './vistas/descripcion/Descripcion';
+
 
 
 window.$baseUrl = "https://";
@@ -12,6 +15,7 @@ window.$baseUrl = "https://";
     return(
       <Router>
       <Route exact path="/" component={App} />
+      <Route exact path="/descripcion" component={Descripcion} />
       </Router>
     )
   }

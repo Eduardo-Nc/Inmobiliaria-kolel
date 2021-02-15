@@ -1,0 +1,78 @@
+.contenedor-botton-contacto-movil{
+    display:none;
+}
+
+.contenedor-botton-contacto{
+    width: 100%;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.contenedor-botton-contacto-movil a{
+    text-decoration:none;
+}
+
+@media(max-width:2000px){
+    .contenedor-botton-contacto{
+        display:none;
+    }
+
+    .contenedor-botton-contacto-movil{
+        display: flex;
+    }
+
+    .contenedor-botton-contacto-movil{
+        width: 100%;
+        display:flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: fixed;
+        bottom: 20px;
+    }
+    
+    .forma-botton-contacto-movil {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content:center;
+        align-items: center;
+        margin-right: 35px;
+        background:#7388ff;
+        height: 60px;
+        width: 60px;
+        font-size: 16.5px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    
+    .forma-botton-contacto-movil:hover {
+        background:rgb(114, 152, 255);
+        cursor: pointer;
+    }
+    
+    .botton-contactanos-movil{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content:center;
+        align-items: center;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .botton-contactanos-movil i{
+        color:white;
+        font-size:36px;
+    }
+
+}
+
+@media (max-width:500px){
+    .forma-botton-contacto-movil {
+       
+        height: 70px;
+        width: 70px;
+  
+    }
+}

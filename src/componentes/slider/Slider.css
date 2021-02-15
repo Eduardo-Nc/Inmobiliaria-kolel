@@ -16,3 +16,13 @@
     width: 100%;
 }
 
+@media (max-width:750px){
+    .contenedor-slider{
+        height: 25%;
+    }
+
+    .contenedor-slider img{
+        width: 178%;
+    }
+
+}
