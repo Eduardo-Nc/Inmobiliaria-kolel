@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import './NavBar.css';
-import {Link} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import operadora from '../../imagenes/iconos/operadora.svg';
 import bars from '../../imagenes/iconos/menu.png';
 import cerrar from '../../imagenes/iconos/cerrar.png';
@@ -32,26 +32,26 @@ const NavBar = () => {
                 <div className="contenedor-logo-navbar">
                     {/* <img src="" alt="Logo" title="Logo" /> */}
                     <Link to="/">
-                    <h2>Logo Inmobiliaria</h2>
+                        <h2>Logo Inmobiliaria</h2>
                     </Link>
                 </div>
 
                 <div className="contenedor-menu-navbar">
 
                     <div className="contenedor-menu-navbar-inicio">
-                        <h2>Inicio</h2>
+                        <NavLink to="/inicio" activeClassName="menu-seleccionado-desk" > <h2>Inicio</h2> </NavLink>
                     </div>
 
                     <div className="contenedor-menu-navbar-nosotros">
-                        <h2>Nosotros</h2>
+                        <NavLink to="/nosotros" activeClassName="menu-seleccionado-desk" >  <h2>Nosotros</h2> </NavLink>
                     </div>
 
                     <div className="contenedor-menu-navbar-propiedades">
-                        <h2>Propiedades</h2>
+                        <NavLink to="/propiedades" activeClassName="menu-seleccionado-desk" > <h2>Propiedades</h2> </NavLink>
                     </div>
 
                     <div className="contenedor-menu-navbar-servicios">
-                        <h2>Servicios</h2>
+                        <NavLink to="/servicios" activeClassName="menu-seleccionado-desk" >  <h2>Servicios</h2> </NavLink>
                     </div>
 
                     <div>
@@ -76,17 +76,17 @@ const NavBar = () => {
 
                     <nav style={menu ? estilosCerrar : estilosAbrir}>
                         <ul>
-                            <li><a href="#">Inicio</a></li>
-                            <li><a href="#">Nosotros</a></li>
-                            <li><a href="#">Proyectos</a></li>
-                            <li><a href="#">Servicios</a></li>
-                            <li><a href="#">Contacto</a></li>
+                            <li><NavLink to="/inicio" activeClassName="menu-seleccionado" > <h2>Inicio</h2> </NavLink> </li>
+                            <li><NavLink to="/nosotros" activeClassName="menu-seleccionado" > <h2>Nosotros</h2> </NavLink> </li>
+                            <li><NavLink to="/proyectos" activeClassName="menu-seleccionado" > <h2>Proyectos</h2> </NavLink> </li>
+                            <li><NavLink to="/servicios" activeClassName="menu-seleccionado" > <h2>Servicios</h2> </NavLink> </li>
+                            <li><NavLink to="/servicios" activeClassName="menu-seleccionado" > <h2>Contacto</h2> </NavLink> </li>
                         </ul>
 
                         <ul className="contenedor-navbar-iniciar-sesion">
-                           
-                                <button title="Iniciar Sesión" > <i className="fas fa-sign-in-alt"></i> Ingresar</button>
-                            
+
+                            <button title="Iniciar Sesión" > <i className="fas fa-sign-in-alt"></i> Ingresar</button>
+
                         </ul>
                     </nav>
 

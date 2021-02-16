@@ -5,7 +5,13 @@ const MenuFiltros = () => {
     return (
         <Fragment>
 
+
+
             <div className="contenedor-principal-menu-filtros">
+
+                <div className="contenedor-filtros-titulo"> 
+                    <h2>Filtros</h2>
+                </div>
                 
                 <div className="contenedor-menu-filtros">
                     <select id="filtro" name="filtro">

@@ -4,11 +4,14 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import MenuFiltros from './../menuFiltro/MenuFiltros';
 
 
-import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import img1 from '../../imagenes/apartamento1.jpg';
 import img2 from '../../imagenes/apartamento1.jpg';
 
 const Slider = () => {
+
+
+    
     return (
         <Fragment>
             <div className="contenedor-slider">
@@ -19,11 +22,13 @@ const Slider = () => {
                         autoplay: true,
                         pauseOnHover: false,
                         isNavigation: false,
-                        lazyLoad: true
+                        lazyLoad: true,
+                        
                     }}>
 
                         <SplideSlide>
                             <img src={img1} alt="apartamento" />
+                            <div className="texto-imagen"><h1>Lo que comienza como una idea, se convierte en realidad</h1></div>
                         </SplideSlide>
 
                     </Splide>
@@ -31,7 +36,7 @@ const Slider = () => {
             </div>
 
             <MenuFiltros />
-            
+
         </Fragment>
     )
 }

@@ -1,11 +1,11 @@
 .contenedor-principal-tarjeta-casa{
-    margin-top:30px;
+   
     width: 100%;
     display:flex;
     flex-flow: row wrap;
     justify-content:space-around;
     align-items: center;
-    background:#f7f7f9;
+    /* background:#f7f7f9; */
     padding-left:35px;
     padding-right:35px;
     padding-bottom:35px;
@@ -107,7 +107,7 @@
             display:flex;
             justify-content:center;
             align-items: center;
-            background:#af2525;
+            background:#881919;
             color:white;
             outline:none;
             border:none;
@@ -118,7 +118,7 @@
 
         .contenedor-tarjeta-boton button:hover{
             cursor: pointer;
-            background:#c42b2b;
+            background:#a51c1c;
         }
 
         .contenedor-tarjeta-boton button img{
@@ -206,6 +206,11 @@
 }   
 
 @media (max-width:900px){
+
+    .contenedor-principal-tarjeta-casa{
+        margin-top:20px;
+    }
+    
     .contenedor-tarjeta-casa{
         width: 40%;
         margin-bottom: 35px;
@@ -217,6 +222,7 @@
 }
 
 @media (max-width:730px){
+
     .contenedor-tarjeta-casa{
         width: 100%;
         margin-bottom: 35px;

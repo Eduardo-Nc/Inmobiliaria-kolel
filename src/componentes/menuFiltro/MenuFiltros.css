@@ -1,14 +1,27 @@
 .contenedor-principal-menu-filtros{
     width:100%;
     height:150px;
-    background:#f7f7f9;
+    /* background:#f7f7f9; */
     display:flex;
     justify-content: center;
     align-items: center;
     flex-flow: column nowrap;
     margin-top: 20px;
-   
 }
+
+.contenedor-filtros-titulo{
+    width:100%;
+    display:flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-flow: row nowrap;
+    margin-bottom: 20px;
+}
+    .contenedor-filtros-titulo h2{
+        padding-left: 30px;
+        font-size: 25px;
+        font-weight: normal;
+    }
 
     .contenedor-menu-filtros{
         display:flex;
@@ -64,7 +77,11 @@
         background:rgb(114, 152, 255);
     }
 
-@media (max-width:730px){
+@media (max-width:850px){
+    .contenedor-filtros-titulo h2{
+        padding-left: 30px;
+    }
+
     .contenedor-principal-menu-filtros{
         height:350px;
         padding-top:0px;

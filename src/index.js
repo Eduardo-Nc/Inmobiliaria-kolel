@@ -15,7 +15,8 @@ window.$baseUrl = "https://";
     return(
       <Router>
       <Route exact path="/" component={App} />
-      <Route exact path="/descripcion" component={Descripcion} />
+      <Route path="/inicio" component={App} />
+      <Route path="/descripcion" component={Descripcion} />
       </Router>
     )
   }
