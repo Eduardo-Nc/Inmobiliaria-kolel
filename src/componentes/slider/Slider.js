@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import './Slider.css';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import MenuFiltros from './../menuFiltro/MenuFiltros';
+
 
 
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
@@ -34,8 +34,6 @@ const Slider = () => {
                     </Splide>
                 </div>
             </div>
-
-            <MenuFiltros />
 
         </Fragment>
     )

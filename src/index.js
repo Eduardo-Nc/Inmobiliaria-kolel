@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import App from './App';
 import Descripcion from './vistas/descripcion/Descripcion';
-
+import IniciarSesion from './vistas/iniciarSesion/IniciarSesion';
 
 
 window.$baseUrl = "https://";
@@ -17,6 +17,7 @@ window.$baseUrl = "https://";
       <Route exact path="/" component={App} />
       <Route path="/inicio" component={App} />
       <Route path="/descripcion" component={Descripcion} />
+      <Route path="/iniciar-sesion" component={IniciarSesion} />
       </Router>
     )
   }

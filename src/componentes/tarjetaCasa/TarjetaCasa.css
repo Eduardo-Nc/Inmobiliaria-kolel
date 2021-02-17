@@ -1,5 +1,4 @@
 .contenedor-principal-tarjeta-casa{
-   
     width: 100%;
     display:flex;
     flex-flow: row wrap;
@@ -222,6 +221,11 @@
 }
 
 @media (max-width:730px){
+
+    .contenedor-principal-tarjeta-casa{
+        padding:20px;
+        margin-top: 40px;
+    }
 
     .contenedor-tarjeta-casa{
         width: 100%;

@@ -9,10 +9,10 @@ const MenuFiltros = () => {
 
             <div className="contenedor-principal-menu-filtros">
 
-                <div className="contenedor-filtros-titulo"> 
-                    <h2>Filtros</h2>
+                <div className="contenedor-filtros-titulo">
+                    <h2>Buscador</h2>
                 </div>
-                
+
                 <div className="contenedor-menu-filtros">
                     <select id="filtro" name="filtro">
                         <option value="" defaultValue>Oferta</option>
@@ -47,9 +47,15 @@ const MenuFiltros = () => {
                     </div>
                 </div>
 
-                <div className="contenedor-menu-filtros-boton">
-                    <button><i className="fas fa-search"></i> Buscar</button>
+                <div className="contenedor-filtro-id">
+                    <input type="text" placeholder="Identificador" />
+
+                    <div className="contenedor-menu-filtros-boton">
+                        <button><i className="fas fa-search"></i> Buscar</button>
+                    </div>
                 </div>
+
+
             </div>
 
         </Fragment>

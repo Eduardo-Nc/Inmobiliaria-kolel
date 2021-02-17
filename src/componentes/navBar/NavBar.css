@@ -58,6 +58,16 @@
             background:rgb(114, 152, 255);
         }
 
+        .contenedor-menu-navbar a{
+            cursor: pointer;
+            color:rgba(255, 255, 255, 0.849);
+        }
+
+        .contenedor-menu-navbar a:hover{
+            cursor: pointer;
+            color:white;
+        }
+
         .contenedor-menu-navbar h2:hover{
             color:white;
             cursor: pointer;
@@ -193,6 +203,14 @@
     .contenedor-navbar-iniciar-sesion button:hover{
         cursor: pointer;
         background:rgb(114, 152, 255);
+    }
+
+    .contenedor-navbar-iniciar-sesion a{
+        color:rgba(255, 255, 255, 0.849);
+    }
+
+    .contenedor-navbar-iniciar-sesion a:hover{
+        color:white;
     }
 
 }

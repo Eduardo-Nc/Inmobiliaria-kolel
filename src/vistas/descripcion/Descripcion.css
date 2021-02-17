@@ -23,7 +23,7 @@
     }
 
 .contenedor-slider-datos{
-        width: 65%;
+        width: 65%;      
 }
 
 
@@ -59,13 +59,11 @@
     }
 
 .contenedor-detalles-venta{
-    margin-bottom: 20px;
     padding:20px;
     width: 100%;
     display: flex;
     justify-content:space-between;
     align-items: center;
-    border-bottom:1.3px solid rgba(0, 0, 0, 0.055);
 }
 
     .contenedor-precio-predio h3{
@@ -114,8 +112,70 @@
     }
 
     .contenedor-imagen-predio-datos img{
-        width: 40px;
+        padding:1px;
+        width: 35px;
     }
+
+    .contenedor-datos-texto-predio{
+        width: 100%;
+        display:flex;
+        flex-flow:column nowrap;
+        justify-content:center;
+        align-items: center;
+    }
+
+    .contenedor-datos-texto-predio h4{
+        font-weight: normal;
+    }
+
+.contenedor-detalles-general-predio{
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content:center;
+    align-items: flex-start;
+    margin-top:30px;
+    margin-bottom: 20px;
+  
+}
+    .contenido-detalles-predio{
+        width: 100%;
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        margin-bottom: 20px;
+        border-bottom:1.3px solid rgba(0, 0, 0, 0.055);
+        padding-bottom: 20px;
+        padding-left:10px;
+    }
+
+        .contenido-detalle-predio{
+            width: 20%;
+        }
+            .contenido-detalle-predio h3{
+                font-size: 17px;
+            }
+
+        .contenido-caracteristicas-predio{
+            width: 55%;
+            margin-left: 180px;
+        }
+
+            .contenido-caracteristicas-predio ul{
+                list-style: none;
+            }
+                .contenido-caracteristicas-predio ul li{
+                    font-size: 16px;
+                }
+
+.contenedor-mapa-desc-propiedad{
+    overflow: hidden;
+    width: 100%;
+}
+
+.contenedor-mapa-desc-propiedad iframe{
+    width: 100%;
+}
 
 
     .contenedor-descripcion-contacto{
@@ -233,8 +293,14 @@
 
 
 @media (max-width: 900px){
+    .contenedor-descripcion-titulo{
+        padding-left: 12px;
+    }
     .contenedor-slider-contacto{
         flex-flow: column nowrap;
+        justify-content:center;
+        align-items: center;
+        padding:2px;
     }
 
     .contenedor-slider-caracteristicas{
@@ -242,6 +308,7 @@
         height:auto;
         margin-bottom:20px;
     }
+  
 
     .contenedor-descripcion-contacto{
         width: 95%;
@@ -253,6 +320,10 @@
         height:auto;
     }   
 
+    .contenedor-datos-predio{
+        margin-bottom:20px;
+    }
+
 }
 
 @media (max-width:600px){
@@ -260,5 +331,52 @@
         width: 100%;
         font-size:21px;
     }
+
+    .contenedor-imagen-predio-datos img{
+        width: 32px;
+    }
+
+    .contenedor-datos-texto-predio h4{
+
+    }
+
+    .contenedor-descripcion-contacto{
+        margin-top: 20px;
+        padding-left:10px;
+        padding-right:10px;
+        padding-top:px;
+        padding-bottom:25px;
+
+    }
+
+    .contenedor-descripcion-contacto form input{
+        height: 47px;
+        font-size: 18px;
+    }
+    
+    .contenedor-descripcion-contacto form textarea{
+        font-size: 18px;
+    }
+    
+    .contenedor-descripcion-contacto form input[type="submit"]{
+        font-size: 25px;
+        height: 50px;
+    }
+
+    .contenido-caracteristicas-predio{
+        margin-left: 100px;
+    }
+    
 }
 
+@media (max-width:435px){
+    .contenedor-datos-texto-predio h4{
+        font-size: 13px;
+    }
+}
+
+@media (max-width:360px){
+    .contenedor-datos-texto-predio h4{
+        font-size: 11px;
+    }
+}

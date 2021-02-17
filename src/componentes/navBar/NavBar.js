@@ -39,9 +39,9 @@ const NavBar = () => {
                 <div className="contenedor-menu-navbar">
 
                     <div className="contenedor-menu-navbar-inicio">
-                        <NavLink to="/inicio" activeClassName="menu-seleccionado-desk" > <h2>Inicio</h2> </NavLink>
+                        <NavLink onClick={window.scrollTo(0,0)} to="/inicio" activeClassName="menu-seleccionado-desk" > <h2>Inicio</h2> </NavLink>
                     </div>
-
+                    
                     <div className="contenedor-menu-navbar-nosotros">
                         <NavLink to="/nosotros" activeClassName="menu-seleccionado-desk" >  <h2>Nosotros</h2> </NavLink>
                     </div>
@@ -55,7 +55,7 @@ const NavBar = () => {
                     </div>
 
                     <div>
-                        <button title="Iniciar Sesión" > <i className="fas fa-sign-in-alt"></i> Ingresar</button>
+                        <button title="Iniciar Sesión" > <Link to="/iniciar-sesion"> <i className="fas fa-sign-in-alt"></i> Ingresar</Link></button>
                     </div>
 
                     <div>
@@ -85,7 +85,7 @@ const NavBar = () => {
 
                         <ul className="contenedor-navbar-iniciar-sesion">
 
-                            <button title="Iniciar Sesión" > <i className="fas fa-sign-in-alt"></i> Ingresar</button>
+                            <button title="Iniciar Sesión" > <Link to="/iniciar-sesion"> <i className="fas fa-sign-in-alt"></i> Ingresar</Link></button>
 
                         </ul>
                     </nav>
