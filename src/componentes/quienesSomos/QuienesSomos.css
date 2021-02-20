@@ -3,7 +3,7 @@
     display:flex;
     justify-content:center;
     align-items: center;
-    margin-top:-5px;
+    margin-top:-7px;
 }
 
     .contenido-quienes-somos{
@@ -18,7 +18,7 @@
     }
         .contenido-quienes-somos h1{
             width: 65%;
-            text-align:justify;
+            text-align:center;
             font-size: 30px;
             color:white;
             margin-bottom: 40px;

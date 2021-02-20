@@ -2,7 +2,7 @@
     width: 100%;
     display:flex;
     flex-flow: row wrap;
-    justify-content:space-around;
+    justify-content:space-between;
     align-items: center;
     /* background:#f7f7f9; */
     padding-left:35px;
@@ -17,7 +17,7 @@
     display:flex;
     justify-content:flex-start;
     align-items: center;
-    padding-top: 15px;
+    padding-top: 35px;
     padding-bottom:15px;
 }
     .contenedor-tarjeta-casa-titulo h1{
@@ -26,7 +26,7 @@
     }
 
     .contenedor-tarjeta-casa{
-        width: 29%;
+        width: 30%;
         overflow:hidden;
         background:white;
         margin-bottom: 30px;
@@ -137,13 +137,12 @@
 
         .contendor-detalles-casa{
             width:25%;
-            height:70px;
+            height:60px;
             display:flex;
             flex-flow:column nowrap;
             justify-content:center;
             align-items: center;
             border:1px solid rgba(46, 46, 46, 0.37);
-      
         }
            
 
@@ -153,6 +152,7 @@
                 justify-content:center;
                 align-items: center;
                 overflow:hidden;
+
             }
 
             .contendor-detalles-casa-imagen img{
@@ -162,18 +162,22 @@
             }
 
             .contendor-detalles-casa-tamano{
-   
+                padding-top:5px;
+                width: 100%;
+                height:auto;
                 display: flex;
+                flex-flow:row nowrap;
                 justify-content:center;
                 align-items: center;
+                overflow:hidden;
             }
 
             .contendor-detalles-casa h4{
-                margin-top: 7px;
+            
                 font-weight: normal;
                 font-size:14px;
                 text-align:center;
-                padding-bottom: 10px;
+               
                 color: black;
             }
 

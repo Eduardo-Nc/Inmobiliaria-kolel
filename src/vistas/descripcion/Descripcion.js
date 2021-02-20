@@ -85,7 +85,7 @@ const Descripcion = () => {
                                 </div>
 
                                 <div className="contenedor-datos-texto-predio">
-                                    <h4>2 Recámaras</h4>
+                                    <h4>2 Recámara(s)</h4>
                                 </div>
                             </div>
 
@@ -96,7 +96,7 @@ const Descripcion = () => {
                                 </div>
 
                                 <div className="contenedor-datos-texto-predio">
-                                    <h4>4 Baños</h4>
+                                    <h4>4 Baño(s)</h4>
                                 </div>
                             </div>
 
@@ -107,7 +107,7 @@ const Descripcion = () => {
                                 </div>
 
                                 <div className="contenedor-datos-texto-predio">
-                                    <h4>2 Espacios</h4>
+                                    <h4>2 Espacio(s)</h4>
                                 </div>
                             </div>
                         </div>

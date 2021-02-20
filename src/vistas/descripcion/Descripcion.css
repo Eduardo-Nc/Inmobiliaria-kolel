@@ -126,6 +126,7 @@
 
     .contenedor-datos-texto-predio h4{
         font-weight: normal;
+        font-size:15px;
     }
 
 .contenedor-detalles-general-predio{
@@ -180,7 +181,7 @@
 
     .contenedor-descripcion-contacto{
         width: 30%;
-        height: 550px;
+      
         display:flex;
         flex-flow: column nowrap;
         justify-content:flex-start;

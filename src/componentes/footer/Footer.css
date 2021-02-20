@@ -84,6 +84,10 @@
             color:white;
         }
 
+        .content-footer-contacto-items a:hover{
+            color:#4888ff !important;
+        }
+
 
 .content-footer{
     display:flex;
@@ -109,7 +113,7 @@
 }
 
 .content-footer a:hover{
-    color:#fff5f5;
+    color:#4888ff !important;
 }
 
 @media (max-width:730px){

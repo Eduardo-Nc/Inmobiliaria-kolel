@@ -15,7 +15,7 @@ const NavBar = () => {
 
     const estilosAbrir = {
         left: '0px',
-        transition: '0.5s'
+        transition: '0.6s'
     }
 
     const estilosCerrar = {
@@ -31,7 +31,7 @@ const NavBar = () => {
 
                 <div className="contenedor-logo-navbar">
                     {/* <img src="" alt="Logo" title="Logo" /> */}
-                    <Link to="/">
+                    <Link onClick={window.scrollTo(0, 0)} to="/">
                         <h2>Logo Inmobiliaria</h2>
                     </Link>
                 </div>
@@ -39,9 +39,9 @@ const NavBar = () => {
                 <div className="contenedor-menu-navbar">
 
                     <div className="contenedor-menu-navbar-inicio">
-                        <NavLink onClick={window.scrollTo(0,0)} to="/inicio" activeClassName="menu-seleccionado-desk" > <h2>Inicio</h2> </NavLink>
+                        <NavLink onClick={window.scrollTo(0, 0)} to="/inicio" activeClassName="menu-seleccionado-desk" > <h2>Inicio</h2> </NavLink>
                     </div>
-                    
+
                     <div className="contenedor-menu-navbar-nosotros">
                         <NavLink to="/nosotros" activeClassName="menu-seleccionado-desk" >  <h2>Nosotros</h2> </NavLink>
                     </div>
@@ -55,7 +55,7 @@ const NavBar = () => {
                     </div>
 
                     <div>
-                        <button title="Iniciar Sesión" > <Link to="/iniciar-sesion"> <i className="fas fa-sign-in-alt"></i> Ingresar</Link></button>
+                        <Link to="/iniciar-sesion"> <button title="Iniciar Sesión" >  <i className="fas fa-sign-in-alt"></i> Ingresar</button></Link>
                     </div>
 
                     <div>
@@ -85,7 +85,7 @@ const NavBar = () => {
 
                         <ul className="contenedor-navbar-iniciar-sesion">
 
-                            <button title="Iniciar Sesión" > <Link to="/iniciar-sesion"> <i className="fas fa-sign-in-alt"></i> Ingresar</Link></button>
+                            <Link to="/iniciar-sesion"> <button title="Iniciar Sesión" > <i className="fas fa-sign-in-alt"></i> Ingresar</button></Link>
 
                         </ul>
                     </nav>

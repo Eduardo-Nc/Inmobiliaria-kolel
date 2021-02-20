@@ -1,0 +1,185 @@
+.contenedor-servicios-titulo{
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top:100px;
+    margin-bottom:10px;
+}
+
+    .contenedor-servicios-titulo h1{
+        
+    }
+
+    .contenedor-servicios-titulo p{
+        margin-top:15px;
+        text-align:justify;
+        font-size: 20px;
+    }
+
+
+.contenedor-servicios-principal{
+    margin-top:37px;
+    width: 100%;
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content:center;
+    align-items: center;
+    
+}   
+
+    .contenedor-servicios-fondo{
+        width: 94%;
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content:space-between;
+        align-items: center;
+    }
+
+    .contenedor-servicios-item{
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        flex-flow: column nowrap;
+        width: 24%;
+        height:330px;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    .contenedor-servicios-item-fondo{
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        flex-flow: column nowrap;
+        padding:25px;
+        width: 100%;
+        height: 100%;
+        background:rgba(0, 0, 0, 0.500);
+    }
+
+         .contenedor-servicios-item h2{
+            margin-bottom: 25px;
+            width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content:center;
+            align-items: center;
+            text-align: center;
+            font-size: 18px;
+            color:white;
+         }
+
+         .contenedor-servicios-item p{
+            width: 100%;
+            font-size:16px;
+            text-align:justify;
+            color:white;
+        }
+
+    .a{
+        background: no-repeat center/180% url("https://www.bbva.com/wp-content/uploads/2017/08/iStock-494940062.jpg");
+    }
+
+    .l{
+        background: no-repeat center/180% url("https://www.separadasydivorciadas.org/wp-content/uploads/2019/07/asesoramiento-legal-1024x683.jpg");
+    }
+
+    .f{
+        background: no-repeat center/210% url("https://www.webyempresas.com/wp-content/uploads/2020/08/Qu%C3%A9-es-el-estudio-de-factibilidad-de-un-proyecto.jpg");
+    }
+
+    .c{
+        background: no-repeat center/180% url("https://bailey-legal-service.com/wp-content/uploads/elementor/thumbs/high-angle-man-signing-new-house-contract-scaled-oxw121v1qlvm13texyqoi25petnki0dezm6a8iq7f8.jpg");
+    }
+
+.contenedor-servicios-ver-mas-fondo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-servicios-ver-mas{
+    margin-top:30px;
+    width: 94%;
+    display: flex;
+    justify-content:flex-end;
+    margin-right: 60px;
+    align-items: center;
+    margin-bottom:40px;
+}
+
+   .contenedor-servicios-ver-mas a{
+        padding:5px;
+        color:black;
+        font-size:20px;
+    }
+
+    .contenedor-servicios-ver-mas a:hover{
+        color:rgb(83, 83, 83);
+        border-bottom: 1px solid rgb(122, 114, 0);
+    }
+
+@media (max-width:1250px){
+    .contenedor-servicios-item{
+       
+        width: 280px;
+        height:330px;
+
+    }
+}
+
+@media (max-width:1100px){
+    .a{
+        background: no-repeat center/200% url("https://www.bbva.com/wp-content/uploads/2017/08/iStock-494940062.jpg");
+    }
+}
+
+@media (max-width:850px){
+    .contenedor-servicios-principal{
+        flex-flow: column nowrap;
+    }
+
+    .contenedor-servicios-fondo{
+        flex-flow: column nowrap;
+        width: 100%;
+    }
+
+    .contenedor-servicios-item{
+        width: 95%;
+        height:330px;
+        margin-bottom: 20px;
+    }
+
+    .a{
+        background: no-repeat center/150% url("https://www.bbva.com/wp-content/uploads/2017/08/iStock-494940062.jpg");
+    }
+
+    .contenedor-servicios-item h2{
+    
+        font-size: 24px;
+   
+     }
+
+     .contenedor-servicios-item p{
+   
+        font-size:19px;
+    
+    }
+
+    .contenedor-servicios-titulo{
+        
+        text-align: center;
+    }
+
+    .contenedor-servicios-ver-mas{
+        margin-top:10px;
+        margin-bottom:60px;
+        margin-right: 10px;
+    }
+        .contenedor-servicios-ver-mas a{
+            font-size:25px;
+        }
+}

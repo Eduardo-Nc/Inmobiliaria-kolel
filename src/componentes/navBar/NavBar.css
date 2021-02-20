@@ -16,10 +16,14 @@
         margin-left: 30px;
         overflow: hidden;
     }
+
+    
+
     .contenedor-logo-navbar a{
         color:white;
-        text-decoration:none;
+        
     }
+
     .contenedor-logo-navbar:hover{
         cursor: pointer;
     }
@@ -149,7 +153,7 @@
         position: fixed;
         left:0px;
         top:70px;
-        width: 250px;
+        width: 300px;
         height:100%;
         background:#000000ee;
         z-index: 10;

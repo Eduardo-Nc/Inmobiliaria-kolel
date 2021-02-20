@@ -1,0 +1,21 @@
+.contenedor-principal-tablero{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: row nowrap;
+    
+}
+
+    .contenedor-tablero{
+        width: 100%;
+        margin-top:70px;
+        background:#18191a;
+        overflow: auto;
+        display: flex;
+        justify-content:flex-start;
+        align-items: center;
+        flex-flow: column nowrap;
+
+    }
+
+   

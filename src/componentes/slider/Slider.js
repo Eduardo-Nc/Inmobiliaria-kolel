@@ -11,7 +11,7 @@ import img2 from '../../imagenes/apartamento1.jpg';
 const Slider = () => {
 
 
-    
+
     return (
         <Fragment>
             <div className="contenedor-slider">
@@ -23,12 +23,14 @@ const Slider = () => {
                         pauseOnHover: false,
                         isNavigation: false,
                         lazyLoad: true,
-                        
+
                     }}>
 
                         <SplideSlide>
                             <img src={img1} alt="apartamento" />
-                            <div className="texto-imagen"><h1>Lo que comienza como una idea, se convierte en realidad</h1></div>
+                            <div className="texto-imagen">
+                                <h1 data-aos="fade-up-left">Lo que comienza como una idea, se convierte en realidad</h1>
+                            </div>
                         </SplideSlide>
 
                     </Splide>
