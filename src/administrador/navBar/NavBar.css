@@ -64,7 +64,7 @@
         }
 
 .contenedor-navbar-administrador-menu-perfil{
-    margin-right: 40px;
+    margin-right: 30px;
     display:flex;
     justify-content:space-between;
     align-items: center;
@@ -75,10 +75,111 @@
    
 }
 
-    .contenedor-navbar-administrador-boton-expantir img{
-        width: 25px;
-      
+    .cuadro-menu-opciones{
+        top:-100%;
+        padding:10px;
+        transition:1.3s;
+        right: 30px;
+        position: fixed;
+        display:flex;
+        flex-flow: column nowrap;
+        justify-content:flex-start;
+        align-items: center;
+        width: 370px;
+        height:195px;
+        border-radius: 7px;
+        border:1px solid rgb(46, 46, 46);
+        background:#242526;
+        overflow:hidden;
     }
+
+    .contenedor-navbar-perfil{
+        width: 90%;
+        padding:10px;
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content:center;
+        align-self: center;
+        border-bottom:0.4px solid rgba(255, 255, 255, 0.26);
+        padding-bottom: 10px;
+        
+    }
+
+    .contenedor-navbar-perfil:hover{
+        background:#3a3b3c;
+        border-radius:6px;
+    }
+
+    .contenedor-navbar-perfil img{
+        width: 70px;
+    }
+
+    .contenedor-datos-perfil{
+        width: 100%;
+        display:flex;
+        flex-flow: column nowrap;
+        justify-content:center;
+        align-items: flex-start;
+        padding-left: 15px;
+       
+    }
+
+    .contenedor-datos-perfil h3{
+        color:white;
+        font-weight: bold;
+        font-size:20px;
+    }
+
+    .contenedor-datos-perfil h4{
+        color:rgb(190, 190, 190);
+        font-weight: normal;
+        font-size:16px;
+        
+    }
+
+    .contenedor-navbar-salir{
+        width: 90%;
+        padding:10px;
+        margin-top: 15px;
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content:center;
+        align-self: center;
+        padding-bottom: 10px;
+       
+    }
+
+    .btn-salir img{
+        width: 30px;
+    }
+
+    .contenedor-salir-perfil{
+        width: 100%;
+        display:flex;
+        flex-flow: column nowrap;
+        justify-content:center;
+        align-items: flex-start;
+        padding-left: 15px;
+    }
+
+    .contenedor-navbar-salir:hover{
+        background:#3a3b3c;
+        border-radius:6px;
+        cursor: pointer;
+    }
+
+    .contenedor-salir-perfil h3{
+        margin-top: 2px;
+        color:white;
+        font-weight: bold;
+        font-size:18px;
+    }
+
+
+
+
+
+
 
     .contenedor-navbar-administrador-menu{
         background:#585c5f;
@@ -124,6 +225,45 @@
 
     .contenedor-navbar-administrador-menu-perfil{
         margin-right: 0px;
+    }
+
+}
+
+@media (max-width:450px){
+    .cuadro-menu-opciones{
+        width: 350px;
+        right: 10px;
+    }
+
+    .contenedor-navbar-administrador-menu{
+        height: 44px;
+        width: 44px;
+    
+    }
+}
+
+@media (max-width:380px){
+
+    .cuadro-menu-opciones{
+        width: 290px;
+        height:180px;
+    }
+
+    .contenedor-navbar-perfil img{
+        width:55px;
+    }
+
+    .contenedor-datos-perfil h3{
+        font-size:15px;
+    }
+
+    .contenedor-datos-perfil h4{
+        font-size:15px;
+        
+    }
+
+    .contenedor-salir-perfil h3{
+        font-size:16px;
     }
 
 }

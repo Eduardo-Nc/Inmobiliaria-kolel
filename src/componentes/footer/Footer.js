@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="contenedor-principal-footer">
 
                 <div className="content-footer-redes-sociales">
-                    <h3>Siguenos</h3>
+                    <h3>Síguenos</h3>
 
                     <div className="content-footer-logos-redes-sociales">
                         <a href="https://api.whatsapp.com/message/L2OKG5XKUZBNG1" title="WhatsApp" target="_blank" > <i className="fab fa-whatsapp"></i>    </a>

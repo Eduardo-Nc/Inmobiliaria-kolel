@@ -1,0 +1,228 @@
+.contenedor-principal-contacto {
+    margin-top: 70px;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-contacto {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.fondo-img-contacto {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.fondo-img-contacto img {
+    width: 85%;
+}
+
+.contenedor-info-contacto {
+    width: 60%;
+    padding: 30px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.contenedor-info-contacto p {
+    font-size: 28px;
+    padding: 10px;
+    text-align: justify;
+    font-family: 'Asap', sans-serif;
+}
+
+.divisor {
+    margin-top: -10px;
+    display: flex;
+    margin-left: -480px;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 4px;
+    background: black;
+}
+
+.contenedor-info-contacto h5 {
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.contenedor-info-contacto input[type="button"] {
+    margin-top: 25px;
+    width: 220px;
+    padding: 8px;
+    border-radius: 8px;
+    background: #7388ff;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: white;
+}
+
+.contenedor-info-contacto input[type="button"]:hover {
+    cursor: pointer;
+    background: rgb(114, 152, 255);
+}
+
+.contenedor-formulario-contacto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 30px;
+    padding: 30px;
+}
+
+.contenedor-formulario-contacto label{
+    font-size: 27px;
+    text-align: center;
+    margin-bottom: 35px;
+    font-family: 'Asap', sans-serif;
+
+}
+
+#form {
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+#form input {
+    width: 45%;
+    height: 50px;
+    background: #f7f7f9;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 3px;
+    border:1px solid #e5e5eb5e;
+    outline: none;
+}
+
+#form select {
+    width: 45%;
+    height: 50px;
+    background: #f7f7f9;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-align-last: center;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 3px;
+    border:1px solid #e5e5eb5e;
+    outline: none;
+   
+}
+
+#form textarea {
+    width: 91%;
+    background: #f7f7f9;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 3px;
+    border:1px solid #e5e5eb5e;
+    outline: none;
+}
+
+#form button {
+    width: 91%;
+    background: #7388ff;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 22px;
+    padding: 7px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+
+#form button:hover {
+    cursor: pointer;
+    background: rgb(114, 152, 255);
+}
+
+
+@media (max-width:700px) {
+    .contenedor-contacto {
+        flex-flow: column-reverse nowrap;
+    }
+    .fondo-img-contacto {
+        width: 100%;
+    }
+    .fondo-img-contacto img {
+        margin-top: 20px;
+        width: 50%;
+    }
+    .contenedor-info-contacto {
+        width: 100%;
+    }
+    .contenedor-info-contacto p {
+        text-align: center;
+    }
+    .contenedor-info-contacto input[type="button"] {
+        width: 100%;
+        padding: 9px;
+        font-size: 21px;
+    }
+
+    #form {
+        width: 100%;
+        flex-flow: column nowrap;
+    }
+
+    #form input {
+        width: 100%;
+        height: 60px;
+        font-size: 20px;
+    }
+    
+    #form select {
+        width: 100%;
+        height: 60px;
+        font-size: 20px;
+    }
+    
+    #form textarea {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    #form button {
+        width: 100%;
+        height:55px;
+    }
+}

@@ -9,13 +9,129 @@
     .contenedor-tablero{
         width: 100%;
         margin-top:70px;
-        background:#18191a;
+        padding:30px;
+        background:#353535;
         overflow: auto;
         display: flex;
         justify-content:flex-start;
-        align-items: center;
+        align-items: flex-start;
         flex-flow: column nowrap;
 
     }
 
+.contenedot-accesos-principal-tablero{
+ 
+    display: flex;
+    height:360px;
+    flex-flow: row wrap;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+    
+
+
+}
+
+    .contenedor-accesos-tablero{
+        width: 48%;
+        padding:20px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content:center;
+        align-items: center;
+        border-radius: 6px;
+        border:none;
+        background:#0e0e0e6b;
+        border:1px solid rgba(39, 38, 38, 0.767);
+        overflow: hidden;
+    }
+
+    .contenedor-accesos-tablero:hover{
+        border-bottom: 4px solid yellow;
+        background:#272727b4;
+        cursor: pointer;
+    }
+
+    .contenedor-accesos-tablero h2{
+        font-size:20px;
+        color:white;
+    }
+
+        .contenedor-accesos-detalles{
+            width: 100%;
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+        }
+
+            .contenedor-accesos-detalles h3{
+                font-size:45px;
+                width: 100%;
+                margin-top:7px;
+                color:white;
+            }
+
+            .contenedor-accesos-detalles img{
+                width: 70px;
+            }
+
+.contenedor-tabla{
+    width: 100%;
+    min-height:390px;
+    padding:30px;
+    padding-top: 10px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border:none;
+    background:#0e0e0e6b;
+    border:1px solid rgba(39, 38, 38, 0.767);
+    overflow:auto;
+    color:white;
+}
+
+.tablas{
+    width: 100%;
+    color:white;
+}
+
+.tablas th{
+    color:white;
+}
+
+
+.tablas td{
+    
+    color:white;
+}
+
+
+
+@media (max-width:900px){
+    .d-flex{
+        flex-flow: column nowrap;
+        justify-content:center;
+        align-items: center;
+    }
+}
+
    
+@media (max-width:600px){
+    .contenedor-accesos-tablero{
+        width: 100%;
+    }
+
+    .contenedor-accesos-tablero h2{
+        margin-bottom: 20px;
+        font-size:20px;
+    }
+
+    .contenedor-accesos-detalles h3{
+        font-size:40px;
+    }
+
+    .contenedor-accesos-detalles img{
+        margin-top: -15px;
+        width: 80px;
+    }
+}

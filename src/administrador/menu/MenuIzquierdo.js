@@ -2,7 +2,7 @@ import React, { Fragment} from 'react';
 import './MenuIzquierdo.css'; 
 import {NavLink} from 'react-router-dom';
 
-const MenuIzquierdo = ({menu}) =>{
+const MenuIzquierdo = ({menu, abrirMenu}) =>{
 
     const estilosAbrir = {
         left: '0px',
@@ -11,16 +11,16 @@ const MenuIzquierdo = ({menu}) =>{
 
     const estilosCerrar = {
         left: '-100%',
-        transition: '0.5s'
+        transition: '1s'
     }
 
 
     return(
         <Fragment>
             <div style={menu ? estilosCerrar : estilosAbrir} className="contenedor-principal-menu-izquierdo">
-                <ul >
-                    <li ActiveClassName="active" ><NavLink  to="/tablero"> Inicio</NavLink></li>
-                    <li ActiveClassName="active" ><NavLink  to="/propiedes"> Propiedes</NavLink></li>
+                <ul onClick={abrirMenu}>
+                    <li activeclassname="active" ><NavLink to="/tablero"> Inicio</NavLink></li>
+                    <li activeclassname="active" ><NavLink  to="/propiedades"> Propiedades</NavLink></li>
                 </ul>
             </div>
         </Fragment>

@@ -20,6 +20,7 @@
 
     .contenedor-descripcion-titulo p{
         margin-top:5px;
+        font-size: 20px;
     }
 
 .contenedor-slider-datos{
@@ -35,6 +36,7 @@
     align-items: flex-start;
     overflow: hidden;
     padding:10px;
+    margin-top:-30px;
 }
 
 .contenedor-slider-caracteristicas{
@@ -43,14 +45,24 @@
     justify-content:center;
     align-items: center;
     width: 100%;
-    height: 550px;
+    height: 590px;
+    overflow: hidden;
 }
 
     .contenedor-descripcion-slider{
         width: 100%;
         border:1.3px solid rgba(0, 0, 0, 0.055);
         border-radius:3px;
-        overflow: hidden;
+ 
+    }
+
+    .image-gallery-thumbnails-container{
+        height:100px;
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content:center;
+        align-items:flex-start;
+     
     }
 
     .contenedor-descripcion-caracteristicas{
@@ -328,9 +340,21 @@
 }
 
 @media (max-width:600px){
+    .contenedor-descripcion-titulo h1{
+        font-size: 33px;
+    }
+
+    .contenedor-slider-contacto{
+        margin-top:-10px;
+    }
+    
     .contenedor-descripcion-titulo p{
         width: 100%;
         font-size:21px;
+    }
+
+    .image-gallery-thumbnails-container{
+        height:65px;
     }
 
     .contenedor-imagen-predio-datos img{

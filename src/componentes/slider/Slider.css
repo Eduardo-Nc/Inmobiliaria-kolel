@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Truculenta:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&display=swap');
 
 
 
@@ -28,9 +28,29 @@
 
 .texto-imagen h1{
     font-size:70px;
+    font-weight:bold;
     color: white;
     justify-content:justify;
-    font-family:Truculenta;
+    font-family: 'Asap', sans-serif;
+}
+
+.texto-imagen strong{
+    font-size:30px;
+    margin-top: -20px;
+    font-family: 'Asap', sans-serif;
+    color: rgb(229, 233, 0);
+}
+
+.texto-imagen strong a{
+    font-size:30px;
+    margin-top: -20px;
+    font-family: 'Asap', sans-serif;
+    color: rgb(229, 233, 0);
+}
+
+.texto-imagen strong a:hover{
+   cursor: pointer;
+    color: rgb(198, 201, 43);
 }
 
 

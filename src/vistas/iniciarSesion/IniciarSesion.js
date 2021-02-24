@@ -75,7 +75,7 @@ const IniciarSesion = () => {
 
                         window.location.href = "/tablero";
 
-                        
+
 
                     } else {
 
@@ -142,7 +142,7 @@ const IniciarSesion = () => {
 
     return (
         <Fragment>
-             {cookies.get('correo_usuario') && <Redirect to="./tablero" />}
+            {cookies.get('correo_usuario') && <Redirect to="./tablero" />}
 
             <div className="contenedor-iniciar-sesion">
 
@@ -158,8 +158,11 @@ const IniciarSesion = () => {
 
                         <h4 onClick={IniciarSesion}>Olvidé mi contraseña</h4>
 
-                        <input type="submit" value="Enviar" />
-
+                        {enviado ?
+                            <input type="submit" value="Enviar" />
+                            :
+                            <div className="spinner"></div>
+                        }
                         <Link to="/">
                             <img id="flecha-regresar" src={flecha} />
                         </Link>

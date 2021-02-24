@@ -46,12 +46,12 @@ const NavBar = () => {
                         <NavLink to="/nosotros" activeClassName="menu-seleccionado-desk" >  <h2>Nosotros</h2> </NavLink>
                     </div>
 
-                    <div className="contenedor-menu-navbar-propiedades">
-                        <NavLink to="/propiedades" activeClassName="menu-seleccionado-desk" > <h2>Propiedades</h2> </NavLink>
-                    </div>
-
                     <div className="contenedor-menu-navbar-servicios">
                         <NavLink to="/servicios" activeClassName="menu-seleccionado-desk" >  <h2>Servicios</h2> </NavLink>
+                    </div>
+
+                    <div className="contenedor-menu-navbar-contacto">
+                        <NavLink to="/contacto" activeClassName="menu-seleccionado-desk" >  <h2>Contacto</h2> </NavLink>
                     </div>
 
                     <div>
@@ -78,9 +78,8 @@ const NavBar = () => {
                         <ul>
                             <li><NavLink to="/inicio" activeClassName="menu-seleccionado" > <h2>Inicio</h2> </NavLink> </li>
                             <li><NavLink to="/nosotros" activeClassName="menu-seleccionado" > <h2>Nosotros</h2> </NavLink> </li>
-                            <li><NavLink to="/proyectos" activeClassName="menu-seleccionado" > <h2>Proyectos</h2> </NavLink> </li>
                             <li><NavLink to="/servicios" activeClassName="menu-seleccionado" > <h2>Servicios</h2> </NavLink> </li>
-                            <li><NavLink to="/servicios" activeClassName="menu-seleccionado" > <h2>Contacto</h2> </NavLink> </li>
+                            <li><NavLink to="/contacto" activeClassName="menu-seleccionado" > <h2>Contacto</h2> </NavLink> </li>
                         </ul>
 
                         <ul className="contenedor-navbar-iniciar-sesion">

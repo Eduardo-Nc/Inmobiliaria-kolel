@@ -52,6 +52,7 @@
             .contenedor-formulario-inicio-sesion form h4{
                 width: 55%;
                 height:35px;
+                font-size: 15px;
                 display: flex;
                 justify-content:flex-end;
                 align-items: flex-end;
@@ -71,6 +72,24 @@
                 height:40px;
                 font-size: 20px;
                 color:white;
+            }
+
+            .spinner{
+                width: 40px;
+                height:40px;
+                border:4px solid rgba(255, 255, 255, 0.932);
+                border-left-color: #7388ff;
+                border-radius: 50%;
+                animation: spin 1s ease infinite;
+            }
+
+            @keyframes spin {
+                0%{
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
             }
 
             #flecha-regresar {
@@ -112,6 +131,7 @@
             .contenedor-formulario-inicio-sesion form{
                 width: 100%;
                 height:100vh;
+                min-height: 700px;
                 background:rgba(0, 0, 0, 0.555);
             }
 
@@ -139,12 +159,19 @@
                 }
 
                 .contenedor-formulario-inicio-sesion form input[type="submit"]{
-                    height:48px;
+                    padding:0px;
+                    height:52px;
                 }
     
 
 
     .contenedor-fondo-inicio-sesion{
         display:none;
+    }
+}
+
+@media (max-width:450px){
+    .contenedor-formulario-inicio-sesion form h4{
+        margin-top:5px;
     }
 }

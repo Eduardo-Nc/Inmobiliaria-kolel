@@ -88,9 +88,10 @@
     }
 
         .contenedor-tarjeta-casa-precio h3{
-           margin-top:20px;
+           margin-top:0px;
            font-size:20px;
-           color:rgb(176, 207, 0);
+           font-weight: bold;
+           color:rgb(0, 0, 0);
         }
 
 
@@ -180,6 +181,8 @@
                
                 color: black;
             }
+
+            
 
 @media (max-width:1170px){
     .contenedor-tarjeta-casa{

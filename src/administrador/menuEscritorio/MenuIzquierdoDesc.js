@@ -9,8 +9,8 @@ const MenuIzquierdoDesc = () =>{
         <Fragment>
             <div className="contenedor-principal-menu-IzquierdoDesc">
                 <ul >
-                    <li ActiveClassName="active" ><NavLink  to="/tablero"> Inicio</NavLink></li>
-                    <li ActiveClassName="active" ><NavLink  to="/propiedes"> Propiedes</NavLink></li>
+                    <li activeclassname="active" ><NavLink  to="/tablero"> Inicio</NavLink></li>
+                    <li activeclassname="active" ><NavLink  to="/propiedades"> Propiedades</NavLink></li>
                 </ul>
             </div>
         </Fragment>
