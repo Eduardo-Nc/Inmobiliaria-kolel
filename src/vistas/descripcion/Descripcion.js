@@ -22,6 +22,9 @@ const Descripcion = (props) => {
     if(data === undefined){
         window.location.href = "/"
     }
+
+    const ventaorenta = data.nombre_tipo_oferta === "Renta" ? " / Mensual" : "" ;
+
     
 
     const images = [
@@ -68,12 +71,12 @@ const Descripcion = (props) => {
 
                         <div className="contenedor-detalles-venta">
                             <div className="contenedor-precio-predio">
-                                <h3>{data.precio_propiedad} / Mensual</h3>
+                                <h3>{data.precio_propiedad} {ventaorenta} </h3>
                             </div>
 
                             <div className="contenedor-id-tipo-venta">
                                 <p>ID: <strong>{data.identificador_propiedad}</strong></p>
-                                <h4>EN {data.tipo_oferta_propiedad} </h4>
+                                <h4>{data.nombre_tipo_oferta} </h4>
                             </div>
                         </div>
 
@@ -105,7 +108,7 @@ const Descripcion = (props) => {
                                 </div>
 
                                 <div className="contenedor-datos-texto-predio">
-                                    <h4>{data.cantidad_baño_propiedad} Baño(s)</h4>
+                                    <h4>{data.cantidad_bano_propiedad} Baño(s)</h4>
                                 </div>
                             </div>
 
@@ -133,7 +136,7 @@ const Descripcion = (props) => {
                                 <div className="contenido-caracteristicas-predio">
                                     <ul>
                                         <li>ID: {data.identificador_propiedad}</li>
-                                        <li>Tipo inmueble: {data.tipo_inmueble}</li>
+                                        <li>Tipo inmueble: {data.nombre_tipo_inmueble}</li>
 
                                     </ul>
                                 </div>
@@ -148,7 +151,7 @@ const Descripcion = (props) => {
 
                                 <div className="contenido-caracteristicas-predio">
                                     <ul>
-                                        <li>{data.Colonia_propiedad}</li>
+                                        <li>{data.colonia_propiedad}</li>
                                     </ul>
                                 </div>
 
@@ -210,7 +213,7 @@ const Descripcion = (props) => {
 
                                 <div className="contenido-caracteristicas-predio">
                                     <ul>
-                                        <li>{data.opciones_pago_propiedad}</li>
+                                        <li>{data.nombre_tipo_pago}</li>
                                     </ul>
                                 </div>
 

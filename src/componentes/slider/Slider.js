@@ -40,21 +40,21 @@ const Slider = () => {
                         <SplideSlide>
                             <img src={img1} alt="apartamento" />
                             <div className="texto-imagen">
-                                <h1 data-aos="fade-up-left">Tú idea, lo volvemos en realidad <br></br> <strong><Link to="/contacto" >¡Contáctanos!</Link></strong> </h1>
+                                <h1 data-aos="fade-up-left">Tú idea, la volvemos realidad <br></br> <strong><Link to="/contacto" >¡Contáctanos!</Link></strong> </h1>
                             </div>
                         </SplideSlide>
 
                         <SplideSlide>
                             <img src={img4} alt="apartamento" />
                             <div className="texto-imagen">
-                                <h1 data-aos="fade-up-left">¡No tienes donde vivir! <br></br> <strong>Te ayudamos a encontrar la mejor opción</strong> </h1>
+                                <h1 data-aos="fade-up-left">¿Quieres cambiar de residencia? <br></br> <strong>Te ayudamos a encontrar la mejor opción</strong> </h1>
                             </div>
                         </SplideSlide>
 
                         <SplideSlide>
                             <img src={img5} alt="apartamento" />
                             <div className="texto-imagen">                                    
-                                <h1 data-aos="fade-up-left">Deseas invertír <br></br> <strong>Nosotros te asesoramos y te cuidamos tu inversión</strong> </h1>
+                                <h1 data-aos="fade-up-left">Deseas invertír <br></br> <strong>Nosotros te asesoramos para una mejor inversión</strong> </h1>
                             </div>
                         </SplideSlide>
 

@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import operadora from '../../imagenes/iconos/operadora.svg';
 import bars from '../../imagenes/iconos/menu.png';
 import cerrar from '../../imagenes/iconos/cerrar.png';
+import logo from '../../imagenes/logo.png';
 
 const NavBar = () => {
 
@@ -32,7 +33,7 @@ const NavBar = () => {
                 <div className="contenedor-logo-navbar">
                     {/* <img src="" alt="Logo" title="Logo" /> */}
                     <Link onClick={window.scrollTo(0, 0)} to="/">
-                        <h2>Logo Inmobiliaria</h2>
+                        <img src={logo} />
                     </Link>
                 </div>
 

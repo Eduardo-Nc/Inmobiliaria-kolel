@@ -19,8 +19,8 @@ const MenuIzquierdo = ({menu, abrirMenu}) =>{
         <Fragment>
             <div style={menu ? estilosCerrar : estilosAbrir} className="contenedor-principal-menu-izquierdo">
                 <ul onClick={abrirMenu}>
-                    <li activeclassname="active" ><NavLink to="/tablero"> Inicio</NavLink></li>
-                    <li activeclassname="active" ><NavLink  to="/propiedades"> Propiedades</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/tablero"> Inicio</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/propiedades"> Propiedades</NavLink></li>
                 </ul>
             </div>
         </Fragment>

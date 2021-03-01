@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import './Nosotros.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import nosotros from '../../imagenes/nosotros.jpg';
 import nery from '../../imagenes/nery.png';
 
@@ -24,7 +24,11 @@ const Nosotros = () => {
                 </div>
 
                 <div className="contenedor-def-quienes-somos">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    <p>
+                        Somos un equipo multidisciplinario, con 
+                        especialistas para cada una de las áreas 
+                        que involucra una inversión inmobiliaria.
+                    </p>
                 </div>
 
                 <div className="contenedor-mision-nosotros">
@@ -49,14 +53,14 @@ const Nosotros = () => {
 
                     <div className="def-nosotros-vision">
                         <p>
-                            ser la mejor alternativa de profesional inmobiliario, para que nuestros clientes 
+                            ser la mejor alternativa de profesional inmobiliario, para que nuestros clientes
                             se sientan plenamente acompañados y asesorados durante todo el proceso.
                         </p>
                     </div>
                 </div>
 
-                <div className="contenedor-foto-perfil-agente"> 
-                    <img src={nery} alt="Foto" title="DRA. Nery Escalante May" />  
+                <div className="contenedor-foto-perfil-agente">
+                    <img src={nery} alt="Foto" title="DRA. Nery Escalante May" />
                     <p>L.E.C Nery Escalante May</p>
                     <p>Asesora De Inversión En Bines Y Muebles</p>
 

@@ -48,11 +48,20 @@ const TarjetaCasa = () => {
                         <div className="contenedor-tarjeta-arriba">
 
                             <div className="tarjeta-tipo-oferta" >
-                                <h3>EN {item.tipo_oferta_propiedad}</h3>
+                                <h3>{item.nombre_tipo_oferta}</h3>
                             </div>
 
-                            <div className="contenedor-tarjeta-casa-imagen">
-                                <img src="https://www.sadasi.com/SadasiR2/wp-content/uploads/2019/01/casa-modelo-montreal-las-americas-merida-yucatan.jpg" alt="" title="" />
+                            <div className="contenedor-tarjeta-casa-imagen" style={item.nombre_tipo_oferta === "Vendida" || item.nombre_tipo_oferta ===  "Rentada" ?{position: 'relative', display: 'inline-block', textAlign: 'center'}:{}}>
+
+                                <img src="https://www.sadasi.com/SadasiR2/wp-content/uploads/2019/01/casa-modelo-montreal-las-americas-merida-yucatan.jpg" alt="Propiedad" title="Propiedad" />
+                               { item.nombre_tipo_oferta === "Vendida" || item.nombre_tipo_oferta ===  "Rentada" ?
+                                <div className="texto-agotado">
+                                    <h2>NO DISPONIBLE</h2>
+                                </div>
+                                :
+                                ""
+                                }
+
                             </div>
 
                             <div className="contenedor-tarjeta-casa-descripcion">
@@ -97,7 +106,7 @@ const TarjetaCasa = () => {
                                 </div>
 
                                 <div>
-                                    <h4>{item.cantidad_baño_propiedad}</h4>
+                                    <h4>{item.cantidad_bano_propiedad}</h4>
                                 </div>
 
                             </div>

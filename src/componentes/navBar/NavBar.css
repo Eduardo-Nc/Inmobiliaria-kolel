@@ -5,10 +5,11 @@
     justify-content:space-between;
     align-items: center;
     background:#000000ee;
+    /* background:#2f3e55; */
     position: fixed;
     top: 0;
     z-index: 100;
-
+    overflow: hidden;
 }
 
     .contenedor-logo-navbar{
@@ -28,13 +29,17 @@
         cursor: pointer;
     }
 
+    .contenedor-logo-navbar img{
+        width: 120px;
+    }
+
     .menu-seleccionado-desk h2{
         padding-bottom: 4px;
-        border-bottom:2px solid rgb(196, 185, 36);
+        border-bottom:2px solid #c9a857;
      }
 
     .menu-seleccionado h2{
-       color:rgb(196, 185, 36);
+       color:#c9a857;
     }
 
     .contenedor-menu-navbar{

@@ -40,8 +40,8 @@
     }
 
     .contenedor-tarjeta-arriba{
-        padding:20px;
-        border-top:1px solid rgba(46, 46, 46, 0.37);
+        
+        
         border-left:1px solid rgba(46, 46, 46, 0.37);
         border-right:1px solid rgba(46, 46, 46, 0.37);
     }
@@ -52,20 +52,47 @@
         margin-left:10px;
     }
         .tarjeta-tipo-oferta h3{
-            width: 110px;
+            width: 120px;
             padding:3px;
             text-align: center;
             border-radius: 2px;
+            -webkit-text-stroke: 0.1px rgba(0, 0, 0, 0.479);
             color:white;
+            text-transform: uppercase;
             background:rgba(21, 102, 61, 0.719);
-            font-size:14px;
+            font-size:16px;
+        }
+
+
+        .texto-agotado{
+      
+            padding: 8px;
+            width: 70%;
+            border-radius: 5px;
+            border:7px solid rgb(206, 10, 10);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)  rotate(-25deg);
+            overflow:hidden;
+        }
+
+        .texto-agotado h2{
+            margin-top: 10px;
+            font-weight: bold;
+            color:rgb(255, 255, 255);
+            -webkit-text-stroke: 1.3px rgb(0, 0, 0);
+            font-size:25px;  
+            text-align: center;  
         }
 
         .contenedor-tarjeta-casa-imagen img{
             width: 100%;
+
         }
 
     .contenedor-tarjeta-casa-descripcion{
+        
         width: 100%;
         display:flex;
         justify-content:center;
@@ -74,6 +101,10 @@
     }
 
         .contenedor-tarjeta-casa-descripcion p{
+            padding-top:5px;
+            padding-bottom:5px;
+            padding-left:20px;
+            padding-right:20px;
             margin-top:10px;
             font-size:17.5px;
             text-align:justify;
@@ -88,6 +119,10 @@
     }
 
         .contenedor-tarjeta-casa-precio h3{
+            padding-top:5px;
+            padding-bottom:5px;
+            padding-left:20px;
+            padding-right:20px;
            margin-top:0px;
            font-size:20px;
            font-weight: bold;
@@ -102,12 +137,13 @@
         align-items: center;
     }
         .contenedor-tarjeta-boton button{
-            width: 350px;
+            width: 95%;
             margin-top:10px;
+            margin-bottom:20px;
             display:flex;
             justify-content:center;
             align-items: center;
-            background:#881919;
+            background:#667267;
             color:white;
             outline:none;
             border:none;
@@ -118,7 +154,7 @@
 
         .contenedor-tarjeta-boton button:hover{
             cursor: pointer;
-            background:#a51c1c;
+            background:#667267d7;
         }
 
         .contenedor-tarjeta-boton button img{
@@ -258,6 +294,7 @@
         border-top:1px solid rgba(46, 46, 46, 0.37);
         border-right:1px solid rgba(46, 46, 46, 0.37);
         border-bottom:1px solid rgba(46, 46, 46, 0.37);
+
     }
       
         #icono-casa img{
@@ -270,6 +307,13 @@
 
         .contendor-detalles-casa h4{
             font-size:16px;
+        }
+        .contenedor-tarjeta-boton button{
+          
+            margin-bottom:25px;
+            padding:7px;
+            font-size: 21px;
+
         }
 }
 

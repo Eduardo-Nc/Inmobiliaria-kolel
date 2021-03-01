@@ -76,43 +76,11 @@
                 width: 70px;
             }
 
-.contenedor-tabla{
-    width: 100%;
-    min-height:390px;
-    padding:30px;
-    padding-top: 10px;
-    margin-top: 20px;
-    border-radius: 6px;
-    border:none;
-    background:#0e0e0e6b;
-    border:1px solid rgba(39, 38, 38, 0.767);
-    overflow:auto;
-    color:white;
-}
-
-.tablas{
-    width: 100%;
-    color:white;
-}
-
-.tablas th{
-    color:white;
-}
-
-
-.tablas td{
-    
-    color:white;
-}
 
 
 
 @media (max-width:900px){
-    .d-flex{
-        flex-flow: column nowrap;
-        justify-content:center;
-        align-items: center;
-    }
+    
 }
 
    
@@ -134,4 +102,5 @@
         margin-top: -15px;
         width: 80px;
     }
+
 }
