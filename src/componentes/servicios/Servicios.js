@@ -22,15 +22,15 @@ const Servicios = () => {
 
                     <div className="contenedor-servicios-item a">
                         <div className="contenedor-servicios-item-fondo">
-                            <h2>PLANEACIÓN DE TU INVERSIÓN</h2>
-                            <p>Diseñamos tu plan de inversión a tu medida, que te permitirá tener un mapa de ruta para definiendo los objetivos que te ayudará a tener la mayor rentabilidad a menor costo posible, aumentando la eficiencia.</p>
+                            <h2>ESTRATEGIAS DE INVERSIÓN</h2>
+                            <p>Diseñamos tu plan de inversión a tu medida, que te permitirá tener un mapa de ruta para ir definiendo los objetivos que te ayudarán a tener la mayor rentabilidad a menor costo posible, aumentando la eficiencia de tu inversión.</p>
                         </div>
                     </div>
 
                     <div className="contenedor-servicios-item l">
                         <div className="contenedor-servicios-item-fondo">
                             <h2>ASESORIA LEGAL</h2>
-                            <p>Conocer la situación legal, para mitigar los riesgos que conlleva el proceso legal para que sea transparente y cuente con la seguridad de tu inversión.</p>
+                            <p>Conocer la situación jurídica, para mitigar los riesgos que conlleva el proceso legal para que sea transparente y cuente con la seguridad de tu inversión.</p>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@ const Servicios = () => {
                     <div className="contenedor-servicios-item c">
                         <div className="contenedor-servicios-item-fondo">
                             <h2>COMERCIALIZACIÓN</h2>
-                            <p>El conocimiento del mercado facilitara el acceso a mejores oportunidades de inversión en bienes y raíces de acuerdo a su plan de inversión.</p>
+                            <p>El conocimiento del mercado facilitará el acceso a mejores oportunidades de inversión en bienes y raíces de acuerdo a su plan de inversión.</p>
                         </div>
                     </div>
 

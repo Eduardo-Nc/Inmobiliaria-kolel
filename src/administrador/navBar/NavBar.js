@@ -6,7 +6,7 @@ import './NavBar.css';
 import bars from '../../imagenes/iconos/menu.png';
 import cerrar from '../../imagenes/iconos/cerrar.png';
 
-import logo from '../../imagenes/logo.png';
+import logo from '../../imagenes/NavLogo.png';
 import tocar from '../../imagenes/iconos/tocar.png';
 
 import user from '../../imagenes/iconos/user.png';
@@ -61,8 +61,7 @@ const NavBar = ({ menu, setMenu, abrirMenu }) => {
                     </div>
 
                     <Link className="contenedor-navbar-administrador-logo-texto" to="/tablero">
-                        <img src={logo} />
-                        
+                        <img src={logo}  /> 
                     </Link>
 
 

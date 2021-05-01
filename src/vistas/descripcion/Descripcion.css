@@ -1,3 +1,7 @@
+a{
+    text-decoration: none !important;
+}
+
 .contenedor-descripcion-principal{
     width:100%;
     display:flex;
@@ -17,6 +21,11 @@
     padding-left: 32px;
     padding-bottom: 10px;
 }
+
+    .contenedor-descripcion-titulo h1{
+        text-transform:uppercase;
+        font-size:35px;
+    }
 
     .contenedor-descripcion-titulo p{
         margin-top:5px;
@@ -45,7 +54,6 @@
     justify-content:center;
     align-items: center;
     width: 100%;
-    height: 590px;
     overflow: hidden;
 }
 
@@ -53,23 +61,23 @@
         width: 100%;
         border:1.3px solid rgba(0, 0, 0, 0.055);
         border-radius:3px;
- 
-    }
-
-    .image-gallery-thumbnails-container{
-        height:100px;
-        display:flex;
-        flex-flow: row nowrap;
-        justify-content:center;
-        align-items:flex-start;
-     
-    }
-
-    .contenedor-descripcion-caracteristicas{
-        margin-top:30px;
         overflow: hidden;
     }
 
+    .contenedor-descripcion-slider img{
+        object-fit: cover;
+        height: 450px;
+    }
+
+
+
+    .contenedor-descripcion-caracteristicas{
+        
+        overflow: hidden;
+    }
+   
+    
+   
 .contenedor-detalles-venta{
     padding:20px;
     width: 100%;
@@ -79,8 +87,8 @@
 }
 
     .contenedor-precio-predio h3{
-        font-weight: normal;
-        font-size: 20px;
+        font-weight: bold;
+        font-size: 22px;
     }
 
     .contenedor-id-tipo-venta{
@@ -223,7 +231,7 @@
 }
 
 .contenedor-descripcion-contacto form img{
-    width: 60px;
+    width: 230px;
 }
 
 .contenedor-descripcion-contacto form img{
@@ -303,10 +311,80 @@
 }
 
 
+.swal2-title.swalTitleColor {
+    color: black;
+  }
+
+
+.swal2-html-container{
+    color: black;
+}
+
+
+
+#cont-compartir{
+    display:flex;
+    width: 100%;
+    justify-content:space-around;
+    align-items: center;
+}
+
+#compartir-whatsapp{
+    border:1px solid rgb(115, 117, 231);
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    border-radius: 5px;
+    height:35px;
+    color:black;
+    font-size:18px;
+    transition:0.4s;
+}
+
+#compartir-whatsapp:hover{
+    background:#7388ff;
+    color:white;
+    transition:0.4s;
+}
+
+
+#descargar{
+    border:1px solid rgb(115, 117, 231);
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    border-radius: 5px;
+    height:35px;
+    color:black;
+    transition:0.4s;
+}
+
+#descargar:hover{
+    background:#7388ff;
+    color:white;
+    transition:0.4s;
+}
+
+
 
 
 
 @media (max-width: 900px){
+
+    .contenedor-descripcion-slider{
+        height: 450px;
+    }
+
+    .contenedor-descripcion-slider img{
+        height: 450px;
+    }
+
+    
+
     .contenedor-descripcion-titulo{
         padding-left: 12px;
     }
@@ -354,12 +432,16 @@
         font-size:21px;
     }
 
-    .image-gallery-thumbnails-container{
-        height:65px;
-    }
-
     .contenedor-imagen-predio-datos img{
         width: 32px;
+    }
+
+    .contenedor-descripcion-slider img{
+        height: 360px;
+    }
+
+    .contenedor-descripcion-slider{
+        height: auto;
     }
 
     .contenedor-datos-texto-predio h4{

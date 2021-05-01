@@ -80,19 +80,19 @@
         }
 
     .a{
-        background: no-repeat center/180% url("https://www.bbva.com/wp-content/uploads/2017/08/iStock-494940062.jpg");
+        background: no-repeat center/180% url('../../imagenes/servicios/planeacion.jpg');
     }
 
     .l{
-        background: no-repeat center/180% url("https://www.separadasydivorciadas.org/wp-content/uploads/2019/07/asesoramiento-legal-1024x683.jpg");
+        background: no-repeat center/180% url('../../imagenes/servicios/asesoria.jpg');
     }
 
     .f{
-        background: no-repeat center/210% url("https://www.webyempresas.com/wp-content/uploads/2020/08/Qu%C3%A9-es-el-estudio-de-factibilidad-de-un-proyecto.jpg");
+        background: no-repeat center/210% url('../../imagenes/servicios/factivilidad.jpg');
     }
 
     .c{
-        background: no-repeat center/180% url("https://bailey-legal-service.com/wp-content/uploads/elementor/thumbs/high-angle-man-signing-new-house-contract-scaled-oxw121v1qlvm13texyqoi25petnki0dezm6a8iq7f8.jpg");
+        background: no-repeat center/180% url('../../imagenes/servicios/comercializacion.jpg');
     }
 
 .contenedor-servicios-ver-mas-fondo{
@@ -183,4 +183,10 @@
         .contenedor-servicios-ver-mas a{
             font-size:25px;
         }
+}
+
+@media (max-width:450px){
+    .contenedor-servicios-titulo p{
+        text-align: center;
+    }
 }

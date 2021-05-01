@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import operadora from '../../imagenes/iconos/operadora.svg';
 import bars from '../../imagenes/iconos/menu.png';
 import cerrar from '../../imagenes/iconos/cerrar.png';
-import logo from '../../imagenes/logo.png';
+import logo from '../../imagenes/NavLogo.png';
 
 const NavBar = () => {
 
@@ -25,7 +25,6 @@ const NavBar = () => {
     }
 
 
-
     return (
         <Fragment>
             <div className="contenedor-principal-navbar">
@@ -33,7 +32,7 @@ const NavBar = () => {
                 <div className="contenedor-logo-navbar">
                     {/* <img src="" alt="Logo" title="Logo" /> */}
                     <Link onClick={window.scrollTo(0, 0)} to="/">
-                        <img src={logo} />
+                        <img src={logo} onDoubleClick={() => { window.location.href = "/iniciar-sesion" }} />
                     </Link>
                 </div>
 
@@ -55,11 +54,17 @@ const NavBar = () => {
                         <NavLink to="/contacto" activeClassName="menu-seleccionado-desk" >  <h2>Contacto</h2> </NavLink>
                     </div>
 
-                    <div>
-                        <Link to="/iniciar-sesion"> <button title="Iniciar Sesión" >  <i className="fas fa-sign-in-alt"></i> Ingresar</button></Link>
+                    <div className="contenedor-menu-navbar-contacto">
+                        <NavLink to="/colaboradores" activeClassName="menu-seleccionado-desk" >  <h2>Colaboradores</h2> </NavLink>
                     </div>
 
-                    <div>
+
+                    {/* <div>
+                        <Link to="/iniciar-sesion"> <button title="Iniciar Sesión" >  <i className="fas fa-sign-in-alt"></i> Ingresar</button></Link>
+                    </div> */}
+
+
+                    <div style={{marginTop:'-5px'}}>
                         <a href="tel:9971210804" title="Contáctanos" ><img alt="Operadora" src={operadora} /></a>
                     </div>
 
@@ -81,11 +86,13 @@ const NavBar = () => {
                             <li><NavLink to="/nosotros" activeClassName="menu-seleccionado" > <h2>Nosotros</h2> </NavLink> </li>
                             <li><NavLink to="/servicios" activeClassName="menu-seleccionado" > <h2>Servicios</h2> </NavLink> </li>
                             <li><NavLink to="/contacto" activeClassName="menu-seleccionado" > <h2>Contacto</h2> </NavLink> </li>
+                            {/* <li><NavLink to="/colaboradores" activeClassName="menu-seleccionado" > <h2>Colaboradores</h2> </NavLink> </li> */}
+
                         </ul>
 
                         <ul className="contenedor-navbar-iniciar-sesion">
 
-                            <Link to="/iniciar-sesion"> <button title="Iniciar Sesión" > <i className="fas fa-sign-in-alt"></i> Ingresar</button></Link>
+                            <Link to="/colaboradores"> <button title="Colaboradores" > <i className="fas fa-sign-in-alt"></i> Colaboradores</button></Link>
 
                         </ul>
                     </nav>

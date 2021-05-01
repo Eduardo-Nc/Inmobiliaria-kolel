@@ -1,0 +1,25 @@
+.cont-footer-colaboradores{
+    background:black;
+    width: 100%;
+    height:60px;
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content:center;
+    align-items: center;
+    padding-top:10px;
+}
+
+
+
+.cont-footer-colaboradores h1{
+    color:white;
+    font-size:13px;
+}
+
+
+
+@media (max-width:600px){
+    .cont-footer-colaboradores{
+       height: 70px;
+    }
+}

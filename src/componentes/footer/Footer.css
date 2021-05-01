@@ -16,6 +16,7 @@
     }
         .content-footer-redes-sociales h3{
             color: white;
+            font-size: 20px;
             font-weight: normal;
         }
 
@@ -28,6 +29,7 @@
     }
         .content-footer-contacto h3{
             color: white;
+            font-size: 20px;
             font-weight: normal;
         }
 
@@ -43,18 +45,18 @@
 }
 
         .content-footer-logos-redes-sociales a{
-            width: 35px;
+            width: 30px;
             display: flex;
             flex-flow: row nowrap;
             justify-content: center;
             align-items: center;
             background:white;
             border-radius: 50%;
-            padding:8px;
+            padding:7px;
             margin-left: 5px;
             margin-right: 5px;
             text-decoration:none;
-            font-size: 18px;
+            font-size: 16px;
 
         }
 
@@ -80,12 +82,13 @@
 
         .content-footer-contacto-items a{
             text-decoration:none;
+            font-size:13px;
             margin-bottom:5px;
             color:white;
         }
 
         .content-footer-contacto-items a:hover{
-            color:#4888ff !important;
+            color:#b9b9b9 !important;
         }
 
 
@@ -103,7 +106,7 @@
 
 .content-footer a{
     color:white;
-    font-size:15px;
+    font-size:13px;
     text-align: center;
     text-transform: uppercase;
     font-weight: normal;
@@ -113,7 +116,7 @@
 }
 
 .content-footer a:hover{
-    color:#4888ff !important;
+    color:#b9b9b9 !important;
 }
 
 @media (max-width:730px){

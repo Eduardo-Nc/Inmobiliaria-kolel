@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&display=swap');
+
+.contenedor-principal-informacion{
+    width: 100%;
+    height: 100vh;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:center;
+    align-items: center;
+    overflow: hidden;
+    background-image: url(../../imagenes/apartamento33.jpg);
+    background-size: cover;
+   
+}
+
+    .contenido-informacion{
+        width: 100%;
+        height: 100vh;
+        display:flex;
+        flex-flow:column nowrap;
+        justify-content:center;
+        align-items: center;
+        overflow-y: scroll;
+    }
+    
+    
+.contenedor-info-colaboradores{
+    width: 70%;    
+    height: 90%;
+    overflow-y:scroll;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.contenedor-info-colaboradores::-webkit-scrollbar {
+    display: none;
+}
+
+
+.contenedor-info-colaboradores p{
+    width: 70%;
+    color:white;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Asap', sans-serif;
+}
+
+
+.contenedor-info-colaboradores > form{
+    padding:30px;
+    width: 80%;
+    border-radius:7px;
+    background:rgba(0, 0, 0, 0.692);
+    overflow-y:scroll;
+}
+
+.contenedor-info-colaboradores > form::-webkit-scrollbar{
+    display: none;
+}
+
+.form-check{
+    padding:2px;
+}
+
+.contenedor-info-colaboradores > form > label{
+    color:white;
+    font-size:18px;
+}
+
+
+.form-check label{
+    width: 100%;
+    padding:2px;
+    color:white;
+}
+
+
+.form-check:hover{
+    cursor: pointer;
+    background:rgb(107, 97, 241);
+    border-radius:2px;
+    color:black;
+}
+
+
+.form-check > input[type="radio"]{
+    width: 20px;
+    height:20px;
+}
+
+
+.form-check > label{
+    font-size:15px;
+    font-weight: bold;
+    margin-left:10px;
+}
+
+.contenedor-info-colaboradores > form > button{
+    color:white;
+    font-size:18px;
+    width: 150px;
+    background:blue;
+}
+
+
+.form-group > select{
+    text-align-last: center;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+
+.cont-boton-enviar a{
+    background:rgb(74, 74, 250);
+    width: 200px;
+    font-size: 20px;
+    border-radius: 4px;
+    padding:4px;
+    text-align:center;
+    color:white;
+}
+
+.cont-boton-enviar a:hover{
+    color:rgb(233, 223, 223);
+    cursor: pointer;
+    background:rgb(86, 86, 245);
+}
+
+.boton-flotante-contacto{
+    position: absolute;
+    display: flex;
+    bottom:60px;
+    right:60px;
+    justify-content:center;
+    align-items: center;
+    flex-flow: center;
+    width: 70px;
+    height:70px;
+    border-radius:100%;
+    background:black;
+    overflow:hidden;
+}
+
+.boton-flotante-contacto img{
+    width: 38px;
+    transition:0.1s;
+}
+
+.boton-flotante-contacto img:hover{
+    cursor: pointer;
+    transition:0.1s;
+    width: 41px;
+}
+
+
+@media (max-width:800px){
+
+    .contenedor-info-colaboradores{
+        width: 90%;    
+    }
+
+    .contenedor-info-colaboradores p{
+        width: 100%;    
+        font-size: 23px;
+    }
+
+    .contenedor-info-colaboradores > form{
+        width: 100%;
+    }
+
+    .form-check > input[type="radio"]{
+        width: 25px;
+        height:25px;
+    }
+    
+    .contenedor-info-colaboradores > form > label{
+        margin-bottom:20px;
+        font-size:22px;
+    }
+    
+    .form-check > label{
+        font-size:17px;
+        margin-bottom: 6px;
+        margin-left:15px;
+    }
+
+    .form-group > select{
+        font-size:20px;
+    }
+
+    .cont-boton-enviar button{
+        width: 90%;
+        font-size: 22px;
+    }
+    
+}

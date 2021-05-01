@@ -25,8 +25,8 @@ const Footer = () => {
                     <h3>Contáctanos</h3>
 
                     <div className="content-footer-contacto-items">
-                        <a href="tel:9991295931">Telefono:  999-129-5931</a> 
-                        <a href="mailto:nery-escalante@hotmail.com">Correo: nery-escalante@hotmail.com </a> 
+                        <a href="tel:9991295931">999-129-5931</a> 
+                        <a href="mailto:nery-escalante@hotmail.com">nery-escalante@hotmail.com </a> 
                     </div>
 
                 </div>
@@ -34,7 +34,7 @@ const Footer = () => {
             </div>
 
             <div className="content-footer">
-                <Link to="/"> &copy; 2021 Copyright: Inmobiliaria S.A DE C.V. </Link>
+                <Link to="/"> &copy; 2021 Copyright: KOOLEL KAAB S.A DE C.V. </Link>
             </div>
         </Fragment>
     )

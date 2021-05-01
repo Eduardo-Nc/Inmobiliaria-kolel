@@ -20,7 +20,10 @@ const MenuIzquierdo = ({menu, abrirMenu}) =>{
             <div style={menu ? estilosCerrar : estilosAbrir} className="contenedor-principal-menu-izquierdo">
                 <ul onClick={abrirMenu}>
                     <li  ><NavLink activeClassName="activo" to="/tablero"> Inicio</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/usuarios"> Usuarios</NavLink></li>
                     <li  ><NavLink activeClassName="activo" to="/propiedades"> Propiedades</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/datos-colaboradores"> Colaboradores</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/desarrollos"> Desarrollos</NavLink></li>
                 </ul>
             </div>
         </Fragment>

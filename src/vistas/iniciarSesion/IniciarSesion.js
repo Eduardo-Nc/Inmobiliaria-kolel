@@ -42,8 +42,8 @@ const IniciarSesion = () => {
 
         if (credenciales.email.length <= 0) {
             MySwal.fire({
-                title: "¡Campo vacio!",
-                text: "Ingresa tu correo electrónico",
+                title: "¡Ingresa tu correo electrónico!",
+                background: '#353535',
                 icon: "warning",
                 confirmButtonText: "Aceptar",
                 timer: "2000"
@@ -51,8 +51,8 @@ const IniciarSesion = () => {
             });
         } else if (credenciales.password.length <= 0) {
             MySwal.fire({
-                title: "¡Campo vacio!",
-                text: "Ingresa tu contraseña",
+                title: "Ingresa tu contraseña",
+                background: '#353535',
                 icon: "warning",
                 confirmButtonText: "Aceptar",
                 timer: "2000"
@@ -80,8 +80,8 @@ const IniciarSesion = () => {
                     } else {
 
                         MySwal.fire({
-                            title: "¡Aviso!",
-                            text: "El usuario o la contraseña no son correctos",
+                            title: "El usuario o la contraseña no son correctos",
+                            background: '#353535',
                             icon: "warning",
                             confirmButtonText: "Aceptar",
                             timer: "4500"
@@ -102,10 +102,10 @@ const IniciarSesion = () => {
 
     const MySwal = withReactContent(Swal);
 
-    const IniciarSesion = () => {
+    const RecuperarContrasena = () => {
         MySwal.fire({
-            title: 'Recuperar Contraseña',
-            text: 'Escriba su correo para enviarle su contraseña',
+            title: 'Escriba su correo para enviarle su contraseña',
+            background: '#353535',
             input: 'email',
             inputAttributes: {
                 autocapitalize: 'off'
@@ -115,27 +115,54 @@ const IniciarSesion = () => {
             confirmButtonText: 'Enviar',
             showLoaderOnConfirm: true,
             preConfirm: (login) => {
-                return fetch(`//api.github.com/users/${login}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(response.statusText)
-                        }
-                        return response.json()
-                    })
-                    .catch(error => {
-                        Swal.showValidationMessage(
-                            `Request failed: ${error}`
-                        )
-                    })
+                axios.get(baseUrl + "/api/usuarios/" + login)
+                .then(response => {
+        
+                  const savedata = response.data;
+                  const datauser = (Object.keys(response.data).length);
+        
+                    if (datauser > 0) {
+        
+                      let pass = savedata[0].contrasena_usuario;
+                      let nom_usu = savedata[0].nombre_completo_usuario;
+                        
+                        axios.post(baseUrl + '/api/usuarios/resetpass', {  
+                            nombre: nom_usu,
+                            email: login,
+                            password: pass
+                        }).then(response => {
+                          setEnviado(true);
+                          Swal.fire({
+                            title: "¡Contraseña enviada!",
+                            text: `¡La contraseña fue enviado a: ${login}!, sino encuentra el correo verifica en sección de correos no deseados o Spam`,
+                            icon: "success",
+                            confirmButtonText: "Aceptar",
+                            timer: "6000"
+                        });
+                        }).catch(e => {
+                            console.log(e);
+                        });
+                        
+        
+                    } else {
+                      setEnviado(true);
+                      Swal.fire({
+                            title: "¡Aviso!",
+                            text: "¡El correo ingresado no se encuentra registrado!",
+                            icon: "warning",
+                            confirmButtonText: "Aceptar",
+                            timer: "4000"
+                        });
+        
+                    }
+        
+                })
+                
+                .catch(error => {
+                    console.log(error);
+                })
             },
             allowOutsideClick: () => !Swal.isLoading()
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: `${result.value.login}'s avatar`,
-                    imageUrl: result.value.avatar_url
-                })
-            }
         })
     }
 
@@ -156,7 +183,7 @@ const IniciarSesion = () => {
                         <input type="email" name="email" onChange={handleInputChange} placeholder="Correo" />
                         <input type="password" name="password" onChange={handleInputChange} placeholder="Contraseña" />
 
-                        <h4 onClick={IniciarSesion}>Olvidé mi contraseña</h4>
+                        <h4 onClick={RecuperarContrasena}>Olvidé mi contraseña</h4>
 
                         {enviado ?
                             <input type="submit" value="Enviar" />

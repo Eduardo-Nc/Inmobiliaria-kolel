@@ -10,6 +10,7 @@
 
 .contenedor-principal-app{
     height:100vh;
+    overflow-x:hidden;
 }
 
 a{
@@ -17,7 +18,7 @@ a{
 }
 
 
-/* 
-::-webkit-scrollbar {
+
+/* ::-webkit-scrollbar {
     display: none;
 } */

@@ -53,7 +53,7 @@ const Nosotros = () => {
 
                     <div className="def-nosotros-vision">
                         <p>
-                            ser la mejor alternativa de profesional inmobiliario, para que nuestros clientes
+                            Ser la mejor alternativa de profesional inmobiliario, para que nuestros clientes
                             se sientan plenamente acompañados y asesorados durante todo el proceso.
                         </p>
                     </div>
@@ -62,7 +62,7 @@ const Nosotros = () => {
                 <div className="contenedor-foto-perfil-agente">
                     <img src={nery} alt="Foto" title="DRA. Nery Escalante May" />
                     <p>L.E.C Nery Escalante May</p>
-                    <p>Asesora De Inversión En Bines Y Muebles</p>
+                    <p>Asesora de inversión en bines y muebles</p>
 
                     <Link to="/contacto">Contáctame</Link>
                 </div>

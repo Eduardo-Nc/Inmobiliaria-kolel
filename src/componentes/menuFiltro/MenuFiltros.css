@@ -100,7 +100,7 @@
         
     }
 
-    .contenedor-menu-filtros-boton button{
+    .contenedor-menu-filtros-boton input[type="submit"]{
         margin-top:5px;
         width: 200px;
         font-size: 17px;
@@ -112,7 +112,7 @@
         border-radius:4px;
     }
 
-    .contenedor-menu-filtros-boton button:hover{
+    .contenedor-menu-filtros-boton input[type="submit"]:hover{
         cursor: pointer;
         background:rgb(114, 152, 255);
     }
@@ -158,14 +158,22 @@
         width: 100%;
     }
     
-    .contenedor-menu-filtros-boton button{
+    .contenedor-menu-filtros-boton input[type="submit"]{
         width: 93%;
         font-size: 20px;
-        padding:13px;
+        height:50px;
     }
 
     .contenedor-menu-filtros-selec{
        width: 97.5%;
     }
 
+}
+
+@media (max-width:450px){
+    .contenedor-filtros-titulo p{
+       width: 96%;
+        text-align:center;
+
+    }
 }
