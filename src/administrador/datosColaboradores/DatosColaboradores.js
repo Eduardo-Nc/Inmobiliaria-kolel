@@ -221,7 +221,7 @@ const DatosColaboradores = () => {
 
                                 </div>
                                 <BootstrapTable hover={true} className="tabla"
-                                    keyField="id_usuario"
+                                    keyField="id_colaborador"
                                     data={data}
 
                                     columns={columns}
@@ -229,11 +229,11 @@ const DatosColaboradores = () => {
                                     pagination={paginationFactory({
 
                                         sizePerPageList: [{
-                                            text: '4', value: 4
-                                        }, {
-                                            text: '8', value: 8
-                                        }, {
                                             text: '15', value: 15
+                                        }, {
+                                            text: '30', value: 30
+                                        }, {
+                                            text: '50', value: 50
                                         }, {
                                             text: 'Todos', value: data.length
                                         }

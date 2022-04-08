@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import './Nosotros.css';
 import { Link } from 'react-router-dom';
 import nosotros from '../../imagenes/nosotros.jpg';
-import nery from '../../imagenes/nery.png';
+import nery from '../../imagenes/nery.jpeg';
 
 
 import NavBar from '../../componentes/navBar/NavBar';
@@ -25,8 +25,8 @@ const Nosotros = () => {
 
                 <div className="contenedor-def-quienes-somos">
                     <p>
-                        Somos un equipo multidisciplinario, con 
-                        especialistas para cada una de las áreas 
+                        Somos un equipo multidisciplinario, con
+                        especialistas para cada una de las áreas
                         que involucra una inversión inmobiliaria.
                     </p>
                 </div>
@@ -60,9 +60,12 @@ const Nosotros = () => {
                 </div>
 
                 <div className="contenedor-foto-perfil-agente">
-                    <img src={nery} alt="Foto" title="DRA. Nery Escalante May" />
+                    <div style={{ width: '100px', height: '100px', overflow: 'hidden', marginBottom: '10px' }}>
+                        <img src={nery} style={{ width: '100%', height: '100%', objectFit: "cover" }} alt="Foto" title="DRA. Nery Escalante May" />
+                    </div>
+
                     <p>L.E.C Nery Escalante May</p>
-                    <p>Asesora de inversión en bines y muebles</p>
+                    <p>Asesora de inversión en bienes y muebles</p>
 
                     <Link to="/contacto">Contáctame</Link>
                 </div>

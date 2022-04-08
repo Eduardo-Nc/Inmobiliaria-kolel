@@ -87,19 +87,19 @@ const Desarrollos = () => {
                 );
             }
         },
-        {
-            dataField: 'lista_disponibilidad',
-            text: 'Disponibilidad',
-            formatter: (cellContent, row) => {
-                return (
-                    <div>
-                        <iframe src={nubeUrl + row.lista_disponibilidad} width="90%" height="140px"></iframe>
-                    </div>
+        // {
+        //     dataField: 'lista_disponibilidad',
+        //     text: 'Disponibilidad',
+        //     formatter: (cellContent, row) => {
+        //         return (
+        //             <div>
+        //                 <iframe src={nubeUrl + row.lista_disponibilidad} width="90%" height="140px"></iframe>
+        //             </div>
 
 
-                );
-            }
-        },
+        //         );
+        //     }
+        // },
         {
             dataField: 'id_desarrollo',
             text: 'Acciones',
@@ -149,51 +149,58 @@ const Desarrollos = () => {
         setFile(e.target.files)
     }
 
-   
-    
-    console.log(file)
 
-    const peticionPost = () => {
 
-      
+
+    const peticionPost = async () => {
+
         if (!file === false) {
 
-           if(file[0].size > 9672158 ){
-            Swal.fire({
-                title: `El tamaño del ${file[0].name} no debe ser mayor a los 10 MB`,
-                 html:
-                    '<a href="https://www.ilovepdf.com/es/comprimir_pdf" target="_blank" >Baja la calidad aquí</a> <br></br> <a href="https://res.cloudinary.com/hpk4vuwdm/image/upload/v1619813786/img_tt2ukb.jpg" target="_blank" >Ver pasos aquí</a> <br></br> Y cargue nuevamente los archivos.',
-                background: '#353535',
-                icon: 'warning',
-                confirmButtonText: `Aceptar`,
-            })
-            return
-           }else if(file[1].size > 9672158 ){
-            Swal.fire({
-                title: `El tamaño del ${file[1].name} no debe ser mayor a los 10 MB`,
-                html:
-                '<a href="https://www.ilovepdf.com/es/comprimir_pdf" target="_blank" >Baja la calidad aquí</a> <br></br> Y cargue nuevamente los archivos',
-                background: '#353535',
-                icon: 'warning',
-                confirmButtonText: `Aceptar`,
-            })
-            return
-           }if(file[2].size > 9672158 ){
-            Swal.fire({
-                title: `El tamaño del ${file[2].name} no debe ser mayor a los 10 MB`,
-                html:
-                '<a href="https://www.ilovepdf.com/es/comprimir_pdf" target="_blank" >Baja la calidad aquí</a> <br></br> Y cargue nuevamente los archivos',
-                background: '#353535',
-                icon: 'warning',
-                confirmButtonText: `Aceptar`,
-            })
-            return
-           }
-           
+            if (file.length < 3) {
+                Swal.fire({
+                    title: `En total debes subir 3 archivos, 2 PDFs y una imagen en PNG o JPG`,
+                    icon: 'warning',
+                    confirmButtonText: `Aceptar`,
+                })
+                return
+            }
+
+            if (file[0].size > 9672158) {
+                Swal.fire({
+                    title: `El tamaño del ${file[0].name} no debe ser mayor a los 10 MB`,
+                    html:
+                        '<a href="https://www.ilovepdf.com/es/comprimir_pdf" target="_blank" >Baja la calidad aquí</a> <br></br> <a href="https://res.cloudinary.com/hpk4vuwdm/image/upload/v1619813786/img_tt2ukb.jpg" target="_blank" >Ver pasos aquí</a> <br></br> Y cargue nuevamente los archivos.',
+                    background: '#353535',
+                    icon: 'warning',
+                    confirmButtonText: `Aceptar`,
+                })
+                return
+            } else if (file[1].size > 9672158) {
+                Swal.fire({
+                    title: `El tamaño del ${file[1].name} no debe ser mayor a los 10 MB`,
+                    html:
+                        '<a href="https://www.ilovepdf.com/es/comprimir_pdf" target="_blank" >Baja la calidad aquí</a> <br></br> Y cargue nuevamente los archivos',
+                    background: '#353535',
+                    icon: 'warning',
+                    confirmButtonText: `Aceptar`,
+                })
+                return
+            } if (file[2].size > 9672158) {
+                Swal.fire({
+                    title: `El tamaño del ${file[2].name} no debe ser mayor a los 10 MB`,
+                    html:
+                        '<a href="https://www.ilovepdf.com/es/comprimir_pdf" target="_blank" >Baja la calidad aquí</a> <br></br> Y cargue nuevamente los archivos',
+                    background: '#353535',
+                    icon: 'warning',
+                    confirmButtonText: `Aceptar`,
+                })
+                return
+            }
+
 
         } else if (!file) {
             Swal.fire({
-                title: '¡Selecciona el brochure, master plan y la lista de disponibilidad en formato PDF!',
+                title: '¡Selecciona el brochure y master plan en formato PDF al igual que el logo en formato PNG o JPG!',
                 background: '#353535',
                 icon: 'warning',
                 confirmButtonText: `Aceptar`,
@@ -222,48 +229,58 @@ const Desarrollos = () => {
 
         setEnviado(false)
 
-        axios.post(baseUrl + '/api/desarrollo', formdata, {
+        try {
+            await axios.post(baseUrl + '/api/desarrollo', formdata, {
 
 
-        }).then(response => {
+            }).then(response => {
 
 
+                setTimeout(() => {
+                    Swal.fire({
+                        position: 'top-end',
+                        background: '#353535',
+                        icon: 'success',
+                        title: '¡PDFs publicados!',
+                        text: 'Puede que tarde unos minutos en reflejarse los PDF',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Aceptar',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            peticionGet()
+                        }
+                    })
+                    peticionGet();
+                    setEnviado(true);
+                    modalInsertar();
+                    peticionGet();
+                }, 10000)
 
-            setTimeout(() => {
-                Swal.fire({
-                    position: 'top-end',
-                    background: '#353535',
-                    icon: 'success',
-                    title: '¡PDFs publicados!',
-                    showConfirmButton: true,
-                    confirmButtonText: 'Aceptar',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        peticionGet()
-                    }
-                })
+
                 peticionGet();
-                setEnviado(true);
-                modalInsertar();
-                peticionGet();
-            }, 4000)
 
-            peticionGet();
-
-        }).catch(error => {
-            console.log(error);
-        })
-
-
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
 
     const peticionPut = async () => {
 
+        if (file.length < 4) {
+            Swal.fire({
+                title: `En total debes subir 3 archivos, 2 PDFs y una imagen en PNG o JPG`,
+                icon: 'warning',
+                confirmButtonText: `Aceptar`,
+            })
+            return
+        }
+
         if (!file) {
             Swal.fire({
-                title: '¡Selecciona el brochure, master plan y la lista de disponibilidad en formato PDF!',
+                title: '¡Selecciona el brochure y master plan en formato PDF al igual que el logo en formato PNG o JPG!',
                 background: '#353535',
                 icon: 'warning',
                 confirmButtonText: `Aceptar`,
@@ -420,11 +437,11 @@ const Desarrollos = () => {
                                     pagination={paginationFactory({
 
                                         sizePerPageList: [{
-                                            text: '4', value: 4
-                                        }, {
-                                            text: '8', value: 8
-                                        }, {
                                             text: '15', value: 15
+                                        }, {
+                                            text: '30', value: 30
+                                        }, {
+                                            text: '50', value: 50
                                         }, {
                                             text: 'Todos', value: data.length
                                         }
@@ -466,9 +483,9 @@ const Desarrollos = () => {
 
                         <label>PDFs</label>
                         <div className="alert alert-info" role="alert">
-                            <strong>Nota:</strong><strong> Cada archivo debe pesar maximo de 10MB</strong> y deben llamarse: <strong>brochure.pdf</strong>, <strong>masterplan.pdf</strong> y <strong>disponibilidad.pdf</strong>, <a target="_blank" href="https://res.cloudinary.com/hpk4vuwdm/image/upload/v1619552034/ejemplo_ro2qvu.jpg">ver ejemplo</a>
+                            <strong>Nota:</strong><strong> Cada archivo debe pesar maximo de 10MB</strong> y deben llamarse: <strong>logo.jpg o logo.png</strong>, <strong>brochure.pdf</strong>, <strong>masterplan.pdf</strong> y <strong>disponibilidad.pdf</strong>, <a target="_blank" href="https://res.cloudinary.com/hwvbw3vrx/image/upload/v1623810872/ejemplo_l2eozq.jpg">ver ejemplo</a>
                         </div>
-                        <input onChange={selectedHandler} name="archivos_pdf" multiple type="file" accept="application/pdf" />
+                        <input onChange={selectedHandler} name="archivos_pdf" multiple type="file" accept="image/jpeg, image/png, application/pdf" />
 
                     </form>
                 </Modal.Body>
@@ -480,7 +497,7 @@ const Desarrollos = () => {
                     {enviado ?
                         <Button variant="primary" onClick={() => peticionPost()}>
                             Guardar
-                    </Button> :
+                        </Button> :
                         <div className="precarga"></div>
                     }
                 </Modal.Footer>
@@ -502,11 +519,11 @@ const Desarrollos = () => {
 
                         <label>PDFs</label>
                         <div className="alert alert-info" role="alert">
-                            <strong>Nota:</strong> No es posible actualizar solo un archivo, deberá subir los 3 archivos: <strong>brochure.pdf</strong>, <strong>masterplan.pdf</strong> y <strong>disponibilidad.pdf</strong>, <a target="_blank" href="https://res.cloudinary.com/hpk4vuwdm/image/upload/v1619552034/ejemplo_ro2qvu.jpg">ver ejemplo</a> <br></br> <strong>Recuerde que cada archivo no debe superar los 10MB.</strong>
+                            <strong>Nota:</strong> No es posible actualizar solo un archivo, deberá subir los 3 archivos: <strong>logo.jpg o logo.png</strong>, <strong>brochure.pdf</strong>, <strong>masterplan.pdf</strong>, <a target="_blank" href="https://res.cloudinary.com/hwvbw3vrx/image/upload/v1623810872/ejemplo_l2eozq.jpg">ver ejemplo</a> <br></br> <strong>Recuerde que cada archivo no debe superar los 10MB.</strong>
                         </div>
 
 
-                        <input onChange={selectedHandler} name="archivos_pdf" multiple type="file" accept="application/pdf" />
+                        <input onChange={selectedHandler} name="archivos_pdf" multiple type="file" accept="image/jpeg, image/png, application/pdf" />
 
 
 
@@ -516,11 +533,11 @@ const Desarrollos = () => {
                 <Modal.Footer>
                     <Button variant="secondary" onClick={modalEditar}>
                         Cerrar
-                         </Button>
+                    </Button>
                     {enviado ?
                         <Button variant="primary" onClick={() => peticionPut()}>
                             Guardar
-                    </Button> :
+                        </Button> :
                         <div className="precarga"></div>
                     }
                 </Modal.Footer>

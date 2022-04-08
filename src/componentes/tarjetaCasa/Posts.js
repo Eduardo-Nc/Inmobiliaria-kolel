@@ -29,7 +29,7 @@ const Posts = ({ posts, result, cargando, setResult }) => {
 
                         <div key={item.id_propiedad} className="contenedor-tarjeta-casa">
 
-                            <Link to={{ pathname: "/descripcion", item }} >
+                            <Link to={`/descripcion/${item.id_propiedad}`} >
 
                                 <div className="contenedor-tarjeta-arriba">
 
@@ -154,7 +154,7 @@ const Posts = ({ posts, result, cargando, setResult }) => {
 
                         <div key={item.id_propiedad} className="contenedor-tarjeta-casa">
 
-                            <Link to={{ pathname: "/descripcion", item }} >
+                            <Link to={`/descripcion/${item.id_propiedad}`} >
 
                                 <div className="contenedor-tarjeta-arriba">
 

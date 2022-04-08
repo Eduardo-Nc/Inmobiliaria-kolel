@@ -70,7 +70,8 @@ const Colaboradores = () => {
                         cookies.set('id_colaborador', savedata.id_colaborador, { path: "/" });
                         cookies.set('nombre_colaborador', savedata.nombre_colaborador, { path: "/" });
                         cookies.set('correo_colaborador	', savedata.correo_colaborador, { path: "/" });
-
+                        cookies.set('numero_colaborador	', savedata.numero_colaborador, { path: "/" });
+                        
                         window.location.href = "/informacion";
 
 
@@ -114,7 +115,7 @@ const Colaboradores = () => {
                     </div>
 
 
-                    <form autoComplete="off" className="form-login-colaboradores" onSubmit={iniciarSesion} >
+                    <form className="form-login-colaboradores" onSubmit={iniciarSesion} >
                         <div className="contenedor-input-colaboradores">
                             <img src={usuario} alt="Usuario" />
                             <input type="email" placeholder="Correo electrónico" onChange={handleInputChange} name="email" />

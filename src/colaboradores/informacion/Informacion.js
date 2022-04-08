@@ -98,7 +98,7 @@ const Informacion = () => {
 
                     <div className="contenedor-info-colaboradores">
 
-                        <p>Dejamos a su alcance los desarrollos con los que contamos actualmente</p>
+                        <p>Dejamos a su alcance la información los desarrollos con los que contamos actualmente</p>
 
                         <form id="myForm">
 
@@ -120,7 +120,7 @@ const Informacion = () => {
 
                                     {!info.brochure ? "" : <option value={info.brochure}>Brochure</option>}
                                     {!info.master_plan ? "" : <option value={info.master_plan}>Master Plan</option>}
-                                    {!info.lista_disponibilidad ? "" : <option value={info.lista_disponibilidad}>Lista de disponibilidad</option>}
+                                    {/* {!info.lista_disponibilidad ? "" : <option value={info.lista_disponibilidad}>Lista de disponibilidad</option>} */}
 
                                 </select>
                             </div>
@@ -152,7 +152,7 @@ const Informacion = () => {
 
                 <Footer />
                 <div className="boton-flotante-contacto" >
-                    <a href={`https://wa.me/529991295931/?text=Quiero recibir más información del desarrollo: *${datosSeleccionados.desarrollo ===  undefined ? "" : datosSeleccionados.desarrollo}*`} target="_blank">
+                    <a href={`https://wa.me/529991295931/?text=Quiero recibir más información del desarrollo: *${datosSeleccionados.desarrollo === undefined ? "" : datosSeleccionados.desarrollo}*`} target="_blank">
                         <img title="Contactanos" src={whatsapp} alt="WhatsApp" />
                     </a>
                 </div>

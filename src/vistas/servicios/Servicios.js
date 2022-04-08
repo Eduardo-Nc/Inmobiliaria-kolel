@@ -19,7 +19,7 @@ const Servicios = () => {
                 <div className="contenedor-fondo-servicios">
                     <img alt="Fondo servicios" title="Fondo servicios" src={fondoServicios} />
                     <div className="contenedor-textos-fondo-servicios">
-                        <h1>Servicios</h1>
+                        <h1 style={{ fontWeight: 'bold', fontSize: '25px' }}>Servicios</h1>
                         <p>Conoce nuestros servicios y dejanos sorprenderte</p>
                         <Link to="/contacto">
                             <input type="button" value="Contáctanos" />
@@ -70,11 +70,11 @@ const Servicios = () => {
 
                 <div data-aos="zoom-out-up" className="contenedor-footer-servicios">
                     <h4>¿Te interesa algún servicio?, ¡No dudes en <strong>contáctarnos</strong>!</h4>
-                    
+
                     <Link to="/contacto">
                         <input type="button" value="Contáctanos" />
                     </Link>
-                    
+
                 </div>
 
             </div>

@@ -126,8 +126,8 @@ const Usuarios = () => {
         }
 
         let caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789";
-        let GenerarContrasena = "";
-        for (let i = 0; i < 20; i++) GenerarContrasena += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        let GenerarContrasena = "IKK-";
+        for (let i = 0; i < 4; i++) GenerarContrasena += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
 
         await axios.post(baseUrl + "/api/usuarios", {
 
@@ -178,12 +178,11 @@ const Usuarios = () => {
 
             nombre_completo_usuario: usuarioSeleccionado.nombre_completo_usuario,
             correo_usuario: usuarioSeleccionado.correo_usuario,
-
+            contrasena_usuario: usuarioSeleccionado.contrasena_usuario
         })
             .then(response => {
 
                 console.log(response);
-
 
                 Swal.fire({
                     icon: 'success',
@@ -212,7 +211,7 @@ const Usuarios = () => {
 
 
     const modalEliminar = (row) => {
-        console.log(row);
+   
         Swal.fire({
             title: `¿Estas segur@ de eliminar a:\n  ${row.nombre_completo_usuario}?`,
             showCancelButton: true,
@@ -286,11 +285,11 @@ const Usuarios = () => {
                                     pagination={paginationFactory({
 
                                         sizePerPageList: [{
-                                            text: '4', value: 4
-                                        }, {
-                                            text: '8', value: 8
-                                        }, {
                                             text: '15', value: 15
+                                        }, {
+                                            text: '30', value: 30
+                                        }, {
+                                            text: '50', value: 50
                                         }, {
                                             text: 'Todos', value: data.length
                                         }
@@ -361,6 +360,9 @@ const Usuarios = () => {
 
                         <label>Correo electrónico</label>
                         <input type="email" name="correo_usuario" onChange={handleChange} value={usuarioSeleccionado && usuarioSeleccionado.correo_usuario} required ></input>
+
+                        <label>Contraseña</label>
+                        <input type="text" name="contrasena_usuario" onChange={handleChange} value={usuarioSeleccionado && usuarioSeleccionado.contrasena_usuario} required ></input>
 
                     </form>
                 </Modal.Body>

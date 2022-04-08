@@ -78,7 +78,7 @@ const TarjetaCasa = () => {
 
         e.preventDefault();
 
-        if(Object.keys(datosF).length === 0){
+        if (Object.keys(datosF).length === 0) {
             Swal.fire({
                 customClass: {
                     title: 'swalTitleColor'
@@ -177,23 +177,23 @@ const TarjetaCasa = () => {
             }
 
         } else if (datosF.tipo_precio && Object.keys(datosF).length === 1) {
-            if(parseInt(datosF.tipo_precio) === 1){
+            if (parseInt(datosF.tipo_precio) === 1) {
                 setResult(data.filter(item => item.precio_propiedad > 3000000))
 
-            const i = data.filter(item => item.precio_propiedad > 3000000)
-            if (i.length === 0) {
-                Swal.fire({
-                    customClass: {
-                        title: 'swalTitleColor'
-                    },
-                    icon: 'warning',
-                    title: '¡No se encontraron resultados!',
-                    text: "Intente ingresar datos diferentes",
-                    confirmButtonText: `Aceptar`,
-                })
-            }
-            }else if(parseInt(datosF.tipo_precio) === 2){
-                setResult(data.filter(item => item.precio_propiedad >= 2000000  && item.precio_propiedad <= 3000000))
+                const i = data.filter(item => item.precio_propiedad > 3000000)
+                if (i.length === 0) {
+                    Swal.fire({
+                        customClass: {
+                            title: 'swalTitleColor'
+                        },
+                        icon: 'warning',
+                        title: '¡No se encontraron resultados!',
+                        text: "Intente ingresar datos diferentes",
+                        confirmButtonText: `Aceptar`,
+                    })
+                }
+            } else if (parseInt(datosF.tipo_precio) === 2) {
+                setResult(data.filter(item => item.precio_propiedad >= 2000000 && item.precio_propiedad <= 3000000))
 
                 const i = data.filter(item => item.precio_propiedad >= 2000000 && item.precio_propiedad <= 3000000)
                 if (i.length === 0) {
@@ -207,8 +207,8 @@ const TarjetaCasa = () => {
                         confirmButtonText: `Aceptar`,
                     })
                 }
-            }else if(parseInt(datosF.tipo_precio) === 3){
-                setResult(data.filter(item => item.precio_propiedad >= 1000000  && item.precio_propiedad <= 2000000))
+            } else if (parseInt(datosF.tipo_precio) === 3) {
+                setResult(data.filter(item => item.precio_propiedad >= 1000000 && item.precio_propiedad <= 2000000))
 
                 const i = data.filter(item => item.precio_propiedad >= 1000000 && item.precio_propiedad <= 2000000)
                 if (i.length === 0) {
@@ -222,7 +222,7 @@ const TarjetaCasa = () => {
                         confirmButtonText: `Aceptar`,
                     })
                 }
-            }else if(parseInt(datosF.tipo_precio) === 4){
+            } else if (parseInt(datosF.tipo_precio) === 4) {
                 setResult(data.filter(item => item.precio_propiedad < 1000000))
 
                 const i = data.filter(item => item.precio_propiedad < 1000000)
@@ -239,9 +239,9 @@ const TarjetaCasa = () => {
                 }
             }
 
-            
 
-        }else if (datosF.tipo_inmueble && datosF.tipo_oferta && Object.keys(datosF).length === 2) {
+
+        } else if (datosF.tipo_inmueble && datosF.tipo_oferta && Object.keys(datosF).length === 2) {
 
             setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta)))
 
@@ -259,8 +259,8 @@ const TarjetaCasa = () => {
             }
 
 
-        }else if ( datosF.tipo_inmueble && datosF.tipo_oferta && datosF.cant_habitaciones && Object.keys(datosF).length === 3 )  {
-                
+        } else if (datosF.tipo_inmueble && datosF.tipo_oferta && datosF.cant_habitaciones && Object.keys(datosF).length === 3) {
+
             setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones)))
 
             const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones))
@@ -277,8 +277,8 @@ const TarjetaCasa = () => {
             }
 
 
-        }else if ( datosF.tipo_inmueble && datosF.tipo_oferta && datosF.cant_habitaciones && datosF.cant_banos && Object.keys(datosF).length === 4 )  {
-                
+        } else if (datosF.tipo_inmueble && datosF.tipo_oferta && datosF.cant_habitaciones && datosF.cant_banos && Object.keys(datosF).length === 4) {
+
             setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos)))
 
             const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos))
@@ -294,28 +294,28 @@ const TarjetaCasa = () => {
                 })
             }
 
-        }else if ( datosF.tipo_inmueble && datosF.tipo_oferta && datosF.tipo_precio && Object.keys(datosF).length === 3)  {
-                
-            if(datosF.tipo_oferta && datosF.tipo_inmueble && datosF.tipo_precio){
+        } else if (datosF.tipo_inmueble && datosF.tipo_oferta && datosF.tipo_precio && Object.keys(datosF).length === 3) {
 
-                if(parseInt(datosF.tipo_precio) === 1){
+            if (datosF.tipo_oferta && datosF.tipo_inmueble && datosF.tipo_precio) {
+
+                if (parseInt(datosF.tipo_precio) === 1) {
                     setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad > 3000000))
-                
-                const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad > 3000000)
-                if (i.length === 0) {
-                    Swal.fire({
-                        customClass: {
-                            title: 'swalTitleColor'
-                        },
-                        icon: 'warning',
-                        title: '¡No se encontraron resultados!',
-                        text: "Intente ingresar datos diferentes",
-                        confirmButtonText: `Aceptar`,
-                    })
-                }
-                }else if(parseInt(datosF.tipo_precio) === 2){
-                    setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 2000000  && item.precio_propiedad <= 3000000))
-                
+
+                    const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad > 3000000)
+                    if (i.length === 0) {
+                        Swal.fire({
+                            customClass: {
+                                title: 'swalTitleColor'
+                            },
+                            icon: 'warning',
+                            title: '¡No se encontraron resultados!',
+                            text: "Intente ingresar datos diferentes",
+                            confirmButtonText: `Aceptar`,
+                        })
+                    }
+                } else if (parseInt(datosF.tipo_precio) === 2) {
+                    setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 2000000 && item.precio_propiedad <= 3000000))
+
                     const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 2000000 && item.precio_propiedad <= 3000000)
                     if (i.length === 0) {
                         Swal.fire({
@@ -328,9 +328,9 @@ const TarjetaCasa = () => {
                             confirmButtonText: `Aceptar`,
                         })
                     }
-                }else if(parseInt(datosF.tipo_precio) === 3){
-                    setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 1000000  && item.precio_propiedad <= 2000000))
-                
+                } else if (parseInt(datosF.tipo_precio) === 3) {
+                    setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 1000000 && item.precio_propiedad <= 2000000))
+
                     const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 1000000 && item.precio_propiedad <= 2000000)
                     if (i.length === 0) {
                         Swal.fire({
@@ -343,9 +343,9 @@ const TarjetaCasa = () => {
                             confirmButtonText: `Aceptar`,
                         })
                     }
-                }else if(parseInt(datosF.tipo_precio) === 4){
+                } else if (parseInt(datosF.tipo_precio) === 4) {
                     setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad < 1000000))
-                
+
                     const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad < 1000000)
                     if (i.length === 0) {
                         Swal.fire({
@@ -359,32 +359,32 @@ const TarjetaCasa = () => {
                         })
                     }
                 }
-                }
+            }
 
         }
 
-        else if ( datosF.tipo_inmueble && datosF.tipo_oferta && datosF.tipo_precio && datosF.cant_habitaciones && datosF.cant_banos && Object.keys(datosF).length === 5)  {
-                
-            if(datosF.tipo_inmueble && datosF.tipo_oferta && datosF.tipo_precio && datosF.cant_habitaciones && datosF.cant_banos){
+        else if (datosF.tipo_inmueble && datosF.tipo_oferta && datosF.tipo_precio && datosF.cant_habitaciones && datosF.cant_banos && Object.keys(datosF).length === 5) {
 
-                if(parseInt(datosF.tipo_precio) === 1){
+            if (datosF.tipo_inmueble && datosF.tipo_oferta && datosF.tipo_precio && datosF.cant_habitaciones && datosF.cant_banos) {
+
+                if (parseInt(datosF.tipo_precio) === 1) {
                     setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad > 3000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos)))
-                
-                const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad > 3000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos))
-                if (i.length === 0) {
-                    Swal.fire({
-                        customClass: {
-                            title: 'swalTitleColor'
-                        },
-                        icon: 'warning',
-                        title: '¡No se encontraron resultados!',
-                        text: "Intente ingresar datos diferentes",
-                        confirmButtonText: `Aceptar`,
-                    })
-                }
-                }else if(parseInt(datosF.tipo_precio) === 2){
-                    setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 2000000  && item.precio_propiedad <= 3000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos)))
-                
+
+                    const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad > 3000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos))
+                    if (i.length === 0) {
+                        Swal.fire({
+                            customClass: {
+                                title: 'swalTitleColor'
+                            },
+                            icon: 'warning',
+                            title: '¡No se encontraron resultados!',
+                            text: "Intente ingresar datos diferentes",
+                            confirmButtonText: `Aceptar`,
+                        })
+                    }
+                } else if (parseInt(datosF.tipo_precio) === 2) {
+                    setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 2000000 && item.precio_propiedad <= 3000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos)))
+
                     const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 2000000 && item.precio_propiedad <= 3000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos))
                     if (i.length === 0) {
                         Swal.fire({
@@ -397,9 +397,9 @@ const TarjetaCasa = () => {
                             confirmButtonText: `Aceptar`,
                         })
                     }
-                }else if(parseInt(datosF.tipo_precio) === 3){
-                    setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 1000000  && item.precio_propiedad <= 2000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos)))
-                
+                } else if (parseInt(datosF.tipo_precio) === 3) {
+                    setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 1000000 && item.precio_propiedad <= 2000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos)))
+
                     const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad >= 1000000 && item.precio_propiedad <= 2000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos))
                     if (i.length === 0) {
                         Swal.fire({
@@ -412,9 +412,9 @@ const TarjetaCasa = () => {
                             confirmButtonText: `Aceptar`,
                         })
                     }
-                }else if(parseInt(datosF.tipo_precio) === 4){
+                } else if (parseInt(datosF.tipo_precio) === 4) {
                     setResult(data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad < 1000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos)))
-                
+
                     const i = data.filter(item => item.id_tipo_inmueble === parseInt(datosF.tipo_inmueble) && item.id_tipo_oferta === parseInt(datosF.tipo_oferta) && item.precio_propiedad < 1000000 && item.cantidad_recamaras_propiedad === parseInt(datosF.cant_habitaciones) && item.cantidad_bano_propiedad === parseInt(datosF.cant_banos))
                     if (i.length === 0) {
                         Swal.fire({
@@ -428,7 +428,7 @@ const TarjetaCasa = () => {
                         })
                     }
                 }
-                }
+            }
 
         }
 
@@ -447,11 +447,9 @@ const TarjetaCasa = () => {
 
         <Fragment>
 
-
-
             <div className="contenedor-filtros-titulo">
                 <h1>¡Estás listo!</h1>
-                <p>Te ayudamos a simplificar tu busqueda</p>
+                <p>Te ayudamos a simplificar tu búsqueda</p>
             </div>
 
             <div className="contenedor-principal-menu-filtros">

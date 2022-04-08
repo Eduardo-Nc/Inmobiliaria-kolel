@@ -14,6 +14,9 @@ const MenuIzquierdoDesc = () => {
                     <li  ><NavLink activeClassName="activo" to="/propiedades"> Propiedades</NavLink></li>
                     <li  ><NavLink activeClassName="activo" to="/datos-colaboradores"> Colaboradores</NavLink></li>
                     <li  ><NavLink activeClassName="activo" to="/desarrollos"> Desarrollos</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/info-lotes"> Lotes</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/add-blogs"> Blog</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/dashboard-inventario"> Inventario</NavLink></li>
                 </ul>
             </div>
         </Fragment>

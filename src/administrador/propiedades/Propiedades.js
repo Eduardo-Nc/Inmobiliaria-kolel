@@ -2,6 +2,8 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import './Propiedades.css';
 
+import Pdf from '../../imagenes/pdf.png';
+
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import * as ReactBootstrap from 'react-bootstrap';
@@ -15,11 +17,19 @@ import MenuIzquierdo from '../menu/MenuIzquierdo';
 import MenuIzquierdoDesc from '../menuEscritorio/MenuIzquierdoDesc';
 import Cookies from 'universal-cookie';
 
+import ReactExport from "react-export-excel";
+
+
 
 import Swal from 'sweetalert2';
 
 
 const Propiedades = () => {
+
+
+    const ExcelFile = ReactExport.ExcelFile;
+    const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+    const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
     const baseUrl = window.$baseUrl;
     const nubeUrl = window.$nubeUrl;
@@ -32,6 +42,8 @@ const Propiedades = () => {
     const [cargando, setCargando] = useState(false);
     const [menu, setMenu] = useState(true);
 
+
+    // console.log(data)
 
     const [enviado, setEnviado] = useState(true);
 
@@ -69,8 +81,28 @@ const Propiedades = () => {
     }
 
     const [propiedadSeleccionado, setPropiedadSeleccionado] = useState({});
+    const [folleto, setFolleto] = useState([]);
+    const [fotos, setFotos] = useState([]);
 
-    const seleccionarPropiedad = (propiedad) => {
+    const seleccionarPropiedad = async (propiedad) => {
+
+
+        await axios.get(baseUrl + "/api/imagenes/propiedades/" + propiedad.caratula_propiedad)
+            .then(response => {
+
+                setFotos(response.data);
+            }).catch(error => {
+                console.log(error);
+            })
+
+        await axios.get(baseUrl + "/api/obtener/folleto/" + propiedad.caratula_propiedad)
+            .then(response => {
+                setFolleto(response.data);
+                // console.log(response.data)
+            }).catch(error => {
+                console.log(error);
+            })
+
         setPropiedadSeleccionado(propiedad);
         modalEditar();
     }
@@ -144,6 +176,8 @@ const Propiedades = () => {
     const modalInsertar = () => {
         setAbrirModalInsertar(!abrirModalInsertar);
         setPropiedadSeleccionado({});
+        setFile([])
+        CaratulaImg({ caratula: null, folleto: null })
     };
 
     const handleChange = e => {
@@ -155,28 +189,82 @@ const Propiedades = () => {
 
     }
 
-    const [file, setFile] = useState(null)
+    const [file, setFile] = useState([])
 
     const selectedHandler = e => {
-        setFile(e.target.files)
+        if (e.target.files.length !== 0) {
+
+            let galeria = file.length > 0 ? file : [];
+
+            for (let i = 0; i < e.target.files.length; i++) {
+                galeria.push(e.target.files[i]);
+            }
+
+            setFile({
+                ...file,
+                galeria
+            });
+        }
 
     }
 
 
+    const [caratulaImg, CaratulaImg] = useState({ caratula: null, folleto: null })
 
+    const selectedFile = e => {
+
+        if (e.target.files.length !== 0) {
+
+            if (e.target.name === "caratula") {
+
+                let nombre = e.target.files[0].name.split('.')[0];
+
+                if (nombre.toLowerCase() !== "caratula") {
+                    Swal.fire({
+                        title: '¡Advertencia!',
+                        html: `<p style="color:white;">Para cargar la imagen es necesario renombrar el archivo a: <strong>"caratula"</strong>, actualmente tiene el nombre de: <strong>"${nombre}"</strong></p>`,
+                        background: '#353535',
+                        icon: 'warning',
+                        confirmButtonText: `Aceptar`,
+                    })
+                    return
+                } else {
+                    CaratulaImg({
+                        ...caratulaImg,
+                        caratula: e.target.files[0]
+                    })
+                }
+            } else {
+                CaratulaImg({
+                    ...caratulaImg,
+                    folleto: e.target.files[0]
+                })
+            }
+
+
+        }
+    }
 
     const peticionPost = () => {
 
-
-        if (!file) {
+        if (caratulaImg.caratula === null) {
             Swal.fire({
-                title: '¡Agrega las imagenes a la propiedad!',
+                title: '¡Agrega una imagen de caratula a la propiedad!',
                 background: '#353535',
                 icon: 'warning',
                 confirmButtonText: `Aceptar`,
             })
             return
-        } else if (!propiedadSeleccionado.nombre_propiedad) {
+        } else if (caratulaImg.folleto === null) {
+            Swal.fire({
+                title: '¡Agrega un folleto a la propiedad!',
+                background: '#353535',
+                icon: 'warning',
+                confirmButtonText: `Aceptar`,
+            })
+            return
+        }
+        else if (!propiedadSeleccionado.nombre_propiedad) {
             Swal.fire({
                 title: '¡Agrega un nombre a la propiedad!',
                 background: '#353535',
@@ -306,9 +394,14 @@ const Propiedades = () => {
 
 
 
-        for (let i = 0; i < file.length; i++) {
-            formdata.append('caratula_propiedad', file[i]);
+        if (file.galeria) {
+            for (let i = 0; i < file.galeria.length; i++) {
+                formdata.append('galeria_propiedad', file.galeria[i]);
+            }
         }
+
+        formdata.append('galeria_propiedad', caratulaImg.caratula);
+        formdata.append('galeria_propiedad', caratulaImg.folleto);
 
         formdata.append('nombre_propiedad', propiedadSeleccionado.nombre_propiedad);
         formdata.append('precio_propiedad', propiedadSeleccionado.precio_propiedad);
@@ -326,14 +419,15 @@ const Propiedades = () => {
         formdata.append('id_tipo_pago', propiedadSeleccionado.id_tipo_pago);
         formdata.append('mapa_propiedad', propiedadSeleccionado.mapa_propiedad);
 
+
+        console.log(formdata)
+
         setEnviado(false)
 
         axios.post(baseUrl + '/api/propiedades', formdata, {
 
 
         }).then(response => {
-
-
 
             setTimeout(() => {
                 Swal.fire({
@@ -344,6 +438,7 @@ const Propiedades = () => {
                     showConfirmButton: true,
                     confirmButtonText: 'Aceptar',
                 }).then((result) => {
+                    setEnviado(true);
                     if (result.isConfirmed) {
                         peticionGet()
                     }
@@ -363,6 +458,8 @@ const Propiedades = () => {
 
     }
 
+    // console.log(file)
+
     const peticionPut = async () => {
 
         setEnviado(true)
@@ -373,14 +470,34 @@ const Propiedades = () => {
 
 
 
-        if (!file) {
-            formdata.append('caratula_propiedad', !file ? propiedadSeleccionado.caratula_propiedad : file);
-        } else {
-            for (let i = 0; i < file.length; i++) {
-                formdata.append('caratula_propiedad', !file ? propiedadSeleccionado.caratula_propiedad : file[i]);
+        // if (!file) {
+        //     formdata.append('caratula_propiedad', !file ? propiedadSeleccionado.caratula_propiedad : file);
+        // } else {
+        //     for (let i = 0; i < file.length; i++) {
+        //         formdata.append('caratula_propiedad', !file ? propiedadSeleccionado.caratula_propiedad : file[i]);
+        //     }
+        // }
+
+        if (file.galeria) {
+            for (let i = 0; i < file.galeria.length; i++) {
+                formdata.append('galeria_propiedad', file.galeria[i]);
             }
+        } else {
+
         }
 
+        if (caratulaImg.caratula) {
+            formdata.append('galeria_propiedad', caratulaImg.caratula);
+
+        } else {
+            formdata.append('caratula_propiedad', propiedadSeleccionado.caratula_propiedad);
+        }
+
+        if (caratulaImg.folleto) {
+            formdata.append('galeria_propiedad', caratulaImg.folleto);
+        } else {
+
+        }
 
         formdata.append('nombre_propiedad', propiedadSeleccionado.nombre_propiedad);
         formdata.append('precio_propiedad', propiedadSeleccionado.precio_propiedad);
@@ -429,6 +546,7 @@ const Propiedades = () => {
         })
 
             .catch(error => {
+                setEnviado(true)
                 console.log(error);
             });
 
@@ -443,6 +561,14 @@ const Propiedades = () => {
         setAbrirModalEditar(!abrirModalEditar);
         setCambiarImagen(false);
 
+
+        if (abrirModalEditar === true) {
+            setFile([])
+            setFolleto([])
+            CaratulaImg({ caratula: null, folleto: null })
+            setFolleto([])
+            setFotos([])
+        }
     }
 
 
@@ -490,12 +616,6 @@ const Propiedades = () => {
         setCambiarImagen(!cambiarImagen);
     }
 
-
-
-
-
-
-
     return (
         <Fragment>
             {!cookies.get('correo_usuario') && <Redirect to="/iniciar-sesion" />}
@@ -521,6 +641,23 @@ const Propiedades = () => {
                                     <button type="button" onClick={modalInsertar} className="btn btn-primary"><i className="fas fa-plus"></i> Agregar</button>
 
                                 </div>
+
+                                <ExcelFile element={<button className="btn-generar-excel"> <i className="fas fa-download"></i> Excel</button>}>
+                                    <ExcelSheet data={data} name="Propiedades">
+                                        <ExcelColumn label="#" value="identificador_propiedad" />
+                                        <ExcelColumn label="Nombre" value="nombre_propiedad" />
+                                        <ExcelColumn label="Precio" value="precio_propiedad" />
+                                        <ExcelColumn label="Locación" value="ciudad_estado_pais_propiedad" />
+                                        <ExcelColumn label="Tipo" value="nombre_tipo_inmueble" />
+                                        <ExcelColumn label="Forma pago" value="nombre_tipo_pago" />
+                                        <ExcelColumn label="Referencias" value="referencias_propiedad" />
+
+                                        {/* <ExcelColumn label="Marital Status"
+                                        value={(col) => col.is_married ? "Married" : "Single"} /> */}
+                                    </ExcelSheet>
+
+                                </ExcelFile>
+
                                 <BootstrapTable hover={true} className="tabla"
                                     keyField="id_propiedad"
                                     data={data}
@@ -529,11 +666,11 @@ const Propiedades = () => {
                                     pagination={paginationFactory({
 
                                         sizePerPageList: [{
-                                            text: '4', value: 4
-                                        }, {
-                                            text: '8', value: 8
-                                        }, {
                                             text: '15', value: 15
+                                        }, {
+                                            text: '30', value: 30
+                                        }, {
+                                            text: '50', value: 50
                                         }, {
                                             text: 'Todos', value: data.length
                                         }
@@ -558,72 +695,146 @@ const Propiedades = () => {
 
             </div>
 
-            <Modal show={abrirModalInsertar} onHide={modalInsertar}>
+            <Modal show={abrirModalInsertar} size="lg" onHide={modalInsertar}>
                 <Modal.Header closeButton>
 
                     <div className="titulo-modal">
-                        <p>Agregar propiedad</p>
+                        <p>Nueva Propiedad</p>
                     </div>
 
                 </Modal.Header>
 
                 <Modal.Body>
-                    <form className="form-modal" encType="multipart/form-data" >
+                    <form className="form-modal" encType="multipart/form-data" style={{ overflow: 'hidden' }} >
 
-                        <label>Imagenes</label>
-                        <div style={{padding:'1px'}} className="alert alert-info" role="alert">
-                           <strong>Nota:</strong> Debe elegir 8 archivos en total y renombrar obligatoriamente a una imagen con el nombre: <strong>1</strong> o bien como: <strong>caratula</strong>  y elegir un archivo <strong>PDF.</strong> <a target="_blank" href="https://res.cloudinary.com/hpk4vuwdm/image/upload/v1619626130/ejemplo2_k5lj90.jpg">Ver ejemplo</a>
-                        </div>      
-                        <input onChange={selectedHandler} name="caratula_propiedad" multiple type="file" accept="application/pdf, image/*" />
+                        <label>Caratula / Folleto</label>
+
+                        <div className="cont-caratula-folleto">
+                            <label style={{ marginLeft: '3px', marginRight: '3px', width: '180px', height: '180px', backgroundColor: '#d7d7d7' }} className="filelabel">
+                                {
+                                    caratulaImg.caratula ? <img src={URL.createObjectURL(caratulaImg.caratula)} style={{ width: '100%', height: '100%', objectFit: "cover" }} alt="Caratula" />
+                                        :
+                                        <Fragment >
+                                            <div style={{ display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+                                                <i className="far fa-file-image" >
+                                                </i>
+                                                <span className="title">
+                                                    Caratula
+                                                </span>
+                                            </div>
+
+                                        </Fragment>
+                                }
+                                <input className="FileUpload1" onChange={selectedFile} name="caratula" type="file" accept="image/jpeg, image/png" />
+                            </label>
+                            <label style={{ marginLeft: '3px', marginRight: '3px', width: '180px', height: '180px', backgroundColor: '#d7d7d7' }} className="filelabel">
+                                {
+                                    caratulaImg.folleto ? <img src={Pdf} style={{ width: '100%', height: '100%', objectFit: "cover" }} alt="Folleto" />
+                                        :
+                                        <Fragment >
+                                            <div style={{ display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+                                                <i className="far fa-file-pdf" >
+                                                </i>
+                                                <span className="title">
+                                                    Folleto
+                                                </span>
+                                            </div>
+
+                                        </Fragment>
+                                }
+                                <input className="FileUpload1" onChange={selectedFile} name="folleto" type="file" accept="application/pdf" />
+                            </label>
+                        </div>
+
+
+
+                        <label style={{ marginTop: '20px' }}>Galeria</label>
+                        <div style={{ padding: '1px', marginBottom: '10px' }}>
+                            <strong>Nota:</strong> Debe elegir 6 archivos (como máximo recomendado)
+                        </div>
+                        <input onChange={selectedHandler} name="caratula_propiedad" multiple type="file" accept="image/*" />
+
+
+                        {
+                            file.galeria && file.galeria.length > 0 &&
+                            <div className="alert alert-secondary docs-archivos-prop" role="alert">
+                                {file.galeria.map(item =>
+                                    <div key={item}>
+                                        <img src={URL.createObjectURL(item)} />
+                                    </div>
+                                )}
+                            </div>
+                        }
+
 
                         <label>Nombre propiedad</label>
                         <input type="text" autoComplete="off" name="nombre_propiedad" onChange={handleChange} placeholder="Propiedad exclusiva en..." required ></input>
 
-                        <label>Precio</label>
-                        <input type="text" autoComplete="off" name="precio_propiedad" onChange={handleChange} placeholder="1230000" required ></input>
+                        <div className="div-varios-seccion">
+                            <div>
+                                <label>Precio</label>
+                                <input type="text" autoComplete="off" name="precio_propiedad" onChange={handleChange} placeholder="1230000" required ></input>
+                            </div>
+                            <div>
+                                <label>Ciudad, Estado, País</label>
+                                <input type="text" name="ciudad_estado_pais_propiedad" onChange={handleChange} placeholder="Mérida, Yucatán, México" required ></input>
+                            </div>
 
-                        <label>Ciudad, Estado, País</label>
-                        <input type="text" name="ciudad_estado_pais_propiedad" onChange={handleChange} placeholder="Mérida, Yucatán, México" required ></input>
+                            <div>
+                                <label>Tipo de oferta</label>
+                                <select onChange={handleChange} required name="id_tipo_oferta">
+                                    <option value="" defaultValue>Seleccione una opción</option>
+                                    {tipoOferta.map(items =>
+                                        <option key={items.id_tipo_oferta} value={items.id_tipo_oferta}>{items.nombre_tipo_oferta}</option>
+                                    )}
+                                </select>
+                            </div>
+                        </div>
 
-                        <label>Tipo de oferta</label>
-                        <select onChange={handleChange} required name="id_tipo_oferta">
-                            <option value="" defaultValue>Seleccione una opción</option>
-                            {tipoOferta.map(items =>
-                                <option key={items.id_tipo_oferta} value={items.id_tipo_oferta}>{items.nombre_tipo_oferta}</option>
-                            )}
-                        </select>
+                        <div className="div-varios-seccion">
+                            <div>
+                                <label>Tipo de inmueble</label>
+                                <select onChange={handleChange} required name="id_tipo_inmueble">
+                                    <option value="" defaultValue>Seleccione una opción</option>
+                                    {tipoInmueble.map(items =>
+                                        <option key={items.id_tipo_inmueble} value={items.id_tipo_inmueble}>{items.nombre_tipo_inmueble}</option>
+                                    )}
+                                </select>
+                            </div>
+                            <div>
+                                <label>Tamaño propiedad</label>
+                                <input type="text" autoComplete="off" name="construccion_propiedad" onChange={handleChange} placeholder="50 x 20" required ></input>
+                            </div>
+                            <div>
+                                <label>Tamaño terreno</label>
+                                <input type="text" autoComplete="off" name="terreno_propiedad" onChange={handleChange} placeholder="60 x 25" required ></input>
+                            </div>
+                        </div>
 
-                        <label>Tipo de inmueble</label>
-                        <select onChange={handleChange} required name="id_tipo_inmueble">
-                            <option value="" defaultValue>Seleccione una opción</option>
-                            {tipoInmueble.map(items =>
-                                <option key={items.id_tipo_inmueble} value={items.id_tipo_inmueble}>{items.nombre_tipo_inmueble}</option>
-                            )}
-                        </select>
+                        <div className="div-varios-seccion">
+                            <div>
+                                <label>Cantidad recámara(s)</label>
+                                <input type="text" autoComplete="off" name="cantidad_recamaras_propiedad" onChange={handleChange} placeholder="2" ></input>
+                            </div>
+                            <div>
+                                <label>Cantidad baño(s)</label>
+                                <input type="text" autoComplete="off" name="cantidad_bano_propiedad" onChange={handleChange} placeholder="3" required ></input>
+                            </div>
+                            <div>
 
-                        <label>Tamaño propiedad</label>
-                        <input type="text" autoComplete="off" name="construccion_propiedad" onChange={handleChange} placeholder="50 x 20" required ></input>
-
-                        <label>Tamaño terreno</label>
-                        <input type="text" autoComplete="off" name="terreno_propiedad" onChange={handleChange} placeholder="60 x 25" required ></input>
-
-                        <label>Cantidad recámara(s)</label>
-                        <input type="text" autoComplete="off" name="cantidad_recamaras_propiedad" onChange={handleChange} placeholder="2" ></input>
-
-                        <label>Cantidad baño(s)</label>
-                        <input type="text" autoComplete="off" name="cantidad_bano_propiedad" onChange={handleChange} placeholder="3" required ></input>
-
-                        <label>Cantidad garaje</label>
-                        <input type="text" autoComplete="off" name="cantidad_garaje_propiedad" onChange={handleChange} placeholder="1" required ></input>
+                                <label>Cantidad garaje</label>
+                                <input type="text" autoComplete="off" name="cantidad_garaje_propiedad" onChange={handleChange} placeholder="1" required ></input>
+                            </div>
+                        </div>
 
                         <label>Colonia</label>
                         <input type="text" autoComplete="off" name="colonia_propiedad" onChange={handleChange} placeholder="Las américas" required ></input>
 
                         <label>Referencias</label>
-                        <input type="text" autoComplete="off" name="referencias_propiedad" onChange={handleChange} placeholder="A 100 metros de..." required ></input>
+                        <textarea autoComplete="off" name="referencias_propiedad" onChange={handleChange} placeholder="A 100 metros de..." required rows="4" ></textarea>
 
                         <label>Descripcion de propiedad</label>
-                        <input type="text" autoComplete="off" name="descripcion_propiedad" onChange={handleChange} placeholder="La propiedad cuenta con x baños..." required ></input>
+                        <textarea autoComplete="off" name="descripcion_propiedad" onChange={handleChange} placeholder="La propiedad cuenta con x baños..." required rows="4" ></textarea>
 
                         <label>Opciones de pago</label>
                         <select onChange={handleChange} required name="id_tipo_pago">
@@ -634,7 +845,7 @@ const Propiedades = () => {
                         </select>
 
                         <label>Mapa propiedad</label>
-                        <input type="text" autoComplete="off" name="mapa_propiedad" onChange={handleChange} placeholder="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.1107081372984!2d-89.57675355061079!3d20.988198894471555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5670cf18011f9f%3A0xc501d23123471d2f!2sCITRA%20S.A.%20DE%20C.V.!5e0!3m2!1ses-419!2smx!4v1614376632493!5m2!1ses-419!2smx" required ></input>
+                        <textarea autoComplete="off" name="mapa_propiedad" onChange={handleChange} placeholder="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.1107081372984!2d-89.57675355061079!3d20.988198894471555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5670cf18011f9f%3A0xc501d23123471d2f!2sCITRA%20S.A.%20DE%20C.V.!5e0!3m2!1ses-419!2smx!4v1614376632493!5m2!1ses-419!2smx" required rows="4" ></textarea>
 
                     </form>
                 </Modal.Body>
@@ -646,27 +857,102 @@ const Propiedades = () => {
                     {enviado ?
                         <Button variant="primary" onClick={() => peticionPost()}>
                             Guardar
-                    </Button> :
+                        </Button>
+                        :
                         <div className="spinner"></div>
                     }
                 </Modal.Footer>
             </Modal>
 
+            {/* {console.log(propiedadSeleccionado)} */}
 
-            <Modal show={abrirModalEditar} onHide={modalEditar}>
+            <Modal show={abrirModalEditar} size="lg" onHide={modalEditar}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Editar Propiedad</Modal.Title>
+                    {/* <Modal.Title>Editar Propiedad</Modal.Title> */}
+                    <div className="titulo-modal">
+                        <p>Editar Propiedad</p>
+                    </div>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <form className="form-modal" encType="multipart/form-data" >
-
+                    <form className="form-modal" encType="multipart/form-data" style={{ overflow: 'hidden' }}>
+                        {/* 
                         <label>Imagenes</label>
 
                         {cambiarImagen ?
                             <input onChange={selectedHandler} name="caratula_propiedad" multiple type="file" />
                             :
                             <img alt="img propiedad" title="Clic para actualizar las imagenes" width="250px" onClick={() => cambiarCaratula()} src={nubeUrl + propiedadSeleccionado.caratula_propiedad + ".jpg"} />
+                        } */}
+
+                        <label>Caratula / Folleto</label>
+
+                        <div className="cont-caratula-folleto">
+                            <label style={{ marginLeft: '3px', marginRight: '3px', width: '180px', height: '180px', backgroundColor: '#d7d7d7' }} className="filelabel">
+                                {
+                                    caratulaImg.caratula || propiedadSeleccionado ? <img src={caratulaImg.caratula ? URL.createObjectURL(caratulaImg.caratula) : nubeUrl + propiedadSeleccionado.caratula_propiedad + ".jpg"} style={{ width: '100%', height: '100%', objectFit: "cover" }} alt="Caratula" />
+                                        :
+                                        <Fragment >
+                                            <div style={{ display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+                                                <i className="far fa-file-image" >
+                                                </i>
+                                                <span className="title">
+                                                    Caratula
+                                                </span>
+                                            </div>
+
+                                        </Fragment>
+                                }
+                                <input className="FileUpload1" onChange={selectedFile} name="caratula" type="file" accept="image/jpeg, image/png" />
+                            </label>
+                            <label style={{ marginLeft: '3px', marginRight: '3px', width: '180px', height: '180px', backgroundColor: '#d7d7d7' }} className="filelabel">
+                                {
+                                    caratulaImg.folleto !== null || folleto.identificador_imagen_propiedad !== undefined ? <img src={Pdf} style={{ width: '100%', height: '100%', objectFit: "cover" }} alt="Folleto" />
+                                        :
+                                        <Fragment >
+                                            <div style={{ display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+                                                <i className="far fa-file-pdf" >
+                                                </i>
+                                                <span className="title">
+                                                    Folleto
+                                                </span>
+                                            </div>
+
+                                        </Fragment>
+                                }
+                                <input className="FileUpload1" onChange={selectedFile} name="folleto" type="file" accept="application/pdf" />
+                            </label>
+                        </div>
+
+                        {/* {console.log(folleto.identificador_imagen_propiedad)}
+                        {console.log(caratulaImg.folleto)} */}
+
+
+                        <label style={{ marginTop: '20px' }}>Galeria</label>
+                        <div style={{ padding: '1px', marginBottom: '10px' }}>
+                            <strong>Nota:</strong> Debe elegir 6 archivos (como máximo recomendado)
+                        </div>
+                        <input onChange={selectedHandler} name="caratula_propiedad" multiple type="file" accept="image/*" />
+
+
+                        {
+                            file.galeria && file.galeria.length > 0 ?
+                                <div className="alert alert-secondary docs-archivos-prop" role="alert">
+                                    {file.galeria.map(item =>
+                                        <div key={item}>
+                                            <img src={URL.createObjectURL(item)} />
+                                        </div>
+                                    )}
+                                </div>
+                                : fotos && fotos.length > 0 ?
+                                    <div className="alert alert-secondary docs-archivos-prop" role="alert">
+                                        {fotos.map(item =>
+                                            <div key={item}>
+                                                <img src={nubeUrl + item.nombre_imagen + ".jpg"} />
+                                            </div>
+                                        )}
+                                    </div>
+                                    : <div></div>
                         }
 
                         <label>Identificador propiedad</label>
@@ -675,51 +961,86 @@ const Propiedades = () => {
                         <label>Nombre propiedad</label>
                         <input type="text" name="nombre_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.nombre_propiedad} placeholder="Propiedad exclusiva en..." required ></input>
 
-                        <label>Precio</label>
-                        <input type="text" name="precio_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.precio_propiedad} placeholder="1230000" required ></input>
+                        <div className="div-varios-seccion">
+                            <div>
+                                <label>Precio</label>
+                                <input type="text" name="precio_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.precio_propiedad} placeholder="1230000" required ></input>
 
-                        <label>Ciudad, Estado, País</label>
-                        <input type="text" name="ciudad_estado_pais_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.ciudad_estado_pais_propiedad} placeholder="Mérida, Yucatán, México" required ></input>
 
-                        <label>Tipo de oferta</label>
-                        <select onChange={handleChange} required name="id_tipo_oferta" value={propiedadSeleccionado && propiedadSeleccionado.id_tipo_oferta}>
-                            <option value="" defaultValue>Seleccione una opción</option>
-                            {tipoOferta.map(items =>
-                                <option key={items.id_tipo_oferta} value={items.id_tipo_oferta}>{items.nombre_tipo_oferta}</option>
-                            )}
-                        </select>
+                            </div>
+                            <div>
+                                <label>Ciudad, Estado, País</label>
+                                <input type="text" name="ciudad_estado_pais_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.ciudad_estado_pais_propiedad} placeholder="Mérida, Yucatán, México" required ></input>
 
-                        <label>Tipo de inmueble</label>
-                        <select onChange={handleChange} required name="id_tipo_inmueble" value={propiedadSeleccionado && propiedadSeleccionado.id_tipo_inmueble}>
-                            <option value="" defaultValue>Seleccione una opción</option>
-                            {tipoInmueble.map(items =>
-                                <option key={items.id_tipo_inmueble} value={items.id_tipo_inmueble}>{items.nombre_tipo_inmueble}</option>
-                            )}
-                        </select>
 
-                        <label>Tamaño propiedad</label>
-                        <input type="text" name="construccion_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.construccion_propiedad} placeholder="50 x 20" required ></input>
+                            </div>
+                            <div>
+                                <label>Tipo de oferta</label>
+                                <select onChange={handleChange} required name="id_tipo_oferta" value={propiedadSeleccionado && propiedadSeleccionado.id_tipo_oferta}>
+                                    <option value="" defaultValue>Seleccione una opción</option>
+                                    {tipoOferta.map(items =>
+                                        <option key={items.id_tipo_oferta} value={items.id_tipo_oferta}>{items.nombre_tipo_oferta}</option>
+                                    )}
+                                </select>
+                            </div>
+                        </div>
 
-                        <label>Tamaño terreno</label>
-                        <input type="text" name="terreno_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.terreno_propiedad} placeholder="60 x 25" required ></input>
+                        <div className="div-varios-seccion">
+                            <div>
+                                <label>Tipo de inmueble</label>
+                                <select onChange={handleChange} required name="id_tipo_inmueble" value={propiedadSeleccionado && propiedadSeleccionado.id_tipo_inmueble}>
+                                    <option value="" defaultValue>Seleccione una opción</option>
+                                    {tipoInmueble.map(items =>
+                                        <option key={items.id_tipo_inmueble} value={items.id_tipo_inmueble}>{items.nombre_tipo_inmueble}</option>
+                                    )}
+                                </select>
 
-                        <label>Cantidad recámara(s)</label>
-                        <input type="text" name="cantidad_recamaras_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.cantidad_recamaras_propiedad} placeholder="2" ></input>
 
-                        <label>Cantidad baño(s)</label>
-                        <input type="text" name="cantidad_bano_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.cantidad_bano_propiedad} placeholder="3" required ></input>
+                            </div>
+                            <div>
+                                <label>Tamaño propiedad</label>
+                                <input type="text" name="construccion_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.construccion_propiedad} placeholder="50 x 20" required ></input>
 
-                        <label>Cantidad garaje</label>
-                        <input type="text" name="cantidad_garaje_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.cantidad_garaje_propiedad} placeholder="1" required ></input>
+
+                            </div>
+                            <div>
+                                <label>Tamaño terreno</label>
+                                <input type="text" name="terreno_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.terreno_propiedad} placeholder="60 x 25" required ></input>
+                            </div>
+                        </div>
+
+                        <div className="div-varios-seccion">
+                            <div>
+
+                                <label>Cantidad recámara(s)</label>
+                                <input type="text" name="cantidad_recamaras_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.cantidad_recamaras_propiedad} placeholder="2" ></input>
+
+
+                            </div>
+                            <div>
+                                <label>Cantidad baño(s)</label>
+                                <input type="text" name="cantidad_bano_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.cantidad_bano_propiedad} placeholder="3" required ></input>
+
+
+                            </div>
+                            <div>
+                                <label>Cantidad garaje</label>
+                                <input type="text" name="cantidad_garaje_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.cantidad_garaje_propiedad} placeholder="1" required ></input>
+
+                            </div>
+                        </div>
+
 
                         <label>Colonia</label>
                         <input type="text" name="colonia_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.colonia_propiedad} placeholder="Las américas" required ></input>
 
                         <label>Referencias</label>
-                        <input type="text" name="referencias_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.referencias_propiedad} placeholder="A 100 metros de..." required ></input>
+                        <textarea autoComplete="off" name="referencias_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.referencias_propiedad} placeholder="A 100 metros de..." required rows="4" ></textarea>
+                        {/* <input type="text" name="" onChange={handleChange}  placeholder="" required ></input> */}
 
                         <label>Descripcion de propiedad</label>
-                        <input type="text" name="descripcion_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.descripcion_propiedad} placeholder="La propiedad cuenta con x baños..." required ></input>
+                        <textarea autoComplete="off" name="descripcion_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.descripcion_propiedad} placeholder="La propiedad cuenta con x baños..." required rows="4" ></textarea>
+                        {/* <input type="text" name="descripcion_propiedad" onChange={handleChange}  placeholder="La propiedad cuenta con x baños..." required ></input> */}
 
                         <label>Opciones de pago</label>
                         <select onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.id_tipo_pago} required name="id_tipo_pago">
@@ -730,7 +1051,8 @@ const Propiedades = () => {
                         </select>
 
                         <label>Mapa propiedad</label>
-                        <input type="text" name="mapa_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.mapa_propiedad} placeholder="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.1107081372984!2d-89.57675355061079!3d20.988198894471555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5670cf18011f9f%3A0xc501d23123471d2f!2sCITRA%20S.A.%20DE%20C.V.!5e0!3m2!1ses-419!2smx!4v1614376632493!5m2!1ses-419!2smx" required ></input>
+                        <textarea autoComplete="off" name="mapa_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.mapa_propiedad} placeholder="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.1107081372984!2d-89.57675355061079!3d20.988198894471555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5670cf18011f9f%3A0xc501d23123471d2f!2sCITRA%20S.A.%20DE%20C.V.!5e0!3m2!1ses-419!2smx!4v1614376632493!5m2!1ses-419!2smx" required rows="4" ></textarea>
+                        {/* <input type="text" name="" onChange={handleChange}  placeholder="" required ></input> */}
 
                     </form>
                 </Modal.Body>
@@ -738,11 +1060,11 @@ const Propiedades = () => {
                 <Modal.Footer>
                     <Button variant="secondary" onClick={modalEditar}>
                         Cerrar
-                         </Button>
+                    </Button>
                     {enviado ?
                         <Button variant="primary" onClick={() => peticionPut()}>
                             Guardar
-                    </Button> :
+                        </Button> :
                         <div className="spinner"></div>
                     }
                 </Modal.Footer>

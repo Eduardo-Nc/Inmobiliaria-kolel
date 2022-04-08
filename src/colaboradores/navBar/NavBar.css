@@ -127,8 +127,37 @@ a{
     color:white;
 }
 
+.contenido-nav-boton-cerrar-movil{
+    display:none;
+}
+
+.color-ul-menu-movil > a{
+    color:white;
+    font-size:20px !important;
+}
+
+.color-ul-menu-movil a > li{
+    color:white;
+    font-size:21px;
+}
+
+.estilo-menu-cola{
+    margin-top:-280px;
+    height: 270px !important;
+    z-index: 100;
+}
 
 @media (max-width:700px) {
+
+    
+
+    .contenido-nav-boton-cerrar-movil{
+        display:flex;
+    }
+
+    .contenido-nav-boton-cerrar{
+        display:none;
+    }
 
     .contenido-nav-logo-item nav{
         display: none;
@@ -167,6 +196,13 @@ a{
 @media (max-width:600px){
     .cont-footer-info{
        height: 87px;
+    }
+}
+
+@media (max-width:460px){
+    .estilo-menu-cola{
+        width: 300px !important;
+        margin-left: -220px !important;
     }
 }
 

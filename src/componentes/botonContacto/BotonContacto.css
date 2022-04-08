@@ -1,79 +1,84 @@
-.contenedor-botton-contacto-movil{
-    display:none;
+.contenedor-botton-contacto-movil {
+  display: none;
 }
 
-.contenedor-botton-contacto{
-    width: 100%;
-    display:flex;
+.contenedor-botton-contacto {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.contenedor-botton-contacto-movil a {
+  text-decoration: none;
+}
+
+@media (max-width: 2000px) {
+  .contenedor-botton-contacto {
+    display: none;
+  }
+
+  .contenedor-botton-contacto-movil {
+    display: flex;
+  }
+
+  .contenedor-botton-contacto-movil {
+    width: 10%;
+    display: flex;
     justify-content: flex-end;
     align-items: center;
     position: fixed;
-    bottom: 0;
+    bottom: 45%;
+    right: 0;
+  }
+
+  .forma-botton-contacto-movil {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    /* background: #032446; */
+    background: #21c25c;
+    height: 60px;
+    width: 60px;
+    font-size: 16.5px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .forma-botton-contacto-movil:hover {
+    /* background: #052f59; */
+    background: #26d767;
+    cursor: pointer;
+  }
+
+  .botton-contactanos-movil {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .botton-contactanos-movil i {
+    color: white;
+    font-size: 36px;
+  }
 }
 
-.contenedor-botton-contacto-movil a{
-    text-decoration:none;
+@media (max-width: 600px) {
+  .contenedor-botton-contacto-movil {
+    bottom: 2%;
+  }
 }
 
-@media(max-width:2000px){
-    .contenedor-botton-contacto{
-        display:none;
-    }
-
-    .contenedor-botton-contacto-movil{
-        display: flex;
-    }
-
-    .contenedor-botton-contacto-movil{
-        width: 10%;
-        display:flex;
-        justify-content: flex-end;
-        align-items: center;
-        position: fixed;
-        bottom: 20px;
-        right: 0;
-    }
-    
-    .forma-botton-contacto-movil {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content:center;
-        align-items: center;
-        margin-right: 35px;
-        background:#000000;
-        height: 60px;
-        width: 60px;
-        font-size: 16.5px;
-        border-radius: 50%;
-        overflow: hidden;
-    }
-    
-    .forma-botton-contacto-movil:hover {
-        background:#161515ee;
-        cursor: pointer;
-    }
-    
-    .botton-contactanos-movil{
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content:center;
-        align-items: center;
-        width: 100%;
-        overflow: hidden;
-    }
-    
-    .botton-contactanos-movil i{
-        color:white;
-        font-size:36px;
-    }
-
-}
-
-@media (max-width:500px){
-    .forma-botton-contacto-movil {
-       
-        height: 70px;
-        width: 70px;
-  
-    }
+@media (max-width: 500px) {
+  .forma-botton-contacto-movil {
+    height: 70px;
+    width: 70px;
+  }
 }

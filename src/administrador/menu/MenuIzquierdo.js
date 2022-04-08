@@ -1,8 +1,8 @@
-import React, { Fragment} from 'react';
-import './MenuIzquierdo.css'; 
-import {NavLink} from 'react-router-dom';
+import React, { Fragment } from 'react';
+import './MenuIzquierdo.css';
+import { NavLink } from 'react-router-dom';
 
-const MenuIzquierdo = ({menu, abrirMenu}) =>{
+const MenuIzquierdo = ({ menu, abrirMenu }) => {
 
     const estilosAbrir = {
         left: '0px',
@@ -15,7 +15,7 @@ const MenuIzquierdo = ({menu, abrirMenu}) =>{
     }
 
 
-    return(
+    return (
         <Fragment>
             <div style={menu ? estilosCerrar : estilosAbrir} className="contenedor-principal-menu-izquierdo">
                 <ul onClick={abrirMenu}>
@@ -24,6 +24,9 @@ const MenuIzquierdo = ({menu, abrirMenu}) =>{
                     <li  ><NavLink activeClassName="activo" to="/propiedades"> Propiedades</NavLink></li>
                     <li  ><NavLink activeClassName="activo" to="/datos-colaboradores"> Colaboradores</NavLink></li>
                     <li  ><NavLink activeClassName="activo" to="/desarrollos"> Desarrollos</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/info-lotes"> Lotes</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/add-blogs"> Blogs</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/dashboard-inventario"> Inventario</NavLink></li>
                 </ul>
             </div>
         </Fragment>

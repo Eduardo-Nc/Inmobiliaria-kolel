@@ -39,7 +39,7 @@ const NavBar = () => {
                 <div className="contenedor-menu-navbar">
 
                     <div className="contenedor-menu-navbar-inicio">
-                        <NavLink onClick={window.scrollTo(0, 0)} to="/inicio" activeClassName="menu-seleccionado-desk" > <h2>Inicio</h2> </NavLink>
+                        <NavLink onClick={window.scrollTo(0, 0)} to={"/inicio"} activeClassName="menu-seleccionado-desk" > <h2>Inicio</h2> </NavLink>
                     </div>
 
                     <div className="contenedor-menu-navbar-nosotros">
@@ -54,6 +54,10 @@ const NavBar = () => {
                         <NavLink to="/contacto" activeClassName="menu-seleccionado-desk" >  <h2>Contacto</h2> </NavLink>
                     </div>
 
+                    <div className="contenedor-menu-navbar-blog">
+                        <NavLink to="/blog" activeClassName="menu-seleccionado-desk" >  <h2>Blog</h2> </NavLink>
+                    </div>
+
                     <div className="contenedor-menu-navbar-contacto">
                         <NavLink to="/colaboradores" activeClassName="menu-seleccionado-desk" >  <h2>Colaboradores</h2> </NavLink>
                     </div>
@@ -64,7 +68,7 @@ const NavBar = () => {
                     </div> */}
 
 
-                    <div style={{marginTop:'-5px'}}>
+                    <div style={{ marginTop: '-5px' }}>
                         <a href="tel:9971210804" title="Contáctanos" ><img alt="Operadora" src={operadora} /></a>
                     </div>
 
@@ -84,6 +88,7 @@ const NavBar = () => {
                         <ul>
                             <li><NavLink to="/inicio" activeClassName="menu-seleccionado" > <h2>Inicio</h2> </NavLink> </li>
                             <li><NavLink to="/nosotros" activeClassName="menu-seleccionado" > <h2>Nosotros</h2> </NavLink> </li>
+                            <li><NavLink to="/blog" activeClassName="menu-seleccionado" > <h2>Blog</h2> </NavLink> </li>
                             <li><NavLink to="/servicios" activeClassName="menu-seleccionado" > <h2>Servicios</h2> </NavLink> </li>
                             <li><NavLink to="/contacto" activeClassName="menu-seleccionado" > <h2>Contacto</h2> </NavLink> </li>
                             {/* <li><NavLink to="/colaboradores" activeClassName="menu-seleccionado" > <h2>Colaboradores</h2> </NavLink> </li> */}

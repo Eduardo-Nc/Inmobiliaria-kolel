@@ -17,25 +17,9 @@ const Registro = () => {
     const [cargando, setCargando] = useState(false);
 
     const baseUrl = window.$baseUrl;
-    const token = "2a2cd0b0-919d-4d7d-a713-6b59bf0b5f9d";
+
 
     const peticionGet = async () => {
-        await axios.get("https://api-sepomex.hckdrk.mx/query/get_estados?token=" + token)
-            .then(response => {
-                setEstados(response.data.response.estado);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-
-
-        await axios.get("https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/" + datosSeleccionados.estado + "?token=" + token)
-            .then(response => {
-                setMunicipios(response.data.response.municipios);
-            })
-            .catch(error => {
-                console.log(error);
-            })
 
         await axios.get(baseUrl + "/api/registro/colaboradores/" + datosSeleccionados.correo)
             .then(response => {
@@ -187,24 +171,25 @@ const Registro = () => {
                     position: 'top-end',
                     background: '#353535',
                     icon: 'success',
-                    title: '¡Colaborador Agregado!',
+                    title: '¡Felicidades, fuiste registrado correctamente!',
+                    text: "Sino encuentra el correo con sus datos de acceso verifica en sección de correos no deseados o Spam",
                     confirmButtonText: "Aceptar",
-                    timer: "2500"
+                    timer: "5000"
                 })
 
                 setCargando(false)
                 enviarCredencialesUsuarios(GenerarContrasena);
-                
+
 
                 setTimeout(() => {
                     document.getElementById("formulario").reset();
                     setDatosSeleccionados({});
-                }, 1500)
+                }, 900)
 
 
                 setTimeout(() => {
                     window.location.href = "/colaboradores";
-                }, 3000)
+                }, 5500)
 
             })
             .catch(error => {
@@ -216,7 +201,7 @@ const Registro = () => {
     const enviarCredencialesUsuarios = (GenerarContrasena) => {
 
         axios.post(baseUrl + '/api/colaboradores/enviarcredenciales', {
-            nombre:  datosSeleccionados.nombre,
+            nombre: datosSeleccionados.nombre,
             email: datosSeleccionados.correo,
             password: GenerarContrasena
         }).then(response => {
@@ -250,20 +235,10 @@ const Registro = () => {
                                 <option value="Externo">Externo</option>
                             </select>
 
-                            <select name="estado" onChange={handleChange} >
-                                <option value="" defaultValue>Seleccione su estado</option>
-                                {estados.map(item =>
-                                    <option key={item} value={item}>{item}</option>
-                                )}
-                            </select>
+                            <input name="estado" type="text" placeholder="Ingrese su estado" onChange={handleChange}  />
 
 
-                            <select name="municipio" onChange={handleChange}  >
-                                <option value="" defaultValue>Seleccione su municipio</option>
-                                {municipios.map(item =>
-                                    <option key={item} value={item}>{item}</option>
-                                )}
-                            </select>
+                            <input name="municipio" type="text" placeholder="Ingrese su municipio" onChange={handleChange} />
 
 
                             <input name="direccion" onChange={handleChange} type="text" placeholder="Dirección" />

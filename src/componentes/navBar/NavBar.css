@@ -1,226 +1,232 @@
-.contenedor-principal-navbar{
-    width: 100%;
-    height: 70px;
-    display:flex;
-    justify-content:space-between;
-    align-items: center;
-    background:#000000ee;
-    /* background:#2f3e55; */
+.contenedor-principal-navbar {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #022951;
+  /* background:#2f3e55; */
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.contenedor-logo-navbar {
+  width: auto;
+  margin-left: 30px;
+  overflow: hidden;
+  width: 130px;
+  height: 70px;
+  padding: 5px;
+  /* background: red; */
+}
+
+.contenedor-logo-navbar a {
+  width: 100%;
+  height: 70px;
+  /* background: rgb(15, 8, 152); */
+  overflow: hidden;
+  color: white;
+}
+
+.contenedor-logo-navbar:hover {
+  cursor: pointer;
+}
+
+.contenedor-logo-navbar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.menu-seleccionado-desk h2 {
+  padding-bottom: 4px;
+  border-bottom: 2px solid #c9a857;
+}
+
+.menu-seleccionado h2 {
+  color: #c9a857;
+}
+
+.contenedor-menu-navbar {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 30px;
+  overflow: hidden;
+}
+
+.contenedor-menu-navbar button {
+  width: 150px;
+  padding: 7px;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  background: #7388ff;
+  color: white;
+}
+
+.contenedor-menu-navbar button:hover {
+  cursor: pointer;
+  background: rgb(114, 152, 255);
+}
+
+.contenedor-menu-navbar a {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.849);
+}
+
+.contenedor-menu-navbar a:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.contenedor-menu-navbar h2:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.contenedor-menu-navbar h2 {
+  font-weight: normal;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.589);
+}
+
+.contenedor-menu-navbar-inicio {
+  margin-right: 20px;
+}
+
+.contenedor-menu-navbar-nosotros {
+  margin-right: 20px;
+}
+
+.contenedor-menu-navbar-servicios {
+  margin-right: 20px;
+}
+
+.contenedor-menu-navbar-contacto {
+  margin-right: 20px;
+}
+.contenedor-menu-navbar-blog {
+  margin-right: 40px;
+}
+
+.contenedor-menu-navbar img {
+  margin-top: 2px;
+  margin-left: 10px;
+  width: 38px;
+}
+
+.contenedor-menu-navbar img:hover {
+  cursor: pointer;
+}
+
+.contenedor-menu-navbar-movil {
+  display: none;
+}
+
+@media (max-width: 920px) {
+  .contenedor-menu-navbar button {
+    width: 120px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 890px) {
+  .contenedor-menu-navbar {
+    display: none;
+  }
+
+  .contenedor-principal-navbar {
     position: fixed;
-    top: 0;
-    z-index: 100;
+    top: 0px;
+    z-index: 30;
+  }
+
+  .contenedor-menu-navbar-movil {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-flow: row nowrap;
+    margin-right: 25px;
+  }
+
+  .contenedor-menu-navbar-movil img {
+    width: 34px;
+    padding: 4;
+  }
+
+  .contenedor-menus {
+    z-index: 20;
+  }
+
+  .contenedor-menu-navbar-movil nav {
+    position: fixed;
+    left: 0px;
+    top: 70px;
+    width: 300px;
+    height: 100%;
+    background: #000000ee;
+    z-index: 10;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .contenedor-menu-navbar-movil nav ul {
+    width: 80%;
+    margin-top: 40px;
+    margin-left: 20px;
+    list-style: none;
+  }
+
+  .contenedor-menu-navbar-movil nav ul li {
+    margin-bottom: 40px;
+    font-size: 23px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid rgb(255, 255, 255);
+  }
+
+  .contenedor-menu-navbar-movil nav ul li a {
+    color: rgba(255, 255, 255, 0.589);
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .contenedor-menu-navbar-movil nav ul li a:hover {
+    color: white;
+  }
+
+  .contenedor-navbar-iniciar-sesion {
+    margin-bottom: 110px;
+  }
+
+  .contenedor-navbar-iniciar-sesion button {
+    width: 100%;
+    padding: 11px;
+    font-size: 23px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    background: #7388ff;
+    color: white;
     overflow: hidden;
+  }
+
+  .contenedor-navbar-iniciar-sesion button:hover {
+    cursor: pointer;
+    background: rgb(114, 152, 255);
+  }
+
+  .contenedor-navbar-iniciar-sesion a {
+    color: rgba(255, 255, 255, 0.849);
+  }
+
+  .contenedor-navbar-iniciar-sesion a:hover {
+    color: white;
+  }
 }
-
-    .contenedor-logo-navbar{
-        width: auto;
-        margin-left: 30px;
-        overflow: hidden;
-    }
-
-    
-
-    .contenedor-logo-navbar a{
-        color:white;
-        
-    }
-
-    .contenedor-logo-navbar:hover{
-        cursor: pointer;
-    }
-
-    .contenedor-logo-navbar img{
-        width: 170px;
-    }
-
-    .menu-seleccionado-desk h2{
-        padding-bottom: 4px;
-        border-bottom:2px solid #c9a857;
-     }
-
-    .menu-seleccionado h2{
-       color:#c9a857;
-    }
-
-    .contenedor-menu-navbar{
-        width: 70%;
-        display: flex;
-        justify-content:flex-end;
-        align-items: center;
-        margin-right: 30px;
-        overflow: hidden;
-    }
-
-        .contenedor-menu-navbar button {
-            width: 150px;
-            padding:7px;
-            font-size:20px;
-            border:none;
-            outline: none;
-            border-radius:3px;
-            background:#7388ff;
-            color:white;
-        }
-
-        .contenedor-menu-navbar button:hover{
-            cursor: pointer;
-            background:rgb(114, 152, 255);
-        }
-
-        .contenedor-menu-navbar a{
-            cursor: pointer;
-            color:rgba(255, 255, 255, 0.849);
-        }
-
-        .contenedor-menu-navbar a:hover{
-            cursor: pointer;
-            color:white;
-        }
-
-        .contenedor-menu-navbar h2:hover{
-            color:white;
-            cursor: pointer;
-        }
-
-        .contenedor-menu-navbar h2{
-            font-weight:normal;
-            font-size: 18px;
-            color:rgba(255, 255, 255, 0.589);
-            
-        }
-
-        .contenedor-menu-navbar-inicio{
-            margin-right: 20px;
-        }
-
-        .contenedor-menu-navbar-nosotros{
-            margin-right: 20px;
-        }
-
-        .contenedor-menu-navbar-servicios{
-            margin-right: 20px;
-        }
-
-        .contenedor-menu-navbar-contacto{
-            margin-right: 40px;
-        }
-
-        .contenedor-menu-navbar img{
-            margin-top:2px;
-            margin-left: 10px;
-            width: 38px;
-        }
-
-        .contenedor-menu-navbar img:hover{
-            cursor: pointer;
-        }
-
-        .contenedor-menu-navbar-movil{
-            display: none;
-        }
-
-@media (max-width:920px){
-    .contenedor-menu-navbar button {
-        width: 120px;
-        font-size:17px;
-    }
-}
-
-@media (max-width:890px){
-    .contenedor-menu-navbar{
-        display: none;
-    }
-
-    .contenedor-principal-navbar{
-        position:fixed;
-        top:0px;
-        z-index: 30;
-    }
-
-    .contenedor-menu-navbar-movil{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        flex-flow: row nowrap;
-        margin-right:25px;
-    }
-
-    .contenedor-menu-navbar-movil img{
-        width: 34px;
-        padding:4;
-    }
-
-    .contenedor-menus{
-        z-index: 20;
-    }
-
-    .contenedor-menu-navbar-movil nav{
-        position: fixed;
-        left:0px;
-        top:70px;
-        width: 300px;
-        height:100%;
-        background:#000000ee;
-        z-index: 10;
-        display:flex;
-        flex-flow: column nowrap;
-        justify-content:space-between;
-        align-items: flex-start;
-    }
-
-    .contenedor-menu-navbar-movil nav ul{
-        width: 80%;
-        margin-top:40px;
-        margin-left: 20px;
-        list-style: none;
-    }
-
-    .contenedor-menu-navbar-movil nav ul li{
-       
-        margin-bottom: 40px;
-        font-size:23px;
-        padding-bottom: 8px;
-        border-bottom: 1.5px solid rgb(255, 255, 255);
-    }
-
-    .contenedor-menu-navbar-movil nav ul li a{
-        color:rgba(255, 255, 255, 0.589);
-        text-decoration: none;
-        font-size:18px;
-    }
-
-    .contenedor-menu-navbar-movil nav ul li a:hover{
-        color:white;
-    }
-
-    .contenedor-navbar-iniciar-sesion{
-        margin-bottom:110px;
-    }
-
-    .contenedor-navbar-iniciar-sesion button {
-        width: 100%;
-        padding:11px;
-        font-size:23px;
-        border:none;
-        outline: none;
-        border-radius:6px;
-        background:#7388ff;
-        color:white;
-        overflow: hidden;
-    }
-
-    .contenedor-navbar-iniciar-sesion button:hover{
-        cursor: pointer;
-        background:rgb(114, 152, 255);
-    }
-
-    .contenedor-navbar-iniciar-sesion a{
-        color:rgba(255, 255, 255, 0.849);
-    }
-
-    .contenedor-navbar-iniciar-sesion a:hover{
-        color:white;
-    }
-
-}
-

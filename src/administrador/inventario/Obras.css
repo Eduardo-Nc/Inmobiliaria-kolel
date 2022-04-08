@@ -1,0 +1,250 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.btn-generar-excel {
+  width: 150px;
+  padding: 4px;
+  font-size: 19px;
+  background-color: rgb(176, 176, 5);
+  border-radius: 5px;
+}
+
+.contenedor-principal-propiedades {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.contenedor-tabla-propiedades {
+  width: 100%;
+  margin-top: 70px;
+  background: #353535;
+  overflow: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+}
+
+.contenedor-tabla {
+  padding: 30px;
+  padding-top: 35px;
+  width: 100%;
+  border: none;
+  overflow: scroll;
+  color: white;
+  background: #353535;
+}
+
+.contenedor-tabla::-webkit-scrollbar {
+  display: none;
+}
+
+.contenedor-pri-propiedades {
+  width: 100%;
+  overflow: scroll;
+  padding: 10px;
+  background: #0e0e0e6b;
+  border-radius: 6px;
+}
+
+.contenedor-pri-propiedades::-webkit-scrollbar {
+  display: none;
+}
+
+.tabla {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+.contenedor-propieades-boton-agregar {
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.contenedor-propieades-boton-agregar button {
+  width: 200px;
+  padding: 4px;
+  font-size: 19px;
+  border-radius: 5px;
+}
+
+.table {
+  border: none !important;
+  text-align: center;
+  width: 100%;
+}
+
+.table th {
+  color: white;
+  overflow: hidden;
+  border: none !important;
+  align-items: center;
+}
+
+.table tbody tr td {
+  color: white;
+  border: none !important;
+}
+
+.table thead {
+}
+
+.tabla-acciones {
+  padding: 3px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tabla-acciones button {
+  margin-left: 7px;
+  margin-right: 7px;
+  width: 70px;
+}
+
+.contenedor-precarga {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.precarga {
+  width: 50px;
+  height: 50px;
+  border: 5px solid white;
+  border-radius: 50%;
+  border-left-color: rgb(55, 75, 255);
+
+  animation: spin2 1s ease infinite;
+}
+
+@keyframes spin2 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.form-modal {
+  display: flex;
+  flex-flow: column;
+}
+
+.titulo-modal {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo-modal p {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.form-modal label {
+  font-size: 17px;
+}
+
+.form-modal input {
+  height: 35px;
+  margin-bottom: 6px;
+  outline: none;
+}
+
+.form-modal select {
+  height: 35px;
+  margin-bottom: 6px;
+  outline: none;
+}
+
+.swal2-title {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.815);
+}
+
+.swal2-content {
+  color: rgba(255, 255, 255, 0.815);
+}
+
+@media (max-width: 950px) {
+  .tabla-acciones {
+    flex-flow: column nowrap;
+  }
+
+  .tabla-acciones button {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 650px) {
+  .table th {
+    width: 100px;
+  }
+
+  .tabla-acciones button {
+    width: 100px;
+    font-size: 17px;
+  }
+
+  .form-modal label {
+    font-size: 19px;
+  }
+
+  .form-modal input {
+    height: 37px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contenedor-propieades-boton-agregar button {
+    width: 250px;
+    font-size: 19px;
+  }
+
+  #pageDropDown {
+    width: 60px;
+    padding: 3px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+  }
+
+  .table th {
+    width: 170px;
+  }
+}
+
+@media (max-width: 389px) {
+  .table th {
+    width: 120px;
+  }
+}

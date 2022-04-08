@@ -1,57 +1,54 @@
-.contenedor-principal-menu-IzquierdoDesc{
-    width: 243px !important;
-    height:100vh;
-    display:flex;
-    flex-flow: column nowrap;
-    padding-top:140px;
-    justify-content:flex-start;
-    align-items: center;
-    background:#242526;
-    overflow:hidden;
+.contenedor-principal-menu-IzquierdoDesc {
+  width: 243px !important;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  padding-top: 140px;
+  justify-content: flex-start;
+  align-items: center;
+  background: #242526;
+  overflow: hidden;
 }
 
-    .contenedor-principal-menu-IzquierdoDesc ul{
-        width: 100%;
-        display:flex;
-        flex-flow: column nowrap;
-        justify-content:flex-start;
-        align-items: center;
-    }
+.contenedor-principal-menu-IzquierdoDesc ul {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+}
 
-    .contenedor-principal-menu-IzquierdoDesc ul li{
-        width: 100%;
-        height:50px;
-        display:flex;
-        justify-content:flex-start;
-        align-items: center;
-        text-align:center;
-        list-style: none;
-        margin-bottom:10px;
-       
-    }
+.contenedor-principal-menu-IzquierdoDesc ul li {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  list-style: none;
+  margin-bottom: 10px;
+}
 
-    .contenedor-principal-menu-IzquierdoDesc ul li:hover{
-       background:rgba(73, 73, 73, 0.479);
-       display:flex;
-       justify-content:flex-start;
-       align-items: center;
-       cursor: pointer;
-       
-    }
+.contenedor-principal-menu-IzquierdoDesc ul li:hover {
+  background: rgba(73, 73, 73, 0.479);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
 
-    .contenedor-principal-menu-IzquierdoDesc ul li a{
-        width: 100%;
-       color:rgba(218, 218, 218, 0.918); 
-       padding-left:30px;
-       font-size:20px;
-       letter-spacing: 1px;
-        text-align: left;
-    }
-    
-    
+.contenedor-principal-menu-IzquierdoDesc ul li a {
+  width: 100%;
+  color: rgba(218, 218, 218, 0.918);
+  padding-left: 30px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-align: left;
+}
 
-@media (max-width:800px){
-   .contenedor-principal-menu-IzquierdoDesc{
-       display: none;
-   }
+@media (max-width: 800px) {
+  .contenedor-principal-menu-IzquierdoDesc {
+    display: none;
+  }
 }

@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&display=swap');
+
+.contenedor-principal-disponibilidad{
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:center;
+    align-items: center;
+    overflow: hidden;
+    background-image: url(../../imagenes/apartamento33.jpg);
+    background-size: cover;
+}
+
+    .contenido-disponibilidad{
+        width: 100vw;
+        height: 100vh;
+        display:flex;
+        flex-flow:column nowrap;
+        justify-content:center;
+        align-items: flex-start;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    
+    
+.contenedor-info-disponibilidad{
+    width: 99vw;    
+    height: 90%;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.contenedor-info-disponibilidad p{
+    width: 100%;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:flex-start;
+    align-items: center;
+    font-size: 23px;
+    font-weight: bold;
+    color:white;
+}
+
+.contenedor-info-disponibilidad > div{
+    padding-top:20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+.zoom{
+    /* Aumentamos la anchura y altura durante 2 segundos */
+    transition: width 0.2s, height 0.2s, transform 0.2s;
+}
+.zoom:hover{
+    cursor: pointer;
+    transform : scale(1.07);
+}
+
+
+
+.boton-flotante-contacto{
+    position: absolute;
+    display: flex;
+    bottom:60px;
+    right:60px;
+    justify-content:center;
+    align-items: center;
+    flex-flow: center;
+    width: 70px;
+    height:70px;
+    border-radius:100%;
+    background:black;
+    overflow:hidden;
+}
+
+.boton-flotante-contacto img{
+    width: 38px;
+    transition:0.1s;
+}
+
+.boton-flotante-contacto img:hover{
+    cursor: pointer;
+    transition:0.1s;
+    width: 41px;
+}
+
+
+@media (max-width:800px){
+
+    .contenedor-info-disponibilidad > div{
+        margin-left: 20px;
+        /* border: 2px solid yellow; */
+    }
+}

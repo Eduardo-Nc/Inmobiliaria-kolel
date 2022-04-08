@@ -174,7 +174,7 @@ const IniciarSesion = () => {
             <div className="contenedor-iniciar-sesion">
 
                 <div className="contenedor-formulario-inicio-sesion">
-                    <form onSubmit={iniciarSesion} autoComplete="off">
+                    <form onSubmit={iniciarSesion}>
 
                         <img src={logoiniciosesion} />
 
