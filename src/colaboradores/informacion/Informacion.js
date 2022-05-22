@@ -119,7 +119,7 @@ const Informacion = () => {
                                     <option value="" defaultValue>Seleccione una opción</option>
 
                                     {!info.brochure ? "" : <option value={info.brochure}>Brochure</option>}
-                                    {!info.master_plan ? "" : <option value={info.master_plan}>Master Plan</option>}
+                                    {/* {!info.master_plan ? "" : <option value={info.master_plan}>Master Plan</option>} */}
                                     {/* {!info.lista_disponibilidad ? "" : <option value={info.lista_disponibilidad}>Lista de disponibilidad</option>} */}
 
                                 </select>

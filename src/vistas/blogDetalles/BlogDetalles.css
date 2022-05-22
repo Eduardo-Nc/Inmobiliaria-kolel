@@ -127,6 +127,7 @@
 .cont-2-desc-principal-item h2 {
   font-size: 20px;
   font-weight: 700;
+  font-family: "Asap", sans-serif !important;
   margin-bottom: 15px;
 }
 
@@ -223,8 +224,9 @@
   .cont-prin-movil-blog-titulo > a {
     width: 85vw;
     height: 45px;
-    color: white;
+    color: #c9a857;
     display: flex;
+    font-family: "Asap", sans-serif;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -232,11 +234,11 @@
     border-radius: 3px;
     margin-bottom: 40px;
     overflow: hidden;
-    background-color: black;
+    background-color: #022951;
   }
 
   .cont-prin-movil-blog-titulo > a:hover {
-    background-color: rgba(32, 32, 32, 0.865);
+    background-color: #083664;
     cursor: pointer;
   }
 
@@ -306,6 +308,7 @@
     padding-top: 10px;
     font-size: 19px;
     margin-bottom: 25px;
+    font-family: "Asap", sans-serif !important;
   }
 
   .cont-prin-movil-blog-cont-mas-items-todos {

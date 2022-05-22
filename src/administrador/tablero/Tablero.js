@@ -87,7 +87,7 @@ const Tablero = () => {
                 </div>
 
                 <div>
-                    < MenuIzquierdoDesc />
+                    <MenuIzquierdoDesc />
                 </div>
 
 

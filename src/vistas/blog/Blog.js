@@ -3,6 +3,7 @@ import './Blog.css';
 import { Link } from 'react-router-dom';
 import NavBar from '../../componentes/navBar/NavBar';
 import Footer from '../../componentes/footer/Footer';
+import ChatBot from '../../componentes/botonChatbot/botonChatbot';
 import fondoServicios from '../../imagenes/fondo-blog-header.jpg';
 import moment from 'moment';
 import axios from 'axios';
@@ -116,6 +117,7 @@ const Blog = () => {
             </div>
 
             <Footer />
+            <ChatBot />
         </Fragment>
     )
 }

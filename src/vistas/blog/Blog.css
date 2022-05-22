@@ -1,5 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&display=swap");
+
 a {
   text-decoration: none !important;
+}
+
+.text-header-blog {
+  font-family: "Asap", sans-serif;
 }
 
 .contenedor-prin-blog {
@@ -185,16 +191,17 @@ a {
   align-items: center;
   padding: 10px;
   border-radius: 5px;
+  font-family: "Asap", sans-serif;
   color: #c9a857;
   text-align: center;
-  background-color: rgb(0, 0, 0);
+  background-color: #022951;
   text-decoration: none !important;
   text-decoration-style: none !important;
 }
 
 .cont-btn-blog > a:hover {
   cursor: pointer;
-  background-color: rgba(15, 15, 15, 0.869);
+  background-color: #083664;
 }
 
 @media (max-width: 1119px) {

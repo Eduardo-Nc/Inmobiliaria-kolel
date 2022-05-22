@@ -5,6 +5,8 @@ import Footer from '../../componentes/footer/Footer';
 import { Link } from 'react-router-dom';
 
 import fondoServicios from '../../imagenes/fondo-servicios.jpg';
+import ChatBot from '../../componentes/botonChatbot/botonChatbot';
+
 
 const Servicios = () => {
 
@@ -80,6 +82,7 @@ const Servicios = () => {
             </div>
 
             <Footer />
+            <ChatBot />
         </Fragment>
     )
 }

@@ -10,6 +10,8 @@ const MenuIzquierdoDesc = () => {
             <div className="contenedor-principal-menu-IzquierdoDesc">
                 <ul>
                     <li  ><NavLink activeClassName="activo" to="/tablero"> Inicio</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/ventas"> Ventas</NavLink></li>
+                    <li  ><NavLink activeClassName="activo" to="/seguimiento_ventas"> Seguimiento Ventas</NavLink></li>
                     <li  ><NavLink activeClassName="activo" to="/usuarios"> Usuarios</NavLink></li>
                     <li  ><NavLink activeClassName="activo" to="/propiedades"> Propiedades</NavLink></li>
                     <li  ><NavLink activeClassName="activo" to="/datos-colaboradores"> Colaboradores</NavLink></li>

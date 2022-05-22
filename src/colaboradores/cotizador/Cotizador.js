@@ -148,7 +148,7 @@ const Cotizador = (props) => {
 
     let diez_enganche = parseFloat(datosLote.precio_total) - (10 * (parseFloat(datosLote.precio_total)) / 100)
 
-    let CantDescuento = (parseInt(datosSeleccionados.plan) === 0 ? 20 : parseInt(datosSeleccionados.plan) === 12 ? 15 : parseInt(datosSeleccionados.plan) === 24 ? 10 : parseInt(datosSeleccionados.plan) === 36 ? 8 : parseInt(datosSeleccionados.plan) === 48 ? 7 : parseInt(datosSeleccionados.plan) === 60 && 5) * parseFloat(datosLote.precio_total) / 100;
+    let CantDescuento = (parseInt(datosSeleccionados.plan) === 0 ? 20 : parseInt(datosSeleccionados.plan) === 6 ? 18 : parseInt(datosSeleccionados.plan) === 12 ? 15 : parseInt(datosSeleccionados.plan) === 24 ? 13 : parseInt(datosSeleccionados.plan) === 36 ? 11 : parseInt(datosSeleccionados.plan) === 48 ? 9 : parseInt(datosSeleccionados.plan) === 60 && 5) * parseFloat(datosLote.precio_total) / 100;
 
     datosLote.fecha = fechaActual;
     datosLote.total_financiar = parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : "";
@@ -157,7 +157,7 @@ const Cotizador = (props) => {
     datosLote.precio_metros_cuadra = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_metro_cuadrado) + " MXN";
     datosLote.preciototal = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) + " MXN";
     datosLote.preciototaldescuento = parseInt(datosSeleccionados.plan) === 0 ? (datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 60 ? (datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) <= 48 ? (datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : "";
-    datosLote.tipo_plan = parseInt(datosLote.plazo_seleccionado) === 0 ? "PAGO DE CONTADO - 20% DESCUENTO" : datosLote.plazo_seleccionado + ` MESES SIN INTERESES - ${parseInt(datosLote.plazo_seleccionado) === 60 ? "5% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 48 ? "7% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 36 ? "8% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 24 ? "10% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 12 && "15% DESCUENTO"}`;
+    datosLote.tipo_plan = parseInt(datosLote.plazo_seleccionado) === 0 ? "PAGO DE CONTADO - 20% DESCUENTO" : datosLote.plazo_seleccionado + ` MESES SIN INTERESES - ${parseInt(datosLote.plazo_seleccionado) === 60 ? "5% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 48 ? "9% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 36 ? "11% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 24 ? "13% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 12 ? "15% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 6 && "18% DESCUENTO"}`;
     datosLote.correo_colaborador = cookies.get("correo_colaborador");
     datosLote.nombre_colaborador = cookies.get("nombre_colaborador");
     datosLote.numero_colaborador = cookies.get("numero_colaborador");
@@ -361,11 +361,12 @@ const Cotizador = (props) => {
 
                                 <Form.Control as="select" name="plan" onChange={handleChange} >
                                     <option defaultValue>Seleccione un plan</option>
-                                    <option value="60">10% DE ENGANCHE Y 60 MESES SIN INTERES - 5% DESCUENTO</option>
-                                    <option value="48">10% DE ENGANCHE Y 48 MESES SIN INTERES - 7% DESCUENTO</option>
-                                    <option value="36">10% DE ENGANCHE Y 36 MESES SIN INTERES - 8% DESCUENTO</option>
-                                    <option value="24">10% DE ENGANCHE Y 24 MESES SIN INTERES - 10% DESCUENTO</option>
+
+                                    <option value="48">10% DE ENGANCHE Y 48 MESES SIN INTERES - 9% DESCUENTO</option>
+                                    <option value="36">10% DE ENGANCHE Y 36 MESES SIN INTERES - 11% DESCUENTO</option>
+                                    <option value="24">10% DE ENGANCHE Y 24 MESES SIN INTERES - 13% DESCUENTO</option>
                                     <option value="12">10% DE ENGANCHE Y 12 MESES SIN INTERES - 15% DESCUENTO</option>
+                                    <option value="6">10% DE ENGANCHE Y 06 MESES SIN INTERES - 18% DESCUENTO</option>
                                     <option value="0">PAGO DE CONTADO - 20% DESCUENTO</option>
 
                                     {/* <option value="601">10% DE ENGANCHE Y 60 MESES SIN INTERES</option>
@@ -386,7 +387,7 @@ const Cotizador = (props) => {
                                             readOnly={true}
                                             name="enganche"
                                             onChange={handleChange}
-                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "20" : parseInt(datosSeleccionados.plan) === 12 ? "15" : parseInt(datosSeleccionados.plan) === 24 ? "10" : parseInt(datosSeleccionados.plan) === 36 ? "8" : parseInt(datosSeleccionados.plan) === 48 ? "7" : parseInt(datosSeleccionados.plan) === 60 ? "5" : ""}
+                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "20" : parseInt(datosSeleccionados.plan) === 6 ? "18" : parseInt(datosSeleccionados.plan) === 12 ? "15" : parseInt(datosSeleccionados.plan) === 24 ? "13" : parseInt(datosSeleccionados.plan) === 36 ? "11" : parseInt(datosSeleccionados.plan) === 48 ? "9" : parseInt(datosSeleccionados.plan) === 60 ? "5" : ""}
                                         />
 
                                     </InputGroup>

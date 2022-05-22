@@ -1,0 +1,57 @@
+.content-principal-chatbot {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.cont-sec-chatbot {
+  z-index: 200;
+  display: none;
+  position: fixed;
+  bottom: 1%;
+  right: 100px;
+  /* background-color: red; */
+}
+
+.btn-chat-bot {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #032446;
+  position: fixed;
+  bottom: 30%;
+  right: 20px;
+}
+
+.btn-chat-bot:hover {
+  cursor: pointer;
+  background-color: #0b3967;
+}
+
+.btn-chat-bot > img {
+  object-fit: contain;
+  width: 80%;
+  height: 80%;
+}
+
+@media (max-width: 600px) {
+  /* .cont-sec-chatbot {
+    position: fixed;
+    bottom: 10%;
+    right: 100px;
+  } */
+
+  .btn-chat-bot {
+    width: 70px;
+    height: 70px;
+    bottom: 10%;
+    /* bottom: 4%; */
+  }
+}

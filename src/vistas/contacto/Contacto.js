@@ -2,12 +2,13 @@ import React, { Fragment, useState, useEffect } from 'react';
 import './Contacto.css';
 import NavBar from '../../componentes/navBar/NavBar';
 import Footer from '../../componentes/footer/Footer';
+import ChatBot from '../../componentes/botonChatbot/botonChatbot';
 import contacto from '../../imagenes/fondo-contacto.svg';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
 
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 
 
@@ -68,7 +69,7 @@ const Contacto = () => {
                 confirmButtonText: `Aceptar`,
             })
             return
-        }else if (!datos.mensaje) {
+        } else if (!datos.mensaje) {
             Swal.fire({
                 customClass: {
                     title: 'swalTitleColor'
@@ -89,7 +90,7 @@ const Contacto = () => {
                 confirmButtonText: `Aceptar`,
             })
             return
-        }else {
+        } else {
 
             axios.post(baseUrl + '/api/contacto/negocio', {
                 nombre: datos.nombre,
@@ -150,43 +151,44 @@ const Contacto = () => {
                         <div className="divisor"></div>
                         <h5>
                             ¿Estás listo para comenzar y alcanzar tus objetivos?
-                            
+
                         </h5>
 
-                        <input type="button" onClick={() =>window.location.href = "contacto#formulario"} value="Si, ¡Comencemos!" /> 
+                        <input type="button" onClick={() => window.location.href = "contacto#formulario"} value="Si, ¡Comencemos!" />
 
                     </div>
                 </div>
 
-                <div id="formulario" className="contenedor-formulario-contacto"> 
+                <div id="formulario" className="contenedor-formulario-contacto">
                     <label>¿Tienes dudas?, ¡No dudes en <strong>contáctarnos</strong>!</label>
-        
-                        <form onSubmit={enviarMensaje} id="form">
-                                <input type="text" required  name="nombre" onChange={handleChange} placeholder="Nombres y Apellidos" />
-                                <input type="text" maxLength="10" required  name="telefono" onChange={handleChange} placeholder="Teléfono" />
-                                <input type="email" required  name="correo" onChange={handleChange} placeholder="Correo electrónico" />
-                                <select name="area" onChange={handleChange} required>
-                                <option defaultValue>Seleccione área de interés</option>
-                                    <option value="Comercialización" >Comercialización</option>
-                                    <option value="Asesoria legal" >Asesoria legal</option>
-                                    <option value="Otros" >Otros</option>
-                                </select>
-                                <textarea rows="4" placeholder="Mensaje" required name="mensaje" onChange={handleChange} autoComplete="off" >
 
-                                </textarea>
-                                <div className="contenedor-input-contacto">
-                                {enviado ?
+                    <form onSubmit={enviarMensaje} id="form">
+                        <input type="text" required name="nombre" onChange={handleChange} placeholder="Nombres y Apellidos" />
+                        <input type="text" maxLength="10" required name="telefono" onChange={handleChange} placeholder="Teléfono" />
+                        <input type="email" required name="correo" onChange={handleChange} placeholder="Correo electrónico" />
+                        <select name="area" onChange={handleChange} required>
+                            <option defaultValue>Seleccione área de interés</option>
+                            <option value="Comercialización" >Comercialización</option>
+                            <option value="Asesoria legal" >Asesoria legal</option>
+                            <option value="Otros" >Otros</option>
+                        </select>
+                        <textarea rows="4" placeholder="Mensaje" required name="mensaje" onChange={handleChange} autoComplete="off" >
+
+                        </textarea>
+                        <div className="contenedor-input-contacto">
+                            {enviado ?
                                 <div className="spinner"></div>
                                 :
                                 <input type="submit" value="Enviar" />
-                                }
-                                </div>
-                        </form>
+                            }
+                        </div>
+                    </form>
                 </div>
 
             </div>
 
             <Footer />
+            <ChatBot />
         </Fragment>
     )
 }

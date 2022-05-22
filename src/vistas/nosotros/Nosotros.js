@@ -8,6 +8,8 @@ import nery from '../../imagenes/nery.jpeg';
 import NavBar from '../../componentes/navBar/NavBar';
 
 import Footer from '../../componentes/footer/Footer';
+import ChatBot from '../../componentes/botonChatbot/botonChatbot';
+
 
 const Nosotros = () => {
     return (
@@ -75,6 +77,7 @@ const Nosotros = () => {
 
 
             <Footer />
+            <ChatBot />
         </Fragment>
     )
 }

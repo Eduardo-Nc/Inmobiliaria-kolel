@@ -34,6 +34,9 @@ const RegistroUsuariosM = React.lazy(() => import('./administrador/inventario/Us
 const Blog = React.lazy(() => import('./vistas/blog/Blog'))
 const BlogDetalles = React.lazy(() => import('./vistas/blogDetalles/BlogDetalles'))
 const AddBlogs = React.lazy(() => import('./administrador/blogs/Blogs'))
+const Seguimiento = React.lazy(() => import('./administrador/seguimiento/Seguimiento'))
+const Ventas = React.lazy(() => import('./administrador/seguimiento/Ventas'))
+
 
 
 const DatosCola = React.lazy(() => import('./administrador/datosColaboradores/DatosColaboradores'))
@@ -41,11 +44,11 @@ const DatosCola = React.lazy(() => import('./administrador/datosColaboradores/Da
 
 
 //Localhost
-// window.$baseUrl = "http://192.168.1.64:30020";
+window.$baseUrl = "http://192.168.1.75:30020";
 
 
 //heroku
-window.$baseUrl = "https://api-inmobiliaria-koolelkaab.herokuapp.com";
+// window.$baseUrl = "https://api-inmobiliaria-koolelkaab.herokuapp.com";
 
 
 //ruta de nube
@@ -87,6 +90,8 @@ const Index = () => {
         <Route path="/blog" component={Blog} />
         <Route path="/blog-detalles/:id" component={BlogDetalles} />
         <Route path="/add-blogs" component={AddBlogs} />
+        <Route path="/seguimiento_ventas" component={Seguimiento} />
+        <Route path="/ventas" component={Ventas} />
 
       </React.Suspense>
     </Router>

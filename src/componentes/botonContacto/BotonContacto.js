@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 
 
 const BotonContacto = () => {
+
+
+
+
     return (
         <Fragment>
+
             <div data-aos="fade-left" className="contenedor-botton-contacto-movil">
                 <a href="https://api.whatsapp.com/message/L2OKG5XKUZBNG1" target="blank" title="Contáctanos" >
                     <div className="forma-botton-contacto-movil">
@@ -15,6 +20,7 @@ const BotonContacto = () => {
                     </div>
                 </a>
             </div>
+
         </Fragment>
     )
 }

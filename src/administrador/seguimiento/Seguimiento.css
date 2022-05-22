@@ -1,0 +1,290 @@
+.contenedor-principal-seguimiento {
+  padding-top: 75px;
+  width: 100%;
+  /* height: 100vh; */
+  background-color: #f2f2f2;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: scroll;
+}
+
+.cont-menu-movil-seguimiento {
+  display: none;
+}
+
+.contenedor-title-seguimiento {
+  width: 100%;
+  height: 100px;
+  /* background-color: #f70000; */
+  border-bottom: 1px solid #c4c4c4;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cont-back-seguimiento {
+  width: 10%;
+  height: 100%;
+  /* background-color: #f79c00; */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cont-back-seguimiento > a {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #d7d7d7;
+  border-radius: 6px;
+  display: flex;
+  transition: 0.5s;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.cont-back-seguimiento > a:hover {
+  background-color: #242526;
+  transition: 0.5s;
+  border: 2px solid #242526;
+  color: rgb(255, 255, 255) !important;
+}
+
+.cont-back-seguimiento > a > i {
+  color: black;
+}
+
+.cont-back-seguimiento > a:hover i {
+  transition: 0.5s;
+  color: rgb(255, 255, 255) !important;
+}
+
+.cont-title-seguimiento {
+  width: 90%;
+  height: 100%;
+  /* background-color: #0d39ff; */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont-title-seguimiento > div {
+  /* background: blue; */
+  padding-top: 8px;
+  text-align: center;
+  padding-right: 25px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont-title-seguimiento > div > h1 {
+  font-size: 27px;
+}
+
+.content-all-final-seguimiento {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-flow: column nowrap;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.content-all-filtros-seguimiento {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  height: 260px;
+  /* background-color: red; */
+  overflow: hidden;
+}
+
+.cont-seguimiento-inputs {
+  padding-left: 10px;
+  width: 25%;
+  height: 100px;
+  display: flex;
+  margin-right: 0px;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* background-color: blue; */
+  overflow: hidden;
+}
+
+.cont-seguimiento-inputs > label {
+  color: grey;
+  font-size: 17px;
+}
+
+.cont-seguimiento-inputs > select {
+  border: 1px solid #d7d7d7;
+  width: 90%;
+  font-size: 15px;
+  outline: none;
+  text-transform: capitalize;
+  text-align: center;
+  border-radius: 4px;
+  color: grey;
+  text-align-last: center;
+  height: 45px;
+}
+
+.cont-seguimiento-inputs > select::placeholder {
+  color: #d7d7d7;
+}
+
+.cont-seguimiento-inputs > input {
+  border: 1px solid #d7d7d7;
+  width: 90%;
+  font-size: 15px;
+  outline: none;
+  text-align: center;
+  border-radius: 4px;
+  color: grey;
+  text-align-last: center;
+  height: 45px;
+}
+
+.cont-seguimiento-inputs > input::placeholder {
+  color: #d7d7d7;
+}
+
+.cont-btn-limpiar-filtro {
+  width: 100%;
+  height: 40px;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont-btn-limpiar-filtro > input[type="button"] {
+  margin-top: 10px;
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  width: 150px;
+  height: 47px;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.cont-btn-limpiar-filtro > input[type="button"]:hover {
+  background-color: rgb(26, 76, 255);
+}
+
+.content-all-tabla-datos-seguimiento {
+  margin-top: 30px;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  /* background-color: rgba(255, 255, 0, 0.254); */
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.content-all-tabla-separador {
+  width: 98%;
+  height: 0.5px;
+  background-color: #d7d7d7;
+  margin-bottom: 20px;
+}
+
+/*  */
+
+@media (max-width: 800px) {
+  .cont-menu-movil-seguimiento {
+    display: flex;
+    /* background-color: red; */
+    /* width: 100%;
+    height: 100%; */
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .contenedor-principal-menu-izquierdo {
+    margin-top: -75px;
+  }
+
+  .content-all-filtros-seguimiento {
+    flex-flow: column nowrap;
+    height: auto;
+    overflow: auto;
+    /* background-color: blue; */
+  }
+
+  .content-all-final-seguimiento {
+    overflow: scroll;
+  }
+
+  .content-all-filtros-seguimiento {
+    overflow: scroll;
+    height: auto;
+  }
+
+  .cont-seguimiento-inputs {
+    width: 100%;
+    height: auto;
+    /* background-color: red; */
+  }
+
+  .cont-seguimiento-inputs > select {
+    width: 100%;
+    height: 48px;
+    color: grey;
+    background-color: white;
+    margin-bottom: 10px;
+  }
+
+  .cont-seguimiento-inputs > input {
+    width: 100%;
+    height: 48px;
+    color: grey;
+    background-color: white;
+    margin-bottom: 10px;
+  }
+
+  .cont-btn-limpiar-filtro {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cont-back-seguimiento {
+    width: 20%;
+    height: 100%;
+  }
+
+  .cont-title-seguimiento {
+    width: 80%;
+  }
+
+  .cont-title-seguimiento > div > h1 {
+    font-size: 22px;
+  }
+}

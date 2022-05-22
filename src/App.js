@@ -6,6 +6,8 @@ import QuienesSomos from './componentes/quienesSomos/QuienesSomos';
 import Servicios from './componentes/servicios/Servicios';
 import TarjetaCasa from './componentes/tarjetaCasa/TarjetaCasa';
 import Footer from './componentes/footer/Footer';
+import ChatBot from './componentes/botonChatbot/botonChatbot';
+
 
 
 const App = () => {
@@ -27,6 +29,8 @@ const App = () => {
         <TarjetaCasa />
 
         <Footer />
+
+        <ChatBot />
       </div>
     </Fragment>
   )
