@@ -8,6 +8,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import MenuIzquierdo from '../menu/MenuIzquierdo';
 // import materiales from '../../imagenes/iconos/materiales.png';
+import moment from 'moment';
 
 const Seguimiento = () => {
 
@@ -45,7 +46,7 @@ const Seguimiento = () => {
     const peticionGet = async () => {
         setCargando(false)
 
-        await axios.get(baseUrl + "/api/todos/obras")
+        await axios.get(baseUrl + "/api/todos/ventas")
             .then(response => {
                 setData(response.data);
             }).catch(error => {
@@ -92,43 +93,11 @@ const Seguimiento = () => {
                         {
                             cargando ?
                                 <Fragment>
-                                    <div className="cont-seguimiento-inputs">
-                                        <label>Desarrollo</label>
-                                        <select value={datosFiltro.desarrollo ? datosFiltro.desarrollo : ''} onChange={handleInputChange} name="desarrollo">
-                                            <option value="" defaultValue>Seleccione una opción</option>
-                                            <option value={0}>San diego</option>
-                                        </select>
-                                    </div>
 
                                     <div className="cont-seguimiento-inputs">
-                                        <label>Nombre Cliente</label>
-                                        <input value={datosFiltro.cliente ? datosFiltro.cliente : ''} onChange={handleInputChange} type="text" name="cliente" placeholder="Ingrese nombre" />
+                                        <label>Filtro</label>
+                                        <input value={datosFiltro.cliente ? datosFiltro.cliente : ''} onChange={handleInputChange} type="text" name="cliente" placeholder="Ingrese un dato" />
                                     </div>
-
-                                    <div className="cont-seguimiento-inputs">
-                                        <label>Número Lote</label>
-                                        <input value={datosFiltro.lote ? datosFiltro.lote : ''} onChange={handleInputChange} type="number" name="lote" placeholder="Ingrese #lote" />
-
-                                    </div>
-
-                                    <div className="cont-seguimiento-inputs">
-                                        <label>Estatus Venta</label>
-                                        <select value={datosFiltro.estatus ? datosFiltro.estatus : ''} onChange={handleInputChange} name="estatus">
-                                            <option value="" defaultValue>Seleccione una opción</option>
-                                            <option value={0}>San diego</option>
-                                        </select>
-                                    </div>
-
-                                    <div className="cont-seguimiento-inputs">
-                                        <label>Fecha Inicio</label>
-                                        <input value={datosFiltro.fecha_i ? datosFiltro.fecha_i : ''} onChange={handleInputChange} type="date" name="fecha_i" placeholder="Ingrese nombre" />
-                                    </div>
-
-                                    <div className="cont-seguimiento-inputs">
-                                        <label>Fecha Fin</label>
-                                        <input value={datosFiltro.fecha_f ? datosFiltro.fecha_f : ''} onChange={handleInputChange} type="date" name="fecha_f" placeholder="Ingrese nombre" />
-                                    </div>
-
 
 
                                     <div className="cont-btn-limpiar-filtro">
@@ -152,7 +121,7 @@ const Seguimiento = () => {
 
                         <div className="content-all-tabla-separador"></div>
 
-                        <Table datosFiltro={datosFiltro} setDatosFiltro={setDatosFiltro} initialState={initialState} />
+                        <Table datosFiltro={datosFiltro} setDatosFiltro={setDatosFiltro} initialState={initialState} data={data} setData={setData} cargando={cargando} />
                     </div>
                 </div>
 

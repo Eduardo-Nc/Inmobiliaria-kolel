@@ -173,7 +173,7 @@ const Ventas = () => {
     const [selectedOption, setSelectedOption] = useState({});
 
     // console.log(selectedOption)
-    console.log(ventasSeleccionado)
+    // console.log(ventasSeleccionado)
 
     useEffect(() => {
 
@@ -193,30 +193,32 @@ const Ventas = () => {
 
     }, [selectedOption])
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (parseInt(ventasSeleccionado.id_mes) === 8) {
+    //     if (parseInt(ventasSeleccionado.id_mes) === 8) {
 
-            setVentasSeleccionado({
-                ...ventasSeleccionado,
-                enganche_contado: selectedOption.precio_total ? selectedOption.precio_total : '',
-                pago_mensual: 0,
-            })
-        }
-    }, [ventasSeleccionado.id_mes])
+    //         setVentasSeleccionado({
+    //             ...ventasSeleccionado,
+    //             enganche_contado: selectedOption.precio_total ? selectedOption.precio_total : '',
+    //             pago_mensual: 0,
+    //         })
+    //     }
+    // }, [ventasSeleccionado.id_mes])
 
-    useEffect(() => {
-        if (parseInt(ventasSeleccionado.id_mes) !== undefined) {
-            if (parseInt(ventasSeleccionado.id_mes) !== 8) {
+    // console.log(selectedOption)
 
-                setVentasSeleccionado({
-                    ...ventasSeleccionado,
-                    enganche_contado: 0,
-                    pago_mensual: 0,
-                })
-            }
-        }
-    }, [ventasSeleccionado.id_mes])
+    // useEffect(() => {
+    //     if (parseInt(ventasSeleccionado.id_mes) !== undefined) {
+    //         if (parseInt(ventasSeleccionado.id_mes) !== 8) {
+
+    //             setVentasSeleccionado({
+    //                 ...ventasSeleccionado,
+    //                 enganche_contado: 0,
+    //                 pago_mensual: 0,
+    //             })
+    //         }
+    //     }
+    // }, [ventasSeleccionado.id_mes])
 
     useEffect(() => {
         if (parseInt(ventasSeleccionado.enganche_contado) !== undefined) {
@@ -270,6 +272,106 @@ const Ventas = () => {
     }, [abrirModalEditarVisualizar])
 
     // console.log(value)
+
+    useEffect(() => {
+        if (parseInt(ventasSeleccionado.id_mes) !== undefined) {
+
+            let nombreMes = meses.filter(mes => mes.id_mes === parseInt(ventasSeleccionado.id_mes));
+            let r1 = nombreMes.map(mes => {
+                return (mes.nombre_mes)
+            })
+
+            if (parseInt(ventasSeleccionado.id_mes) !== 8) {
+                setVentasSeleccionado({
+                    ...ventasSeleccionado,
+                    cant_pagos: parseInt(r1),
+                    cant_pagos_realizados: 0,
+                    cant_pagos_pendientes: parseInt(r1)
+                })
+            }
+        }
+
+        if (parseInt(ventasSeleccionado.id_mes) !== undefined) {
+
+            if (parseInt(ventasSeleccionado.id_mes) === 8) {
+                setVentasSeleccionado({
+                    ...ventasSeleccionado,
+                    cant_pagos: 1,
+                    cant_pagos_realizados: 1,
+                    cant_pagos_pendientes: 0
+                })
+            }
+        }
+
+        if (parseInt(ventasSeleccionado.id_mes) !== undefined) {
+            if (parseInt(ventasSeleccionado.id_mes) !== 8) {
+
+                setVentasSeleccionado({
+                    ...ventasSeleccionado,
+                    enganche_contado: 0,
+                    pago_mensual: 0,
+                })
+            }
+        }
+
+        if (parseInt(ventasSeleccionado.id_mes) === 8) {
+
+            setVentasSeleccionado({
+                ...ventasSeleccionado,
+                enganche_contado: selectedOption.precio_total ? selectedOption.precio_total : '',
+                pago_mensual: 0,
+                cant_pagos: 1,
+                cant_pagos_realizados: 1,
+                cant_pagos_pendientes: 0
+            })
+        }
+
+
+    }, [ventasSeleccionado.id_mes])
+
+    // useEffect(() => {
+    //     if (parseInt(ventasSeleccionado.id_mes) !== undefined) {
+
+    //         if (parseInt(ventasSeleccionado.id_mes) === 8) {
+    //             setVentasSeleccionado({
+    //                 ...ventasSeleccionado,
+    //                 cant_pagos: 1,
+    //                 cant_pagos_realizados: 1,
+    //                 cant_pagos_pendientes: 0
+    //             })
+    //         }
+    //     }
+    // }, [ventasSeleccionado.id_mes])
+
+
+
+    useEffect(() => {
+
+        if (ventasSeleccionado !== undefined) {
+            if (ventasSeleccionado !== '') {
+                if (ventasSeleccionado.cant_pagos_realizados === 0 || ventasSeleccionado.cant_pagos_realizados === "") {
+
+                    setVentasSeleccionado({
+                        ...ventasSeleccionado,
+                        cant_pagos: ventasSeleccionado.cant_pagos,
+                        cant_pagos_realizados: 0,
+                        cant_pagos_pendientes: ventasSeleccionado.cant_pagos
+                    })
+
+                } else {
+                    setVentasSeleccionado({
+                        ...ventasSeleccionado,
+                        cant_pagos_pendientes: parseInt(ventasSeleccionado.cant_pagos) - parseInt(ventasSeleccionado.cant_pagos_realizados)
+                    })
+                }
+
+            }
+        }
+
+
+    }, [ventasSeleccionado.cant_pagos_realizados])
+    // cant_pagos_realizados
+    // cant_pagos_pendientes
 
     const guardarVenta = async (type) => {
 
@@ -468,6 +570,8 @@ const Ventas = () => {
             })
         }
     }
+
+    console.log(ventasSeleccionado)
 
     return (
         <Fragment>
@@ -715,12 +819,27 @@ const Ventas = () => {
 
                         <div className="div-varios-seccion-ventas">
                             <div>
-                                <label>Fecha Venta</label>
+                                <label>Cantidad de Pagos</label>
+                                <input disabled={true} type="text" autoComplete="off" value={ventasSeleccionado.cant_pagos ? ventasSeleccionado.cant_pagos : 0} name="cant_pagos" onChange={handleChange} placeholder="Ingrese la cantidad" required ></input>
+                            </div>
 
+                            <div>
+                                <label>Pagos Realizados</label>
+                                <input type="number" min="0" autoComplete="off" value={ventasSeleccionado.cant_pagos_realizados ? ventasSeleccionado.cant_pagos_realizados : 0} name="cant_pagos_realizados" onChange={handleChange} placeholder="Ingrese los pagos realizados" required ></input>
+                            </div>
+
+                        </div>
+
+                        <div className="div-varios-seccion-ventas">
+                            <div>
+                                <label>Pagos Pendientes</label>
+                                <input disabled={true} type="number" min="0" autoComplete="off" value={ventasSeleccionado.cant_pagos_pendientes ? ventasSeleccionado.cant_pagos_pendientes : 0} name="cant_pagos_pendientes" onChange={handleChange} placeholder="Ingrese los pagos pendientes" required ></input>
+                            </div>
+                            <div>
+                                <label>Fecha Venta</label>
                                 <DatePicker format="dd/MM/yyyy" onChange={onChange} value={value} />
                                 {/* <input onChange={handleChange} type="date" value={ventasSeleccionado.fecha_venta ? ventasSeleccionado.fecha_venta : ""} name="fecha_venta" placeholder="Ingrese Fecha" /> */}
                             </div>
-                            <div></div>
                         </div>
 
 
@@ -961,17 +1080,34 @@ const Ventas = () => {
 
                                 </div>
 
+                                <div className="div-varios-seccion-ventas">
+                                    <div>
+                                        <label>Cantidad de Pagos</label>
+                                        <input disabled={true} type="text" autoComplete="off" value={ventasSeleccionado.cant_pagos ? ventasSeleccionado.cant_pagos : 0} name="cant_pagos" onChange={handleChange} placeholder="Ingrese la cantidad" required ></input>
+                                    </div>
+
+                                    <div>
+                                        <label>Pagos Realizados</label>
+                                        <input type="number" min="0" autoComplete="off" value={ventasSeleccionado.cant_pagos_realizados ? ventasSeleccionado.cant_pagos_realizados : 0} name="cant_pagos_realizados" onChange={handleChange} placeholder="Ingrese los pagos realizados" required ></input>
+                                    </div>
+
+                                </div>
+
+
                             </>
                         }
 
                         {/* Colocar un boton en el modal editar mostrar en label la fecha y si se le da clic sale el input date */}
                         <div className="div-varios-seccion-ventas">
                             <div>
+                                <label>Pagos Pendientes</label>
+                                <input disabled={true} type="number" min="0" autoComplete="off" value={ventasSeleccionado.cant_pagos_pendientes ? ventasSeleccionado.cant_pagos_pendientes : 0} name="cant_pagos_pendientes" onChange={handleChange} placeholder="Ingrese los pagos pendientes" required ></input>
+                            </div>
+                            <div>
                                 <label>Fecha Venta</label>
                                 {/* <input onChange={handleChange} type="date" value={ventasSeleccionado.fecha_venta ? ventasSeleccionado.fecha_venta : ""} name="fecha_venta" placeholder="Ingrese Fecha" /> */}
                                 <DatePicker format="dd/MM/yyyy" onChange={onChange} value={value ? value : null} />
                             </div>
-                            <div></div>
                         </div>
 
                         {/* {console.log(ventasSeleccionado.fecha_venta ? moment(ventasSeleccionado.fecha_venta).format('y-MM-dd') : value)} */}
@@ -1028,7 +1164,7 @@ const Ventas = () => {
 
                 <Modal.Footer>
                     <Button variant="secondary" onClick={modalEditarVisualizar}>
-                        Cerrar
+                        Cancelar
                     </Button>
                     {enviado ?
                         <Button variant="primary" onClick={() => guardarVenta("editar")}>

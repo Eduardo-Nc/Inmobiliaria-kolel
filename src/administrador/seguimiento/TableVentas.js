@@ -124,7 +124,7 @@ const TableVentas = ({ datosFiltro, setDatosFiltro, initialState, setVentasSelec
     const editarVenta = (row) => {
         setVentasSeleccionado({})
         setSelectedOption({ value: row.id_lote, label: row.nombre_lote, precio_metro_cuadrado: row.precio_metro_cuadrado, precio_total: row.precio_total, metros_cuadrados: row.metros_cuadrados })
-        setVentasSeleccionado({ ...row, precio_m2_lote: row.precio_metro_cuadrado })
+        setVentasSeleccionado({ ...row, precio_m2_lote: row.precio_metro_cuadrado, precio_total_lote: row.precio_total })
         modalEditarVisualizar()
     }
 
@@ -253,13 +253,24 @@ const TableVentas = ({ datosFiltro, setDatosFiltro, initialState, setVentasSelec
                             <ExcelFile element={<button className="btn-generar-seguimiento-excel"> <i className="fas fa-download"></i> Excel</button>}>
                                 <ExcelSheet data={filterData} name="Ventas">
                                     <ExcelColumn label="#" value="id_venta_lote" />
+                                    <ExcelColumn label="Desarrollo" value="nombre_desarrollo" />
                                     <ExcelColumn label="#Lote" value="nombre_lote" />
+                                    <ExcelColumn label="Metros Cuadrados" value="metros_cuadrados" />
+                                    <ExcelColumn label="Precio Metros Cuadrados" value="precio_metro_cuadrado" />
+
                                     <ExcelColumn label="Nombre Cliente"
                                         value={(col) => col.nombre_cliente && col.nombre_cliente + " " + col.apellidos_cliente} />
                                     {/* <ExcelColumn label="" value="nombre_cliente" /> */}
                                     <ExcelColumn label="Fecha Venta" value="fecha_venta" />
                                     <ExcelColumn label="Correo Cliente" value="correo_cliente" />
                                     <ExcelColumn label="Teléfono Cliente" value="telefono_cliente" />
+
+                                    <ExcelColumn label="Meses" value="nombre_mes" />
+                                    <ExcelColumn label="Enganche/contado" value="enganche_contado" />
+                                    <ExcelColumn label="Precio Total Lote" value="precio_total" />
+                                    <ExcelColumn label="Pago Mensual"
+                                        value={(col) => col.pago_mensual === "NaN" || col.pago_mensual === 0 ? "" : col.pago_mensual} />
+                                    <ExcelColumn label="Tipo de Pago" value="nombre_tipo_pago_venta_lote" />
                                     <ExcelColumn label="Broker" value="nombre_colaborador" />
                                 </ExcelSheet>
 

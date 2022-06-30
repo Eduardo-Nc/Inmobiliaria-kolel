@@ -151,20 +151,24 @@ const Cotizador = (props) => {
     let CantDescuento = (parseInt(datosSeleccionados.plan) === 0 ? 20 : parseInt(datosSeleccionados.plan) === 6 ? 18 : parseInt(datosSeleccionados.plan) === 12 ? 15 : parseInt(datosSeleccionados.plan) === 24 ? 13 : parseInt(datosSeleccionados.plan) === 36 ? 11 : parseInt(datosSeleccionados.plan) === 48 ? 9 : parseInt(datosSeleccionados.plan) === 60 && 5) * parseFloat(datosLote.precio_total) / 100;
 
     datosLote.fecha = fechaActual;
-    datosLote.total_financiar = parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : "";
-    datosLote.total_enganche = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.plazo_seleccionado === 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : datosLote.plazo_seleccionado > 1 & datosLote.plazo_seleccionado < 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : ""));
+    datosLote.total_financiar = parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento).toFixed(2)) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total) - ((10 * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : "";
+    datosLote.total_enganche = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.plazo_seleccionado > 60 ? (10 * (parseFloat(datosLote.precio_total)) / 100).toFixed(2) : datosLote.plazo_seleccionado === 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : datosLote.plazo_seleccionado > 1 & datosLote.plazo_seleccionado < 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : ""));
     datosLote.total_enganche_apartado = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.plazo_seleccionado === 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : datosLote.plazo_seleccionado > 1 & datosLote.plazo_seleccionado < 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : "") - 5000);
     datosLote.precio_metros_cuadra = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_metro_cuadrado) + " MXN";
     datosLote.preciototal = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) + " MXN";
-    datosLote.preciototaldescuento = parseInt(datosSeleccionados.plan) === 0 ? (datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 60 ? (datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) <= 48 ? (datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : "";
-    datosLote.tipo_plan = parseInt(datosLote.plazo_seleccionado) === 0 ? "PAGO DE CONTADO - 20% DESCUENTO" : datosLote.plazo_seleccionado + ` MESES SIN INTERESES - ${parseInt(datosLote.plazo_seleccionado) === 60 ? "5% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 48 ? "9% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 36 ? "11% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 24 ? "13% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 12 ? "15% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 6 && "18% DESCUENTO"}`;
+    datosLote.preciototaldescuento = parseInt(datosSeleccionados.plan) === 0 ? (datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) > 60 ? (datosLote.precio_total) - ((10 * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) === 60 ? (datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) <= 48 ? (datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : "";
+    datosLote.tipo_plan = parseInt(datosLote.plazo_seleccionado) === 0 ? "PAGO DE CONTADO - 20% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) > 60 ? datosLote.plazo_seleccionado === 481 ? 48 : datosLote.plazo_seleccionado === 361 ? 36 : datosLote.plazo_seleccionado === 241 ? 24 : datosLote.plazo_seleccionado === 121 ? 12 : datosLote.plazo_seleccionado === 61 ? 6 + ` MESES SIN INTERESES` : 0 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado + ` MESES SIN INTERESES - ${parseInt(datosLote.plazo_seleccionado) === 60 ? "5% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 48 ? "9% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 36 ? "11% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 24 ? "13% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 12 ? "15% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 6 && "18% DESCUENTO"}`;
     datosLote.correo_colaborador = cookies.get("correo_colaborador");
     datosLote.nombre_colaborador = cookies.get("nombre_colaborador");
     datosLote.numero_colaborador = cookies.get("numero_colaborador");
     datosLote.plazo_seleccionado = parseInt(datosSeleccionados.plan);
 
 
+    // console.log(Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.plazo_seleccionado > 60 ? (10 * (parseFloat(datosLote.precio_total)) / 100).toFixed(2) : datosLote.plazo_seleccionado === 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : datosLote.plazo_seleccionado > 1 & datosLote.plazo_seleccionado < 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : "")))
+
     // let CantDescuento = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((parseInt(datosSeleccionados.plan) === 0 ? 25 : parseInt(datosSeleccionados.plan) === 12 ? 20 : parseInt(datosSeleccionados.plan) === 24 ? 18 : parseInt(datosSeleccionados.plan) === 36 ? 15 : parseInt(datosSeleccionados.plan) === 48 ? 12 : parseInt(datosSeleccionados.plan) === 60 && 10) * parseFloat(datosLote.precio_total) / 100);
+
+    // console.log(datosLote.plazo_seleccionado === 481 ? 48 : datosLote.plazo_seleccionado === 361 ? 36 : datosLote.plazo_seleccionado === 241 ? 24 : datosLote.plazo_seleccionado === 121 ? 12 : datosLote.plazo_seleccionado === 61 ? 6 : 0)
 
     const enviarDatos = async () => {
         setEnviado(true)
@@ -369,12 +373,14 @@ const Cotizador = (props) => {
                                     <option value="6">10% DE ENGANCHE Y 06 MESES SIN INTERES - 18% DESCUENTO</option>
                                     <option value="0">PAGO DE CONTADO - 20% DESCUENTO</option>
 
-                                    {/* <option value="601">10% DE ENGANCHE Y 60 MESES SIN INTERES</option>
+                                    <option defaultValue>--------------------------------------------------------------</option>
+
                                     <option value="481">10% DE ENGANCHE Y 48 MESES SIN INTERES</option>
                                     <option value="361">10% DE ENGANCHE Y 36 MESES SIN INTERES</option>
                                     <option value="241">10% DE ENGANCHE Y 24 MESES SIN INTERES</option>
                                     <option value="121">10% DE ENGANCHE Y 12 MESES SIN INTERES</option>
-                                    <option value="01">PAGO DE CONTADO</option> */}
+                                    <option value="61">10% DE ENGANCHE Y 06 MESES SIN INTERES</option>
+                                    <option value="01">PAGO DE CONTADO</option>
                                 </Form.Control>
 
                                 <div className="contenedor-opciones-pago">
@@ -415,7 +421,7 @@ const Cotizador = (props) => {
                                             readOnly={true}
                                             name="enganche"
                                             onChange={handleChange}
-                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "0" : parseInt(datosSeleccionados.plan) === 60 ? "10" : parseInt(datosSeleccionados.plan) === 48 ? "10" : parseInt(datosSeleccionados.plan) === 36 ? "10" : parseInt(datosSeleccionados.plan) === 24 ? "10" : parseInt(datosSeleccionados.plan) === 12 ? "10" : parseInt(datosSeleccionados.plan) === 1 ? '0' : '10'}
+                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "0" : parseInt(datosSeleccionados.plan) > 60 ? "10" : parseInt(datosSeleccionados.plan) === 60 ? "10" : parseInt(datosSeleccionados.plan) === 48 ? "10" : parseInt(datosSeleccionados.plan) === 36 ? "10" : parseInt(datosSeleccionados.plan) === 24 ? "10" : parseInt(datosSeleccionados.plan) === 12 ? "10" : parseInt(datosSeleccionados.plan) === 1 ? '0' : ''}
                                         />
 
                                     </InputGroup>
@@ -427,7 +433,7 @@ const Cotizador = (props) => {
                                         </InputGroup.Prepend>
                                         <FormControl
                                             readOnly
-                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "0" : parseInt(datosSeleccionados.plan) === 1 ? "0" : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : ""}
+                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "0" : parseInt(datosSeleccionados.plan) === 1 ? "0" : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : ""}
                                         />
                                     </InputGroup>
 
@@ -441,7 +447,7 @@ const Cotizador = (props) => {
                                         </InputGroup.Prepend>
                                         <FormControl
                                             readOnly
-                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "100" : parseInt(datosSeleccionados.plan) === 60 ? "90" : parseInt(datosSeleccionados.plan) <= 48 ? "90" : ""}
+                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "100" : parseInt(datosSeleccionados.plan) === 1 ? "100" : parseInt(datosSeleccionados.plan) > 60 ? "90" : parseInt(datosSeleccionados.plan) === 60 ? "90" : parseInt(datosSeleccionados.plan) <= 48 ? "90" : ""}
                                         />
                                     </InputGroup>
                                     <i className="fas fa-equals"></i>
@@ -451,7 +457,7 @@ const Cotizador = (props) => {
                                         </InputGroup.Prepend>
                                         <FormControl
                                             readOnly
-                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : ""}
+                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 1 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total) - ((10 * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : ""}
                                         />
                                     </InputGroup>
                                 </div>
@@ -466,7 +472,7 @@ const Cotizador = (props) => {
                                         </InputGroup.Prepend>
                                         <FormControl
                                             readOnly
-                                            value={datosSeleccionados.plan === "" ? "" : !isNaN(parseInt(datosSeleccionados.plan)) & parseInt(datosSeleccionados.plan) > 0 ? parseInt(datosSeleccionados.plan) : "1"}
+                                            value={datosSeleccionados.plan === "" ? "" : !isNaN(parseInt(datosSeleccionados.plan)) & parseInt(datosSeleccionados.plan) === 481 ? 48 : parseInt(datosSeleccionados.plan) === 361 ? 36 : parseInt(datosSeleccionados.plan) === 241 ? 24 : parseInt(datosSeleccionados.plan) === 121 ? 12 : parseInt(datosSeleccionados.plan) === 61 ? 6 : parseInt(datosSeleccionados.plan) > 0 ? parseInt(datosSeleccionados.plan) : "1"}
                                         />
                                     </InputGroup>
                                     <i className="fas fa-equals"></i>
@@ -476,7 +482,7 @@ const Cotizador = (props) => {
                                         </InputGroup.Prepend>
                                         <FormControl
                                             readOnly
-                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / 60).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / parseInt(datosSeleccionados.plan)).toFixed(2)) : ""}
+                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 1 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / 60).toFixed(2)) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / parseInt(datosSeleccionados.plan === "481" ? "48" : datosSeleccionados.plan === "361" ? "36" : datosSeleccionados.plan === "241" ? "24" : datosSeleccionados.plan === "121" ? "12" : datosSeleccionados.plan === "61" ? "6" : "0")).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / parseInt(datosSeleccionados.plan)).toFixed(2)) : ""}
                                         />
                                     </InputGroup>
                                 </div>

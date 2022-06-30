@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './Table.css';
 
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -14,19 +14,18 @@ import NavBar from '../navBar/NavBar';
 import MenuIzquierdo from '../menu/MenuIzquierdo';
 import MenuIzquierdoDesc from '../menuEscritorio/MenuIzquierdoDesc';
 import Cookies from 'universal-cookie';
+import moment from 'moment';
 
 
 import Swal from 'sweetalert2';
 
 import ReactExport from "react-export-excel";
 
-const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
+const Table = ({ datosFiltro, setDatosFiltro, initialState, data, setData, cargando }) => {
 
     // console.log(datosFiltro)
     // console.log(setDatosFiltro)
     // console.log(initialState)
-
-
 
     const ExcelFile = ReactExport.ExcelFile;
     const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
@@ -35,29 +34,10 @@ const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
     const baseUrl = window.$baseUrl;
     const cookies = new Cookies();
 
-    const [data, setData] = useState([]);
-    const [cargando, setCargando] = useState(false);
+
     const [menu, setMenu] = useState(true);
 
-
-    const peticionGet = async () => {
-
-        setCargando(false)
-
-        await axios.get(baseUrl + "/api/todos/obras")
-            .then(response => {
-                setData(response.data);
-            }).catch(error => {
-                console.log(error);
-            })
-
-        setCargando(true);
-    }
-
-
-    useEffect(() => {
-        peticionGet();
-    }, [])
+    console.log(data)
 
     // desarrollo: null,
     // cliente: "",
@@ -66,21 +46,14 @@ const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
     // fecha_i: null,
     // fecha_f: null,
 
-    const filterData = (datosFiltro.desarrollo === null && datosFiltro.cliente === "" && datosFiltro.lote === null && datosFiltro.estatus === null && datosFiltro.fecha_i === null && datosFiltro.fecha_f === null) ? data
+    const filterData = (datosFiltro.cliente === "") ? data
         :
-        data.filter(item => item.id_obra === parseInt(datosFiltro.cliente))
+        data.filter(item => item.nombre_cliente.toString().toLowerCase().includes(datosFiltro.cliente.toLocaleLowerCase()) || item.apellidos_cliente.toString().toLowerCase().includes(datosFiltro.cliente.toLocaleLowerCase()) || item.correo_cliente.toString().toLowerCase().includes(datosFiltro.cliente.toLocaleLowerCase()) || item.nombre_lote.toString().toLowerCase().includes(datosFiltro.cliente.toLocaleLowerCase()) || item.telefono_cliente.toString().toLowerCase().includes(datosFiltro.cliente.toLocaleLowerCase()) || item.nombre_colaborador.toString().toLowerCase().includes(datosFiltro.cliente.toLocaleLowerCase()) || moment(item.fecha_venta.toString().toLowerCase()).format('DD/MM/YYYY').includes(datosFiltro.cliente.toLocaleLowerCase()) || item.nombre_estado.toString().toLowerCase().includes(datosFiltro.cliente.toLocaleLowerCase()) || item.nombre_tipo_pago_venta_lote.toString().toLowerCase().includes(datosFiltro.cliente.toLocaleLowerCase()))
 
-
-    // item..toString().toLowerCase().includes(datosFiltro.desarrollo.toLocaleLowerCase())
-    // item..toString().toLowerCase().includes(datosFiltro.cliente.toLocaleLowerCase())
-    // item..toString().toLowerCase().includes(datosFiltro.lote.toLocaleLowerCase())
-    // item..toString().toLowerCase().includes(datosFiltro.estatusdatosFiltro.estatus.toLocaleLowerCase())
-    // item..toString().toLowerCase().includes(datosFiltro.fecha_i.toLocaleLowerCase())
-    // item..toString().toLowerCase().includes(datosFiltro.fecha_f.toLocaleLowerCase())
 
     const columns = [
         {
-            dataField: 'id_seguimiento', text: 'ID', headerAlign: 'center', sort: true, hidden: true, headerStyle: {
+            dataField: 'id_venta_lote', text: 'ID', headerAlign: 'center', sort: true, hidden: true, headerStyle: {
                 height: '50px',
 
                 border: 'none',
@@ -89,7 +62,7 @@ const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
             }
         },
         {
-            dataField: 'asesor', text: 'Asesor', sort: true, headerAlign: 'center',
+            dataField: 'nombre_colaborador', text: 'Asesor', sort: true, headerAlign: 'center',
             headerStyle: {
                 height: '50px',
                 textTransform: 'uppercase',
@@ -100,17 +73,21 @@ const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
             }
         },
         {
-            dataField: 'cliente', text: 'Cliente', headerAlign: 'center', sort: true, headerStyle: {
+            dataField: 'nombre_cliente', text: 'Cliente', headerAlign: 'center', sort: true, headerStyle: {
                 height: '50px',
                 textTransform: 'uppercase',
                 fontSize: '13px',
                 border: 'none',
                 color: 'white',
                 backgroundColor: "#242526"
+            }, formatter: (cellContent, row) => {
+                return (
+                    <label>{row.nombre_cliente + " " + row.apellidos_cliente}</label>
+                );
             }
         },
         {
-            dataField: 'desarrollo', text: 'Desarrollo', sort: true, headerAlign: 'center',
+            dataField: 'nombre_desarrollo', text: 'Desarrollo', sort: true, headerAlign: 'center',
             headerStyle: {
                 height: '50px',
                 textTransform: 'uppercase',
@@ -121,7 +98,7 @@ const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
             }
         },
         {
-            dataField: 'lote', text: 'Lote', sort: true, headerAlign: 'center',
+            dataField: 'nombre_lote', text: 'Lote', sort: true, headerAlign: 'center',
             headerStyle: {
                 height: '50px',
                 textTransform: 'uppercase',
@@ -132,29 +109,49 @@ const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
             }
         },
         {
-            dataField: 'fecha_venta', text: 'Fecha Venta', sort: true, headerAlign: 'center',
+            dataField: 'fecha_venta', text: 'Fecha Venta', headerAlign: 'center', sort: true, headerStyle: {
+                height: '50px',
+                textTransform: 'uppercase',
+                fontSize: '13px',
+                border: 'none',
+                color: 'white',
+                backgroundColor: "#242526"
+            }, formatter: (cellContent, row) => {
+                return (
+                    <label>{moment(row.fecha_venta).format('DD/MM/YYYY')}</label>
+                );
+            }
+        },
+        {
+            dataField: 'nombre_estado', text: 'Estatus', sort: true, headerAlign: 'center',
             headerStyle: {
                 height: '50px',
                 textTransform: 'uppercase',
                 fontSize: '13px',
+                border: 'none',
+                color: 'white',
+                backgroundColor: "#242526"
+            }, formatter: (cellContent, row) => {
+                return (
+                    <div style={{ width: '100%', height: '50px', borderRadius: '5px', backgroundColor: row.id_estatus === 3 ? 'red' : 'blue', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+                        <label style={{ color: 'white', fontSize: '14px', fontWeight: 'bold', marginTop: '7px' }}>{row.nombre_estado}</label>
+                    </div>
+                );
+            }
+        },
+        {
+            dataField: 'nombre_tipo_pago_venta_lote', text: 'Forma Pago', sort: true, headerAlign: 'center',
+            headerStyle: {
+                textTransform: 'uppercase',
+                fontSize: '13px',
+                height: '50px',
                 border: 'none',
                 color: 'white',
                 backgroundColor: "#242526"
             }
         },
         {
-            dataField: 'estatus', text: 'Estatus', sort: true, headerAlign: 'center',
-            headerStyle: {
-                height: '50px',
-                textTransform: 'uppercase',
-                fontSize: '13px',
-                border: 'none',
-                color: 'white',
-                backgroundColor: "#242526"
-            }
-        },
-        {
-            dataField: 'plan', text: 'Plan', sort: true, headerAlign: 'center',
+            dataField: 'nombre_tipo_pago_venta_lote', text: 'Pagos', sort: true, headerAlign: 'center',
             headerStyle: {
                 textTransform: 'uppercase',
                 fontSize: '13px',
@@ -162,9 +159,24 @@ const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
                 border: 'none',
                 color: 'white',
                 backgroundColor: "#242526"
+            }, formatter: (cellContent, row) => {
+                return (
+                    <div style={{ width: '100%', height: '60px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+                        <div style={{ width: '100%', height: '100%', flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <label style={{ color: 'blue', fontSize: '17px', fontWeight: 'bold', marginTop: '15px' }}>{row.cant_pagos_pendientes}</label>
+                            <label style={{ color: 'black', fontSize: '17px', fontWeight: 'bold', marginTop: '15px', marginLeft: '4px', marginRight: "4px" }}> de </label>
+                            <label style={{ color: 'black', fontSize: '17px', fontWeight: 'bold', marginTop: '15px' }}>{row.cant_pagos}</label>
+                        </div>
+                        <div>
+                            {row.cant_pagos_pendientes === 0 &&
+                                <label style={{ color: 'blue', fontSize: '17px', fontWeight: 'bold' }}>Finalizado</label>
+                            }
+                        </div>
+
+                    </div>
+                );
             }
         },
-        ,
         {
             dataField: 'df2',
             text: 'Acciones',
@@ -181,7 +193,9 @@ const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
                 return (
                     <div className="tabla-acciones">
                         <h5>
-                            <Button title="Ver más" style={{ backgroundColor: '#242526' }} variant="btn btn-secondary"><i className="fas fa-plus"></i> Ver más</Button>
+                            <Link to={`/detalles-seguimiento/${row.id_venta_lote}`} >
+                                <Button title="Ver más" style={{ backgroundColor: '#242526' }} variant="btn btn-secondary"><i className="fas fa-plus"></i> Ver más</Button>
+                            </Link>
                         </h5>
                     </div>
                 );
@@ -200,17 +214,34 @@ const Table = ({ datosFiltro, setDatosFiltro, initialState }) => {
                     cargando ?
                         <div className="cont-table-seguimiento">
                             <ExcelFile element={<button className="btn-generar-seguimiento-excel"> <i className="fas fa-download"></i> Excel</button>}>
-                                <ExcelSheet data={data} name="Obras">
-                                    <ExcelColumn label="#" value="id_obra" />
-                                    <ExcelColumn label="Nombre" value="nombre_obra" />
-                                </ExcelSheet>
+                                <ExcelSheet data={filterData} name="Ventas">
+                                    <ExcelColumn label="#" value="id_venta_lote" />
+                                    <ExcelColumn label="Desarrollo" value="nombre_desarrollo" />
+                                    <ExcelColumn label="#Lote" value="nombre_lote" />
+                                    <ExcelColumn label="Metros Cuadrados" value="metros_cuadrados" />
+                                    <ExcelColumn label="Precio Metros Cuadrados" value="precio_metro_cuadrado" />
 
+                                    <ExcelColumn label="Nombre Cliente"
+                                        value={(col) => col.nombre_cliente && col.nombre_cliente + " " + col.apellidos_cliente} />
+                                    {/* <ExcelColumn label="" value="nombre_cliente" /> */}
+                                    <ExcelColumn label="Fecha Venta" value="fecha_venta" />
+                                    <ExcelColumn label="Correo Cliente" value="correo_cliente" />
+                                    <ExcelColumn label="Teléfono Cliente" value="telefono_cliente" />
+
+                                    <ExcelColumn label="Meses" value="nombre_mes" />
+                                    <ExcelColumn label="Enganche/contado" value="enganche_contado" />
+                                    <ExcelColumn label="Precio Total Lote" value="precio_total" />
+                                    <ExcelColumn label="Pago Mensual"
+                                        value={(col) => col.pago_mensual === "NaN" || col.pago_mensual === 0 ? "" : col.pago_mensual} />
+                                    <ExcelColumn label="Tipo de Pago" value="nombre_tipo_pago_venta_lote" />
+                                    <ExcelColumn label="Broker" value="nombre_colaborador" />
+                                </ExcelSheet>
                             </ExcelFile>
 
 
                             <BootstrapTable hover={true}
                                 keyField="id_obra"
-                                data={[]}
+                                data={filterData}
                                 noDataIndication={emptyDataMessage}
                                 columns={columns}
                                 filter={filterFactory()}
