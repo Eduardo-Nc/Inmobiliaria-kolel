@@ -92,7 +92,6 @@ const NavBar = () => {
                             <li><NavLink to="/servicios" activeClassName="menu-seleccionado" > <h2>Servicios</h2> </NavLink> </li>
                             <li><NavLink to="/contacto" activeClassName="menu-seleccionado" > <h2>Contacto</h2> </NavLink> </li>
                             {/* <li><NavLink to="/colaboradores" activeClassName="menu-seleccionado" > <h2>Colaboradores</h2> </NavLink> </li> */}
-
                         </ul>
 
                         <ul className="contenedor-navbar-iniciar-sesion">
