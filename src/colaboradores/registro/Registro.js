@@ -214,54 +214,54 @@ const Registro = () => {
 
 
     return (
-        <Fragment>
-            <div className="contenedor-registro-colaboradores">
-                <img src={fondo} alt="fondo" />
 
-                <div className="contenido-registro-colaboradores">
-                    <h1>Gracias por el interés</h1>
-                    <p> <strong>Inmobiliaria Koolel Kaab</strong> te invita a que formes parte de su equipo... </p>
-                    <strong>¡Juntos logremos cosas increibles!</strong>
+        <div className="contenedor-registro-colaboradores">
+            <img src={fondo} alt="fondo" />
 
-                    <div className="contenedor-form-div-registro">
+            <div className="contenido-registro-colaboradores">
+                <h1>Gracias por el interés</h1>
+                <p> <strong>Inmobiliaria Koolel Kaab</strong> te invita a que formes parte de su equipo... </p>
+                <strong>¡Juntos logremos cosas increibles!</strong>
 
-                        <form id="formulario" autoComplete="off" className="form-registro" onSubmit={peticionPost}>
-                            <input name="nombre" onChange={handleChange} type="text" placeholder="Nombre Completo" />
-                            <input name="numero" maxLength="10" maxLength="10" onChange={handleChange} type="text" placeholder="Número Celular" />
-                            <input name="correo" onChange={handleChange} type="email" placeholder="Correo electrónico" />
-                            <select name="relacion" onChange={handleChange} placeholder="Relación Laboral"  >
-                                <option value="" defaultValue>Seleccione una opción</option>
-                                <option value="Interno">Interno</option>
-                                <option value="Externo">Externo</option>
-                            </select>
+                <div className="contenedor-form-div-registro">
 
-                            <input name="estado" type="text" placeholder="Ingrese su estado" onChange={handleChange}  />
+                    <form id="formulario" autoComplete="off" className="form-registro" onSubmit={peticionPost}>
+                        <input name="nombre" onChange={handleChange} type="text" placeholder="Nombre Completo" />
+                        <input name="numero" maxLength="10" maxLength="10" onChange={handleChange} type="text" placeholder="Número Celular" />
+                        <input name="correo" onChange={handleChange} type="email" placeholder="Correo electrónico" />
+                        <select name="relacion" onChange={handleChange} placeholder="Relación Laboral"  >
+                            <option value="" defaultValue>Seleccione una opción</option>
+                            <option value="Interno">Interno</option>
+                            <option value="Externo">Externo</option>
+                        </select>
 
-
-                            <input name="municipio" type="text" placeholder="Ingrese su municipio" onChange={handleChange} />
+                        <input name="estado" type="text" placeholder="Ingrese su estado" onChange={handleChange} />
 
 
-                            <input name="direccion" onChange={handleChange} type="text" placeholder="Dirección" />
-                            {cargando ?
-                                <div className="spinner"></div>
-                                :
-                                <input type="submit" value="Registrarme" />
-                            }
-                        </form>
+                        <input name="municipio" type="text" placeholder="Ingrese su municipio" onChange={handleChange} />
 
-                        <div className="div-registro">
 
-                            <img src={logo} alt="logo" />
+                        <input name="direccion" onChange={handleChange} type="text" placeholder="Dirección" />
+                        {cargando ?
+                            <div className="spinner"></div>
+                            :
+                            <input type="submit" value="Registrarme" />
+                        }
+                    </form>
 
-                        </div>
+                    <div className="div-registro">
+
+                        <img src={logo} alt="logo" />
 
                     </div>
-                    <Link to="/colaboradores"><img src={flecha} width="35px" alt="Regresar" title="Regresar" /></Link>
+
                 </div>
-
-
+                <Link to="/colaboradores"><img src={flecha} width="35px" alt="Regresar" title="Regresar" /></Link>
             </div>
-        </Fragment>
+
+
+        </div>
+
     )
 }
 

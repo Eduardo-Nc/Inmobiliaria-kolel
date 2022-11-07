@@ -45,7 +45,7 @@ const DatosCola = React.lazy(() => import('./administrador/datosColaboradores/Da
 
 
 //Localhost
-// window.$baseUrl = "http://192.168.1.82:30020";
+// window.$baseUrl = "http://192.168.1.64:30020";
 
 
 //heroku

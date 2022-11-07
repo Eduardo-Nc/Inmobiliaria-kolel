@@ -53,7 +53,7 @@ const Cotizador = (props) => {
     });
 
 
-    const [textEncanche, setTextEnganche] = useState(10)
+    const [textEncanche, setTextEnganche] = useState(15)
     const [abrirModal, setAbrirModal] = useState(false);
     const [abrirModalNoDisponible, setAbrirModalNoDisponible] = useState(false);
 
@@ -67,6 +67,7 @@ const Cotizador = (props) => {
         precio_total: 0,
     });
 
+    // console.log(datosSeleccionados.plan === "01")
 
     if (item === undefined) {
         window.location.href = "/disponibilidad"
@@ -159,20 +160,22 @@ const Cotizador = (props) => {
 
     let diez_enganche = parseFloat(datosLote.precio_total) - (10 * (parseFloat(datosLote.precio_total)) / 100)
 
-    let CantDescuento = (parseInt(datosSeleccionados.plan) === 0 ? 15 : parseInt(datosSeleccionados.plan) === 6 ? 9 : parseInt(datosSeleccionados.plan) === 12 ? 7 : parseInt(datosSeleccionados.plan) === 24 ? 5 : parseInt(datosSeleccionados.plan) === 36 ? 3 : parseInt(datosSeleccionados.plan) === 48 ? 2 : parseInt(datosSeleccionados.plan) === 60 && 5) * parseFloat(datosLote.precio_total) / 100;
+    let CantDescuento = (parseInt(datosSeleccionados.plan) === 0 ? 15 : parseInt(datosSeleccionados.plan) === 6 ? 10 : parseInt(datosSeleccionados.plan) === 12 ? 7 : parseInt(datosSeleccionados.plan) === 24 ? 5 : parseInt(datosSeleccionados.plan) === 36 ? 3 : parseInt(datosSeleccionados.plan) === 48 ? 0 : parseInt(datosSeleccionados.plan) === 60 && 5) * parseFloat(datosLote.precio_total) / 100;
 
     datosLote.fecha = moment().format(`LL`);
-    datosLote.total_financiar = parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento).toFixed(2)) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : "";
-    datosLote.total_enganche = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2));
+    datosLote.fechaMesSiguiente = moment().add(1, 'month').format(`LL`);
+    datosLote.total_financiar = (datosSeleccionados.plan === "01" || datosSeleccionados.plan === "0") ? 0 : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento).toFixed(2)) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : "";
+    datosLote.total_enganche = (datosSeleccionados.plan === "01" || datosSeleccionados.plan === "0") ? 0 : Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2));
     datosLote.total_enganche_apartado = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.plazo_seleccionado === 60 ? (textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : datosLote.plazo_seleccionado > 1 & datosLote.plazo_seleccionado < 60 ? (textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : "") - 5000);
     datosLote.precio_metros_cuadra = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_metro_cuadrado) + " MXN";
     datosLote.preciototal = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) + " MXN";
-    datosLote.preciototaldescuento = parseInt(datosSeleccionados.plan) === 0 ? (datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) > 60 ? (datosLote.precio_total) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) === 60 ? (datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) <= 48 ? (datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : "";
-    datosLote.tipo_plan = parseInt(datosLote.plazo_seleccionado) === 0 ? "PAGO DE CONTADO - 15% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) > 60 ? datosLote.plazo_seleccionado === 481 ? 48 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado === 361 ? 36 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado === 241 ? 24 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado === 121 ? 12 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado === 61 ? 6 + ` MESES SIN INTERESES` : 0 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado + ` MESES SIN INTERESES - ${parseInt(datosLote.plazo_seleccionado) === 60 ? "5% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 48 ? "2% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 36 ? "3% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 24 ? "5% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 12 ? "7% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 6 && "9% DESCUENTO"}`;
+    datosLote.preciototaldescuento = datosSeleccionados.plan === "01" ? datosLote.precio_total : parseInt(datosSeleccionados.plan) === 0 ? (datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) > 60 ? (datosLote.precio_total) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) === 60 ? (datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) <= 48 ? (datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : "";
+    datosLote.tipo_plan = datosSeleccionados.plan === "01" ? "PAGO DE CONTADO" : parseInt(datosLote.plazo_seleccionado) === 0 ? "PAGO DE CONTADO - 15% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) > 60 ? datosLote.plazo_seleccionado === 481 ? 48 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado === 361 ? 36 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado === 241 ? 24 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado === 121 ? 12 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado === 61 ? 6 + ` MESES SIN INTERESES` : 0 + ` MESES SIN INTERESES` : datosLote.plazo_seleccionado + ` MESES SIN INTERESES - ${parseInt(datosLote.plazo_seleccionado) === 60 ? "5% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 48 ? "0% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 36 ? "3% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 24 ? "5% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 12 ? "7% DESCUENTO" : parseInt(datosLote.plazo_seleccionado) === 6 && "10% DESCUENTO"}`;
     datosLote.correo_colaborador = cookies.get("correo_colaborador");
     datosLote.nombre_colaborador = cookies.get("nombre_colaborador");
     datosLote.numero_colaborador = cookies.get("numero_colaborador");
     datosLote.plazo_seleccionado = parseInt(datosSeleccionados.plan);
+    datosLote.descuento = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(CantDescuento)
 
 
     // console.log(Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.plazo_seleccionado > 60 ? (10 * (parseFloat(datosLote.precio_total)) / 100).toFixed(2) : datosLote.plazo_seleccionado === 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : datosLote.plazo_seleccionado > 1 & datosLote.plazo_seleccionado < 60 ? (10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : "")))
@@ -381,21 +384,21 @@ const Cotizador = (props) => {
                                 <Form.Control as="select" name="plan" onChange={handleChange} >
                                     <option defaultValue>Seleccione un plan</option>
 
-                                    <option value="48">48 MESES SIN INTERES - 2% DESCUENTO</option>
+                                    {/* <option value="48">48 MESES SIN INTERES - 0% DESCUENTO</option>
                                     <option value="36">36 MESES SIN INTERES - 3% DESCUENTO</option>
                                     <option value="24">24 MESES SIN INTERES - 5% DESCUENTO</option>
                                     <option value="12">12 MESES SIN INTERES - 7% DESCUENTO</option>
-                                    <option value="6">06 MESES SIN INTERES - 9% DESCUENTO</option>
+                                    <option value="6">06 MESES SIN INTERES - 10% DESCUENTO</option> */}
                                     <option value="0">PAGO DE CONTADO - 15% DESCUENTO</option>
+                                    <option value="01">PAGO DE CONTADO</option>
 
-                                    <option defaultValue>--------------------------------------------------------------</option>
+                                    {/* <option defaultValue>--------------------------------------------------------------</option> */}
 
                                     <option value="481">48 MESES SIN INTERES</option>
                                     <option value="361">36 MESES SIN INTERES</option>
                                     <option value="241">24 MESES SIN INTERES</option>
                                     <option value="121">12 MESES SIN INTERES</option>
                                     <option value="61">06 MESES SIN INTERES</option>
-                                    <option value="01">PAGO DE CONTADO</option>
                                 </Form.Control>
 
                                 <div className="contenedor-opciones-pago">
@@ -408,7 +411,7 @@ const Cotizador = (props) => {
                                             readOnly={true}
                                             name="enganche"
                                             onChange={handleChange}
-                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "15" : parseInt(datosSeleccionados.plan) === 6 ? "9" : parseInt(datosSeleccionados.plan) === 12 ? "7" : parseInt(datosSeleccionados.plan) === 24 ? "5" : parseInt(datosSeleccionados.plan) === 36 ? "3" : parseInt(datosSeleccionados.plan) === 48 ? "2" : parseInt(datosSeleccionados.plan) === 60 ? "5" : ""}
+                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "15" : parseInt(datosSeleccionados.plan) === 6 ? "10" : parseInt(datosSeleccionados.plan) === 12 ? "7" : parseInt(datosSeleccionados.plan) === 24 ? "5" : parseInt(datosSeleccionados.plan) === 36 ? "3" : parseInt(datosSeleccionados.plan) === 48 ? "0" : parseInt(datosSeleccionados.plan) === 60 ? "5" : ""}
                                         />
 
                                     </InputGroup>
@@ -426,97 +429,131 @@ const Cotizador = (props) => {
                                 </div>
 
 
-                                <div className="contenedor-opciones-pago">
-                                    <label>Enganche: </label>
-                                    <InputGroup className="mb-3" >
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text id="basic-addon1"><i className="fas fa-percentage"></i></InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <FormControl
-                                            // readOnly={true}
-                                            min="0"
-                                            max="3"
+                                {datosSeleccionados.plan === "01" || datosSeleccionados.plan === "0" ?
+                                    <></>
+                                    :
+                                    <div className="contenedor-opciones-pago">
+                                        <label>Enganche: </label>
+                                        <InputGroup className="mb-3" >
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text id="basic-addon1"><i className="fas fa-percentage"></i></InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <FormControl
+                                                // readOnly={true}
+                                                min="0"
+                                                max="3"
 
-                                            name="enganche"
-                                            onChange={handleChangeEnganche}
-                                            value={textEncanche}
-                                        />
+                                                name="enganche"
+                                                onChange={handleChangeEnganche}
+                                                value={textEncanche}
+                                            />
 
-                                    </InputGroup>
-                                    {/* {console.log(datosLote.precio_total)} */}
-                                    <i className="fas fa-equals"></i>
-                                    <InputGroup className="mb-3" >
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text id="basic-addon1"> <i className="fas fa-dollar-sign"></i> </InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <FormControl
-                                            readOnly
-                                            value={
-                                                textEncanche === "" ?
-                                                    ""
-                                                    :
-                                                    Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2))
-                                                // datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "0" : parseInt(datosSeleccionados.plan) === 1 ? "0" : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : ""
-                                            }
-                                        />
-                                    </InputGroup>
+                                        </InputGroup>
+                                        {/* {console.log(datosLote.precio_total)} */}
+                                        <i className="fas fa-equals"></i>
+                                        <InputGroup className="mb-3" >
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text id="basic-addon1"> <i className="fas fa-dollar-sign"></i> </InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <FormControl
+                                                readOnly
+                                                value={
+                                                    textEncanche === "" ?
+                                                        ""
+                                                        :
+                                                        Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2))
+                                                    // datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "0" : parseInt(datosSeleccionados.plan) === 1 ? "0" : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : ""
+                                                }
+                                            />
+                                        </InputGroup>
 
-                                </div>
+                                    </div>
+                                }
 
-                                <div className="contenedor-opciones-pago">
-                                    <label>Total a Financiar: </label>
-                                    <InputGroup className="mb-3" >
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text id="basic-addon1"><i className="fas fa-percentage"></i></InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <FormControl
-                                            readOnly
-                                            value={
-                                                textEncanche === "" ?
-                                                    datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "100" : parseInt(datosSeleccionados.plan) === 1 ? "100" : parseInt(datosSeleccionados.plan) > 60 ? "90" : parseInt(datosSeleccionados.plan) === 60 ? "90" : parseInt(datosSeleccionados.plan) <= 48 ? "90" : ""
-                                                    :
-                                                    100 - textEncanche
-                                            }
-                                        />
-                                    </InputGroup>
-                                    <i className="fas fa-equals"></i>
-                                    <InputGroup className="mb-3" >
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text id="basic-addon1"> <i className="fas fa-dollar-sign"></i> </InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <FormControl
-                                            readOnly
-                                            value={
-                                                datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 1 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? parseFloat(textEncanche) : 10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : ""
-                                            }
-                                        />
-                                    </InputGroup>
-                                </div>
+                                {datosSeleccionados.plan === "01" || datosSeleccionados.plan === "0" ?
+                                    <></>
+                                    :
+                                    <div className="contenedor-opciones-pago">
+                                        <label>Total a Financiar: </label>
+                                        <InputGroup className="mb-3" >
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text id="basic-addon1"><i className="fas fa-percentage"></i></InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <FormControl
+                                                readOnly
+                                                value={
+                                                    textEncanche === "" ?
+                                                        datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? "100" : parseInt(datosSeleccionados.plan) === 1 ? "100" : parseInt(datosSeleccionados.plan) > 60 ? "90" : parseInt(datosSeleccionados.plan) === 60 ? "90" : parseInt(datosSeleccionados.plan) <= 48 ? "90" : ""
+                                                        :
+                                                        100 - textEncanche
+                                                }
+                                            />
+                                        </InputGroup>
+                                        <i className="fas fa-equals"></i>
+                                        <InputGroup className="mb-3" >
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text id="basic-addon1"> <i className="fas fa-dollar-sign"></i> </InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <FormControl
+                                                readOnly
+                                                value={
+                                                    datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 1 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? parseFloat(textEncanche) : 10 * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : ""
+                                                }
+                                            />
+                                        </InputGroup>
+                                    </div>
+                                }
 
+                                {datosSeleccionados.plan === "01" || datosSeleccionados.plan === "0" ?
+                                    <></>
+                                    :
+                                    <div className="contenedor-opciones-pago">
+                                        <label>Mensualidades: </label>
+                                        <InputGroup className="mb-3" >
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text id="basic-addon1"><i className="fas fa-hashtag"></i></InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <FormControl
+                                                readOnly
+                                                value={datosSeleccionados.plan === "" ? "" : !isNaN(parseInt(datosSeleccionados.plan)) & parseInt(datosSeleccionados.plan) === 481 ? 48 : parseInt(datosSeleccionados.plan) === 361 ? 36 : parseInt(datosSeleccionados.plan) === 241 ? 24 : parseInt(datosSeleccionados.plan) === 121 ? 12 : parseInt(datosSeleccionados.plan) === 61 ? 6 : parseInt(datosSeleccionados.plan) > 0 ? parseInt(datosSeleccionados.plan) : "1"}
+                                            />
+                                        </InputGroup>
+                                        <i className="fas fa-equals"></i>
+                                        <InputGroup className="mb-3" >
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text id="basic-addon1"> <i className="fas fa-dollar-sign"></i> </InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <FormControl
+                                                readOnly
+                                                value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 1 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / 60).toFixed(2)) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / parseInt(datosSeleccionados.plan === "481" ? "48" : datosSeleccionados.plan === "361" ? "36" : datosSeleccionados.plan === "241" ? "24" : datosSeleccionados.plan === "121" ? "12" : datosSeleccionados.plan === "61" ? "6" : "0")).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / parseInt(datosSeleccionados.plan)).toFixed(2)) : ""}
+                                            />
+                                        </InputGroup>
+                                    </div>
+                                }
 
+                                {datosSeleccionados.plan === "01" || datosSeleccionados.plan === "0" ?
+                                    <div className="contenedor-opciones-pago">
+                                        <label>Total a liquidar </label>
+                                        <InputGroup className="mb-3" >
+                                            <InputGroup.Prepend>
+                                                {/* <InputGroup.Text id="basic-addon1"><i className="fas fa-hashtag"></i></InputGroup.Text> */}
+                                            </InputGroup.Prepend>
 
-                                <div className="contenedor-opciones-pago">
-                                    <label>Mensualidades: </label>
-                                    <InputGroup className="mb-3" >
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text id="basic-addon1"><i className="fas fa-hashtag"></i></InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <FormControl
-                                            readOnly
-                                            value={datosSeleccionados.plan === "" ? "" : !isNaN(parseInt(datosSeleccionados.plan)) & parseInt(datosSeleccionados.plan) === 481 ? 48 : parseInt(datosSeleccionados.plan) === 361 ? 36 : parseInt(datosSeleccionados.plan) === 241 ? 24 : parseInt(datosSeleccionados.plan) === 121 ? 12 : parseInt(datosSeleccionados.plan) === 61 ? 6 : parseInt(datosSeleccionados.plan) > 0 ? parseInt(datosSeleccionados.plan) : "1"}
-                                        />
-                                    </InputGroup>
-                                    <i className="fas fa-equals"></i>
-                                    <InputGroup className="mb-3" >
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text id="basic-addon1"> <i className="fas fa-dollar-sign"></i> </InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <FormControl
-                                            readOnly
-                                            value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 1 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / 60).toFixed(2)) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / parseInt(datosSeleccionados.plan === "481" ? "48" : datosSeleccionados.plan === "361" ? "36" : datosSeleccionados.plan === "241" ? "24" : datosSeleccionados.plan === "121" ? "12" : datosSeleccionados.plan === "61" ? "6" : "0")).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / parseInt(datosSeleccionados.plan)).toFixed(2)) : ""}
-                                        />
-                                    </InputGroup>
-                                </div>
+                                        </InputGroup>
+                                        <i className="fas fa-equals"></i>
+                                        <InputGroup className="mb-3" >
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text id="basic-addon1"> <i className="fas fa-dollar-sign"></i> </InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <FormControl
+                                                readOnly
+                                                value={datosSeleccionados.plan === "" ? "" : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) === 1 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / 60).toFixed(2)) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / parseInt(datosSeleccionados.plan === "481" ? "48" : datosSeleccionados.plan === "361" ? "36" : datosSeleccionados.plan === "241" ? "24" : datosSeleccionados.plan === "121" ? "12" : datosSeleccionados.plan === "61" ? "6" : "0")).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100))) / parseInt(datosSeleccionados.plan)).toFixed(2)) : ""}
+                                            />
+                                        </InputGroup>
+                                    </div>
+                                    :
+                                    <></>
+                                }
 
                                 {/* <div className="contenedor-opciones-pago">
                                     <label>Contra Entrega: </label>

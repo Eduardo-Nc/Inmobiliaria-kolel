@@ -1,215 +1,208 @@
-@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&display=swap");
 
-.contenedor-registro-colaboradores{
-    width: 100%;
-    height: 100vh;
-    display: flex;
+.contenedor-registro-colaboradores {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  transition-duration: 0.5s;
+}
+
+.contenedor-registro-colaboradores > img {
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+}
+
+.contenido-registro-colaboradores {
+  position: absolute;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.contenido-registro-colaboradores h1 {
+  color: white;
+  text-transform: uppercase;
+  font-size: 37px;
+  font-family: "Asap", sans-serif;
+  text-align: center;
+}
+
+.contenido-registro-colaboradores p {
+  color: white;
+  font-size: 17px;
+  text-align: center;
+}
+
+.contenido-registro-colaboradores > strong {
+  color: white;
+  text-transform: uppercase;
+}
+
+.contenedor-form-div-registro {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-registro {
+  width: 60%;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-registro input {
+  width: 320px;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.301);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.589);
+  color: white;
+  outline: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition-duration: 0.5s;
+}
+
+.form-registro input::placeholder {
+  color: white;
+}
+
+.form-registro input:focus {
+  width: 330px;
+  border-bottom: 3px solid rgb(255, 238, 0);
+  transition-duration: 0.5s;
+}
+
+.form-registro select {
+  width: 320px;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.301);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.589);
+  color: white;
+  text-align: center;
+  text-align-last: center;
+  outline: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition-duration: 0.5s;
+}
+
+.form-registro select:focus {
+  border-bottom: 3px solid rgb(255, 238, 0);
+  transition-duration: 0.5s;
+}
+
+.form-registro input[type="submit"] {
+  width: 320px;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.301);
+  text-align: center;
+  background: rgb(75, 75, 206);
+  color: white;
+  text-align: center;
+  text-align-last: center;
+  outline: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.form-registro input[type="submit"]:hover {
+  cursor: pointer;
+  background: rgb(95, 95, 235);
+}
+
+.div-registro {
+  width: 30%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-registro img {
+  width: 180px;
+  height: 250px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.932);
+  border-left-color: #7388ff;
+  border-radius: 50%;
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1100px) {
+  .contenedor-registro-colaboradores > img {
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 800px) {
+  .contenedor-form-div-registro {
     flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition-duration: 0.5s;
+    height: 500px;
+  }
+
+  .form-registro {
+    width: 90%;
+    height: 450px;
+  }
+
+  .form-registro input {
+    width: 90%;
+    height: 46px;
+  }
+
+  .form-registro select {
+    width: 90%;
+    height: 46px;
+  }
+
+  .form-registro input[type="submit"] {
+    width: 90%;
+    font-size: 20px;
+    height: 46px;
+  }
+
+  .div-registro {
+    display: none;
+  }
 }
-
-    .contenedor-registro-colaboradores > img{
-        width: 100%;
-        height: 100vh;
-        min-height:650px;
-    }
-
-    .contenido-registro-colaboradores{
-        position: absolute;
-        width: 100%;
-        height: 90vh;
-        display: flex;
-        flex-flow:column nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        overflow: hidden;
-
-    }
-
-    .contenido-registro-colaboradores h1{
-        color:white;
-        text-transform:uppercase;
-        font-size:37px;
-        font-family: 'Asap', sans-serif;
-        text-align: center;
-    }
-
-    .contenido-registro-colaboradores p{
-        color:white;
-        font-size:17px;
-        text-align: center;
-    }
-
-    .contenido-registro-colaboradores > strong{
-        color:white;
-        text-transform:uppercase;
-    }
-
-    
-.contenedor-form-div-registro{
-    width: 100%;
-    height:auto;
-    overflow:hidden;
-    display:flex;
-    flex-flow: row-reverse nowrap;
-    justify-content:center;
-    align-items: center;
-}
-
-    .form-registro{
-        width: 60%;
-        overflow: hidden;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .form-registro input{
-        width: 320px;
-        height:40px;
-        border-radius: 4px;
-        font-size:17px;
-        border:1px solid rgba(255, 255, 255, 0.301);
-        text-align: center;
-        background:rgba(0, 0, 0, 0.589);
-        color:white;
-        outline: none;
-        margin-left:10px;
-        margin-right:10px;
-        margin-bottom:10px;
-        transition-duration: 0.5s;
-    }
-
-    .form-registro input::placeholder{
-        color:white;
-    }
-
-    .form-registro input:focus{
-        width: 330px;
-        border-bottom:3px solid rgb(255, 238, 0);
-        transition-duration: 0.5s;
-    }
-
-    .form-registro select{
-        width: 320px;
-        height:40px;
-        border-radius: 4px;
-        font-size:17px;
-        border:1px solid rgba(255, 255, 255, 0.301);
-        text-align: center;
-        background:rgba(0, 0, 0, 0.589);
-        color:white;
-        text-align: center;
-        text-align-last: center;
-        outline: none;
-        margin-left:10px;
-        margin-right:10px;
-        margin-bottom:10px;
-        transition-duration: 0.5s;
-    }
-
-    .form-registro select:focus{
-        border-bottom:3px solid rgb(255, 238, 0);
-        transition-duration: 0.5s;
-    }
-
-    .form-registro input[type="submit"]{
-        width: 320px;
-        height:40px;
-        border-radius: 4px;
-        font-size:17px;
-        border:1px solid rgba(255, 255, 255, 0.301);
-        text-align: center;
-        background:rgb(75, 75, 206);
-        color:white;
-        text-align: center;
-        text-align-last: center;
-        outline: none;
-        margin-left:10px;
-        margin-right:10px;
-        margin-bottom:10px;
-    }
-
-    .form-registro input[type="submit"]:hover{
-        cursor: pointer;
-        background:rgb(95, 95, 235);
-    }
-
-    .div-registro{
-        width: 30%;
-        height:100vh;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-        .div-registro img{
-            width: 180px;
-            height:250px;
-        }
-
-        .spinner{
-            width: 40px;
-            height:40px;
-            border:4px solid rgba(255, 255, 255, 0.932);
-            border-left-color: #7388ff;
-            border-radius: 50%;
-            animation: spin 1s ease infinite;
-        }
-        
-        @keyframes spin {
-            0%{
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-@media (max-width:1100px){
-    .contenedor-registro-colaboradores > img{
-        object-fit: cover;
-    }
-}
-
-@media (max-width:800px){
-
-
-    .contenedor-form-div-registro{
-        flex-flow: column nowrap;
-        height:500px;
-    }
-
-    .form-registro{
-        width: 90%;
-        height:450px;
-    }
-
-    .form-registro input{
-        width: 90%;
-        height:46px;
-    }
-    
-    .form-registro select{
-        width: 90%;
-        height:46px;
-    }
-
-    .form-registro input[type="submit"]{
-        width: 90%;
-        font-size:20px;
-        height:46px;
-    }
-
-    .div-registro{
-        
-        display:none;
-     
-    }
-}
-
