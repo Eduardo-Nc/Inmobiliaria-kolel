@@ -71,7 +71,7 @@ const Colaboradores = () => {
                         cookies.set('nombre_colaborador', savedata.nombre_colaborador, { path: "/" });
                         cookies.set('correo_colaborador	', savedata.correo_colaborador, { path: "/" });
                         cookies.set('numero_colaborador	', savedata.numero_colaborador, { path: "/" });
-                        
+
                         window.location.href = "/informacion";
 
 
@@ -125,14 +125,23 @@ const Colaboradores = () => {
                             <input type="password" placeholder="Contraseña" onChange={handleInputChange} name="password" />
                         </div>
 
+                        <div className="contenedor-contrasena-colaboradores">
+                            <Link to="/contrasena-colaboradores">Olvidé mi contraseña</Link>
+                        </div>
+
+
                         {enviado ?
                             <div className="contenedor-input-colaboradores">
                                 <input type="submit" value="Ingresar" />
                             </div>
 
                             :
-                            <div style={{marginBottom:'25px'}} className="spinner"></div>
+                            <div style={{ marginBottom: '25px' }} className="spinner"></div>
                         }
+
+
+
+
 
                         <div className="contenedor-label-colaboradores">
                             <Link to="/registro-colaboradores">Registrarse</Link>

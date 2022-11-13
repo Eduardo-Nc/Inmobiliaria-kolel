@@ -23,6 +23,7 @@ const Usuarios = React.lazy(() => import('./administrador/usuarios/Usuarios'))
 const Desarrollos = React.lazy(() => import('./administrador/desarrollos/Desarrollos'))
 const Colaboradores = React.lazy(() => import('./colaboradores/colaboradores/Colaboradores'))
 const Registro = React.lazy(() => import('./colaboradores/registro/Registro'))
+const Contrasena = React.lazy(() => import('./colaboradores/registro/Contrasena'))
 const Informacion = React.lazy(() => import('./colaboradores/informacion/Informacion'))
 const Disponibilidad = React.lazy(() => import('./colaboradores/disponibilidad/Disponibilidad'))
 const Cotizador = React.lazy(() => import('./colaboradores/cotizador/Cotizador'))
@@ -45,7 +46,7 @@ const DatosCola = React.lazy(() => import('./administrador/datosColaboradores/Da
 
 
 //Localhost
-// window.$baseUrl = "http://192.168.1.64:30020";
+// window.$baseUrl = "http://192.168.1.77:30020";
 
 
 //heroku
@@ -79,6 +80,7 @@ const Index = () => {
         <Route path="/desarrollos" component={Desarrollos} />
         <Route path="/colaboradores" component={Colaboradores} />
         <Route path="/registro-colaboradores" component={Registro} />
+        <Route path="/contrasena-colaboradores" component={Contrasena} />
         <Route path="/informacion" component={Informacion} />
         <Route path="/disponibilidad" component={Disponibilidad} />
         <Route path="/cotizador" component={Cotizador} />
