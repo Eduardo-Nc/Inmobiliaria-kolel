@@ -284,7 +284,7 @@ const Cotizador = (props) => {
                 <NavBar />
                 <div className="contenido-cotizador">
 
-                    <p>Plano {item.nombre_desarrollo}</p>
+                    <p>{item.nombre_desarrollo}</p>
 
                     <table className="table table-responsive">
                         <thead>
