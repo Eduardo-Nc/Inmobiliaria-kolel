@@ -30,6 +30,7 @@ const Cotizador = (props) => {
         total_financiar: null
 
     });
+
     const [item, setItem] = useState(props.location.item);
     const [datosLote, setDatosLote] = useState({
         estado_lote: 0,
@@ -166,7 +167,10 @@ const Cotizador = (props) => {
     datosLote.fechaMesSiguiente = moment().add(1, 'month').format(`LL`);
     datosLote.total_financiar = (datosSeleccionados.plan === "01" || datosSeleccionados.plan === "0") ? 0 : parseInt(datosSeleccionados.plan) === 0 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento).toFixed(2)) : parseInt(datosSeleccionados.plan) > 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) === 60 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : parseInt(datosSeleccionados.plan) <= 48 ? Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2)) : "";
     datosLote.total_enganche = (datosSeleccionados.plan === "01" || datosSeleccionados.plan === "0") ? 0 : Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2));
-    datosLote.total_enganche_apartado = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format((datosLote.plazo_seleccionado === 60 ? (textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : datosLote.plazo_seleccionado > 1 & datosLote.plazo_seleccionado < 60 ? (textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100).toFixed(2) : "") - 5000);
+
+    datosLote.total_enganche_apartado = (datosSeleccionados.plan === "01" || datosSeleccionados.plan === "0") ? "$0" : Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(((parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2));
+
+
     datosLote.precio_metros_cuadra = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_metro_cuadrado) + " MXN";
     datosLote.preciototal = Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(datosLote.precio_total) + " MXN";
     datosLote.preciototaldescuento = datosSeleccionados.plan === "01" ? datosLote.precio_total : parseInt(datosSeleccionados.plan) === 0 ? (datosLote.precio_total - CantDescuento) : parseInt(datosSeleccionados.plan) > 60 ? (datosLote.precio_total) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) === 60 ? (datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : parseInt(datosSeleccionados.plan) <= 48 ? (datosLote.precio_total - CantDescuento) - ((textEncanche === "" ? 0 : parseFloat(textEncanche) * (parseFloat(datosLote.precio_total) - parseFloat(CantDescuento)) / 100)).toFixed(2) : "";

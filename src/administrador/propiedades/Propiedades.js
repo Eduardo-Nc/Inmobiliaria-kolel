@@ -80,9 +80,12 @@ const Propiedades = () => {
         setCargando(true);
     }
 
+
+
     const [propiedadSeleccionado, setPropiedadSeleccionado] = useState({});
     const [folleto, setFolleto] = useState([]);
     const [fotos, setFotos] = useState([]);
+    const [planoCatastralSeleccionado, setPlanoCatastralSeleccionado] = useState(null);
 
     const seleccionarPropiedad = async (propiedad) => {
 
@@ -103,6 +106,16 @@ const Propiedades = () => {
                 console.log(error);
             })
 
+
+        await axios.get(baseUrl + "/api/obtener/plano/" + propiedad.caratula_propiedad)
+            .then(response => {
+                setPlanoCatastralSeleccionado(response.data === "" ? null : response.data);
+                console.log("LINEA 111", response.data)
+            }).catch(error => {
+                console.log(error);
+            })
+
+
         setPropiedadSeleccionado(propiedad);
         modalEditar();
     }
@@ -113,6 +126,28 @@ const Propiedades = () => {
 
     }, [])
 
+    const selectImagMapaCatastralEdit = (e) => {
+
+        if (e.target.files.length !== 0) {
+            const { name } = e.target.files[0]
+            console.log("name", name.slice(-3))
+            setTipoPlano(name.slice(-3))
+            if (name.slice(0, -4).toLowerCase() !== "plano") {
+                Swal.fire({
+                    title: '¡Advertencia!',
+                    html: `<p style="color:white;">Para cargar el archivo en la sección "Plano Catastral" es necesario renombrar el archivo a: <strong>"plano"</strong>, actualmente tiene el nombre de: <strong>"${name}"</strong></p>`,
+                    background: '#353535',
+                    icon: 'warning',
+                    confirmButtonText: `Aceptar`,
+                })
+                return
+            } else {
+                if (name.slice(0, -4).toLowerCase() === "plano") {
+                    setPlanoCatastralSeleccionado(e.target.files[0])
+                }
+            }
+        }
+    }
 
     const columns = [
         {
@@ -244,6 +279,35 @@ const Propiedades = () => {
 
         }
     }
+
+    const [mapaCatastral, setMapaCatastral] = useState({})
+    const [tipoPlano, setTipoPlano] = useState("")
+
+    const selectImagMapaCatastral = (e) => {
+
+        if (e.target.files.length !== 0) {
+            const { name } = e.target.files[0]
+            console.log("name", name.slice(-3))
+            setTipoPlano(name.slice(-3))
+            if (name.slice(0, -4).toLowerCase() !== "plano") {
+                Swal.fire({
+                    title: '¡Advertencia!',
+                    html: `<p style="color:white;">Para cargar el archivo en la sección "Plano Catastral" es necesario renombrar el archivo a: <strong>"plano"</strong>, actualmente tiene el nombre de: <strong>"${name}"</strong></p>`,
+                    background: '#353535',
+                    icon: 'warning',
+                    confirmButtonText: `Aceptar`,
+                })
+                return
+            } else {
+                if (name.slice(0, -4).toLowerCase() === "plano") {
+
+                    setMapaCatastral(e.target.files[0])
+                }
+            }
+        }
+    }
+
+
 
     const peticionPost = () => {
 
@@ -400,8 +464,11 @@ const Propiedades = () => {
             }
         }
 
+
         formdata.append('galeria_propiedad', caratulaImg.caratula);
         formdata.append('galeria_propiedad', caratulaImg.folleto);
+
+        formdata.append('galeria_propiedad', mapaCatastral);
 
         formdata.append('nombre_propiedad', propiedadSeleccionado.nombre_propiedad);
         formdata.append('precio_propiedad', propiedadSeleccionado.precio_propiedad);
@@ -459,6 +526,7 @@ const Propiedades = () => {
     }
 
     // console.log(file)
+    console.log("planoCatastralSeleccionado", planoCatastralSeleccionado)
 
     const peticionPut = async () => {
 
@@ -495,6 +563,12 @@ const Propiedades = () => {
 
         if (caratulaImg.folleto) {
             formdata.append('galeria_propiedad', caratulaImg.folleto);
+        } else {
+
+        }
+
+        if (planoCatastralSeleccionado !== null) {
+            formdata.append('galeria_propiedad', planoCatastralSeleccionado);
         } else {
 
         }
@@ -767,6 +841,11 @@ const Propiedades = () => {
                         }
 
 
+
+                        <label>Plano Catastral</label>
+                        <input onChange={selectImagMapaCatastral} name="plano_catastral" type="file" />
+
+
                         <label>Nombre propiedad</label>
                         <input type="text" autoComplete="off" name="nombre_propiedad" onChange={handleChange} placeholder="Propiedad exclusiva en..." required ></input>
 
@@ -954,6 +1033,41 @@ const Propiedades = () => {
                                     </div>
                                     : <div></div>
                         }
+
+                        <label>Plano Catastral</label>
+                        {/* mapaCatastral */}
+
+
+                        <input onChange={selectImagMapaCatastralEdit} name="plano_catastral" type="file" />
+
+
+                        {
+                            planoCatastralSeleccionado !== null ?
+                                planoCatastralSeleccionado.length >= 0 ?
+
+                                    <div className="alert alert-secondary docs-archivos-prop" role="alert">
+                                        <div>
+                                            <img src={nubeUrl + planoCatastralSeleccionado + ".jpg"} />
+                                        </div>
+                                    </div>
+                                    :
+                                    <div className="alert alert-secondary docs-archivos-prop" role="alert">
+
+                                        <div>
+                                            {
+                                                tipoPlano === "pdf" ?
+                                                    <img src={Pdf} style={{ width: '100%', height: '100%', objectFit: "cover" }} alt="Folleto" />
+                                                    :
+                                                    <img src={URL.createObjectURL(planoCatastralSeleccionado)} />
+                                            }
+                                        </div>
+                                    </div>
+
+                                : <div></div>
+                        }
+
+
+                        {/* <input onChange={selectImagMapaCatastral} name="plano_catastral" type="file" accept="image/*" /> */}
 
                         <label>Identificador propiedad</label>
                         <input type="text" name="identificador_propiedad" onChange={handleChange} value={propiedadSeleccionado && propiedadSeleccionado.identificador_propiedad} required ></input>
